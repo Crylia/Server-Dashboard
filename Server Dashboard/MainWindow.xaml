@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server_Dashboard"
         mc:Ignorable="d"
-        Title="Server Dashboard" Height="600" Width="400">
+        Title="Server Dashboard" Height="700" Width="500">
     <Border Style="{StaticResource LoginViewBorder}">
         <Grid>
             <Grid.RowDefinitions>
@@ -15,7 +15,12 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height=".5*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Login"/>
+            <Border Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#35bEb6" BorderThickness="0 1 0 1">
+                <StackPanel VerticalAlignment="Center" Margin="0 0 0 5">
+                    <TextBlock Text="Server Dashboard" Style="{StaticResource LoginGreeter}"/>
+                    <TextBlock Text="Login" FontSize="40" Style="{StaticResource LoginGreeter}"/>
+                </StackPanel>
+            </Border>
             <Grid Grid.Row="1">
                 <Border Style="{StaticResource LoginFormsBorder}">
                     <Grid Grid.Column="1">
@@ -24,8 +29,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Height="30" Source="Assets/Images/userlogin.png"/>
+                        <TextBlock Text="Username" Style="{StaticResource LoginFormTooltip}" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False"/>
                         <Border Grid.Column="1" Style="{StaticResource LoginFormsInputBorder}">
-                            <TextBox Grid.Column="1" Style="{StaticResource LoginFormInput}"/>
+                            <TextBox x:Name="UserName" Background="Transparent" Grid.Column="1" Style="{StaticResource LoginFormInput}"/>
                         </Border>
                     </Grid>
                 </Border>
@@ -38,38 +44,14 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Height="30" Source="Assets/Images/userpasswd.png"/>
+                        <TextBlock Text="Password" Style="{StaticResource LoginFormTooltip}" Visibility="{Binding ElementName=Password, Path=SecurePassword.IsEmpty, Converter={StaticResource PasswordVisibillity}}" Grid.Column="1" IsHitTestVisible="False"/>
                         <Border Grid.Column="1" Style="{StaticResource LoginFormsInputBorder}">
-                            <PasswordBox Grid.Column="1" Style="{StaticResource LoginFormPassword}"/>
+                            <PasswordBox x:Name="Password" Grid.Column="1" Style="{StaticResource LoginFormPassword}"/>
                         </Border>
                     </Grid>
                 </Border>
             </Grid>
-            <Grid Grid.Row="3">
-                <Button Style="{StaticResource LoginFormButton}" Content="Anmelden"/>
-            </Grid>
-            <Grid Grid.Row="4">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid Height="20" VerticalAlignment="Top" Grid.Row="0">
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="14" FontFamily="Arial" Foreground="#878787">
-                        Noch keinen Account? Klicke 
-                        <Hyperlink Foreground="#25AEA6" TextDecorations="none" NavigateUri="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                            hier
-                        </Hyperlink>
-                        um einen zu erstellen!
-                    </TextBlock>
-                </Grid>
-                <Grid VerticalAlignment="Top" Height="20" Grid.Row="2">
-                    <TextBlock HorizontalAlignment="Center" FontSize="14" FontFamily="Arial" Foreground="#878787">
-                        Passwort 
-                        <Hyperlink Foreground="#25AEA6" TextDecorations="none" NavigateUri="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                            Vergessen?
-                        </Hyperlink>
-                    </TextBlock>
-                </Grid>
-            </Grid>
+            <Button Grid.Row="3" Style="{StaticResource LoginFormButton}" Content="Login"/>
         </Grid>
     </Border>
 </Window>

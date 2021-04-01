@@ -12,6 +12,9 @@
             </RadialGradientBrush.GradientStops>
         </RadialGradientBrush>
 
+        <BooleanToVisibilityConverter x:Key="UserNameVisibillity" />
+        <BooleanToVisibilityConverter x:Key="PasswordVisibillity" />
+        
         <SolidColorBrush x:Key="Background" Color="#141424"/>
         <!--A700 Teal-->
         <SolidColorBrush x:Key="Green" Color="#00BFA5"/>
@@ -23,22 +26,6 @@
         <SolidColorBrush x:Key="Yellow" Color="#FFEB3B"/>
         <!--700 Yellow-->
         <SolidColorBrush x:Key="PressedYellow" Color="#FBC02D"/>
-        
-        <Style x:Key="loginButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#25AEA6"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                
-            </Style.Triggers>
-        </Style>
 
         <Style x:Key="LoginViewBorder" TargetType="{x:Type Border}">
             <Setter Property="BorderBrush" Value="#25AEA6"/>
@@ -56,7 +43,7 @@
             <Setter Property="Background" Value="#1B1C20"/>
         </Style>
 
-        <Style x:Name="LoginFormHint" x:Key="LoginFormTooltip" TargetType="{x:Type Label}">
+        <Style x:Name="HintText" x:Key="LoginFormTooltip" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#40AAAAAA"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="20"/>
@@ -101,30 +88,41 @@
         <Style x:Key="LoginFormButton" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="350"/>
             <Setter Property="Height" Value="60"/>
-            <Setter Property="Background" Value="#25AEA6"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground" Value="{StaticResource Background}"/>
+            <Setter Property="Background" Value="#2A2D30"/>
+            <Setter Property="BorderBrush" Value="#25AEA6"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Foreground" Value="#25AEA6"/>
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <TextBlock TextAlignment="Center" Padding="5" TextWrapping="Wrap" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Border x:Name="Border" CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <TextBlock TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#35bEb6"/>
+                                <Setter Property="BorderBrush" Value="#35bEb6"/>
+                                <Setter Property="Foreground" Value="#35bEb6"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#159E96"/>
+                                <Setter Property="Background" Value="#25AEA6"/>
+                                <Setter Property="Foreground" Value="#2A2D30"/>
+                                <Setter Property="BorderThickness" Value="0"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="LoginGreeter" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#878787"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="TextAlignment" Value="Center"/>
         </Style>
         
     </Application.Resources>
