@@ -1,0 +1,75 @@
+﻿<Window x:Class="Server_Dashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Server_Dashboard"
+        mc:Ignorable="d"
+        Title="Server Dashboard" Height="600" Width="400">
+    <Border Style="{StaticResource LoginViewBorder}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Login"/>
+            <Grid Grid.Row="1">
+                <Border Style="{StaticResource LoginFormsBorder}">
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Height="30" Source="Assets/Images/userlogin.png"/>
+                        <Border Grid.Column="1" Style="{StaticResource LoginFormsInputBorder}">
+                            <TextBox Grid.Column="1" Style="{StaticResource LoginFormInput}"/>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Border Style="{StaticResource LoginFormsBorder}">
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Height="30" Source="Assets/Images/userpasswd.png"/>
+                        <Border Grid.Column="1" Style="{StaticResource LoginFormsInputBorder}">
+                            <PasswordBox Grid.Column="1" Style="{StaticResource LoginFormPassword}"/>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Button Style="{StaticResource LoginFormButton}" Content="Anmelden"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Height="20" VerticalAlignment="Top" Grid.Row="0">
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="14" FontFamily="Arial" Foreground="#878787">
+                        Noch keinen Account? Klicke 
+                        <Hyperlink Foreground="#25AEA6" TextDecorations="none" NavigateUri="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                            hier
+                        </Hyperlink>
+                        um einen zu erstellen!
+                    </TextBlock>
+                </Grid>
+                <Grid VerticalAlignment="Top" Height="20" Grid.Row="2">
+                    <TextBlock HorizontalAlignment="Center" FontSize="14" FontFamily="Arial" Foreground="#878787">
+                        Passwort 
+                        <Hyperlink Foreground="#25AEA6" TextDecorations="none" NavigateUri="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                            Vergessen?
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
