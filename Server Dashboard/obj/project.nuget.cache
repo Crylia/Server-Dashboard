@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ys8lDS/3T/6A/sckiwSOsrsN0Lv8FKN7haYCcS3mkpDpqXsorYgNFm3xwecHcRSPPhR8+xRgpeJ1c3ShYikNbg==",
+  "dgSpecHash": "CYGOe4mBfiMKQ4BaJySOksOWUEXHi442SEA4/Rkjp0Q8nuhKaogz392dgxLCqtFUcIOrmTAgtPjbLUjOWSV4Og==",
   "success": true,
   "projectFilePath": "C:\\Users\\Crylia\\Documents\\Git\\Server Dashboard\\Server Dashboard\\Server Dashboard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

@@ -1,0 +1,71 @@
+﻿<Window x:Class="Server_Dashboard.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:Server_Dashboard"
+        mc:Ignorable="d"
+        Title="Server Dashboard" Height="700" Width="500" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
+    <Border Style="{StaticResource LoginViewBorder}">
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"/>
+                <Button Grid.Column="2" Style="{StaticResource CloseButton}" Content="✕">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <Border Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#35bEb6" BorderThickness="0 1 0 1">
+                <StackPanel VerticalAlignment="Center" Margin="0 0 0 5">
+                    <TextBlock Text="Server Dashboard" Style="{StaticResource LoginGreeter}"/>
+                    <TextBlock Text="Login" Style="{StaticResource LoginGreeter}"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="2" Style="{StaticResource LoginFormsBorder}">
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Height="30" Source="Assets/Images/userlogin.png"/>
+                    <TextBlock Text="Username" Style="{StaticResource LoginFormTooltip}" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False"/>
+                    <TextBox Text="{Binding Username}" x:Name="UserName" Background="Transparent" Grid.Column="1" Style="{StaticResource LoginFormInput}"/>
+                </Grid>
+            </Border>
+            <!--Background="#1B1C20"-->
+            <Border Grid.Row="3" Style="{StaticResource LoginFormsBorder}">
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Height="30" Source="Assets/Images/userpasswd.png"/>
+                    <TextBlock x:Name="PasswordHint" Text="Password" Style="{StaticResource LoginFormTooltip}" Grid.Column="1" IsHitTestVisible="False"/>
+                    <PasswordBox Grid.Column="1" x:Name="Password" Style="{StaticResource LoginFormPassword}"/>
+                </Grid>
+            </Border>
+            <Button Command="{Binding LoginCommand}" Grid.Row="4" Style="{StaticResource LoginFormButton}" Content="Login" Cursor="Hand"/>
+        </Grid>
+    </Border>
+</Window>
