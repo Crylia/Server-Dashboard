@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Server_Dashboard"
+        x:Name="Login"
         mc:Ignorable="d"
         Title="Server Dashboard" Height="700" Width="500" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
     <Border Style="{StaticResource LoginViewBorder}">
@@ -15,7 +16,8 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
-                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height=".4*"/>
             </Grid.RowDefinitions>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDown">
@@ -61,11 +63,12 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Height="30" Source="Assets/Images/userpasswd.png"/>
-                    <TextBlock x:Name="PasswordHint" Text="Password" Style="{StaticResource LoginFormTooltip}" Grid.Column="1" IsHitTestVisible="False"/>
-                    <PasswordBox Grid.Column="1" x:Name="Password" Style="{StaticResource LoginFormPassword}"/>
+                    <TextBlock Visibility="{Binding ElementName=Password, Path=(local:HasTextProperty.Value), Converter={StaticResource UserNameVisibillity}}" x:Name="PasswordHint" Text="Password" Style="{StaticResource LoginFormTooltip}" Grid.Column="1" IsHitTestVisible="False"/>
+                    <PasswordBox local:MonitorPasswordProperty.Value="True" Grid.Column="1" x:Name="Password" Style="{StaticResource LoginFormPassword}"/>
                 </Grid>
             </Border>
-            <Button Command="{Binding LoginCommand}" Grid.Row="4" Style="{StaticResource LoginFormButton}" Content="Login" Cursor="Hand"/>
+            <Button Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}" Grid.Row="4" Style="{StaticResource LoginFormButton}" Content="Login" Cursor="Hand"/>
+            <TextBlock Style="{StaticResource ErrorMessage}" Text="{Binding ErrorText}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5"/>
         </Grid>
     </Border>
 </Window>

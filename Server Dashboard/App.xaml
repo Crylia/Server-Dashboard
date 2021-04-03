@@ -12,8 +12,8 @@
             </RadialGradientBrush.GradientStops>
         </RadialGradientBrush>
 
-        <BooleanToVisibilityConverter x:Key="UserNameVisibillity" />
-        <BooleanToVisibilityConverter x:Key="PasswordVisibillity" />
+        <BooleanToVisibilityConverter x:Key="UserNameVisibillity"/>
+        <BooleanToVisibilityConverter x:Key="PasswordVisibillity"/>
         
         <SolidColorBrush x:Key="Background" Color="#141424"/>
         <!--A700 Teal-->
@@ -26,6 +26,8 @@
         <SolidColorBrush x:Key="Yellow" Color="#FFEB3B"/>
         <!--700 Yellow-->
         <SolidColorBrush x:Key="PressedYellow" Color="#FBC02D"/>
+        <!--800 Red-->
+        <SolidColorBrush x:Key="ErrorRed" Color="#c62828"/>
 
         <Style x:Key="LoginViewBorder" TargetType="{x:Type Border}">
             <Setter Property="BorderBrush" Value="#25AEA6"/>
@@ -140,6 +142,11 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="ErrorMessage" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource ErrorRed}"/>
         </Style>
     </Application.Resources>
 </Application>
