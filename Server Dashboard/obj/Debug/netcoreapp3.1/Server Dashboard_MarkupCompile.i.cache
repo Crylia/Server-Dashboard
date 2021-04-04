@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\App.xaml
-1-1623698816
+3-1865200846
 
-17162120503
+20-2115927172
 194-1159729825
-LoginWindow.xaml;
+LoginWindow.xaml;Views\DashboardPages\MainDashboardPage.xaml;Views\DashboardWindow.xaml;
 
 False
 

@@ -28,3 +28,7 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.dll.config
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.baml

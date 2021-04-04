@@ -27,4 +27,17 @@ namespace Server_Dashboard {
             SetValue(sender, ((PasswordBox)sender).SecurePassword.Length < 1);
         }
     }
+    public class CloseProperty : BaseAttachedProperty<CloseProperty, bool> {
+        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e) {
+            if(sender is Window window) {
+                window.Loaded += (s, e) => {
+                    if(window.DataContext is IWindowHelper wh) {
+                        wh.Close += () => {
+                            window.Close();
+                        };
+                    }
+                };
+            }
+        }
+    }
 }

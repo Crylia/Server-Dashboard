@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\Docs.png" />
+    <None Remove="Assets\Images\DocsLight.png" />
+    <None Remove="Assets\Images\GitHub-Mark.zip" />
+    <None Remove="Assets\Images\GitHub.png" />
+    <None Remove="Assets\Images\GitHubLight.png" />
+    <None Remove="Assets\Images\GreenSettings.png" />
+    <None Remove="Assets\Images\Settings.png" />
+    <None Remove="Assets\Images\Settings.svg" />
+    <None Remove="Assets\Images\SettingsLight.png" />
+    <None Remove="Assets\Images\User.png" />
+    <None Remove="Assets\Images\UserLight.png" />
     <None Remove="Assets\Images\userlogin.png" />
     <None Remove="Assets\Images\userpasswd.png" />
   </ItemGroup>
@@ -18,12 +29,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\Docs.png" />
+    <Resource Include="Assets\Images\DocsLight.png" />
+    <Resource Include="Assets\Images\GitHub-Mark.zip" />
+    <Resource Include="Assets\Images\GitHub.png" />
+    <Resource Include="Assets\Images\GitHubLight.png" />
+    <Resource Include="Assets\Images\GreenSettings.png" />
+    <Resource Include="Assets\Images\Settings.png" />
+    <Resource Include="Assets\Images\Settings.svg" />
+    <Resource Include="Assets\Images\SettingsLight.png" />
+    <Resource Include="Assets\Images\User.png" />
+    <Resource Include="Assets\Images\UserLight.png" />
     <Resource Include="Assets\Images\userlogin.png" />
     <Resource Include="Assets\Images\userpasswd.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>

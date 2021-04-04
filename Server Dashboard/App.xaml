@@ -2,9 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Server_Dashboard"
+             xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
 
+        <DataTemplate x:Key="MainDashboardView" DataType="{x:Type local:DashboardViewModel}">
+            <views:MainDashboardPage/>
+        </DataTemplate>
+        
         <RadialGradientBrush x:Key="LoginBackground" GradientOrigin="0.5, 0.5" Center="0.5, 0.5">
             <RadialGradientBrush.GradientStops>
                 <GradientStop Color="#2A2D30" Offset="1"/>
@@ -14,12 +19,21 @@
 
         <BooleanToVisibilityConverter x:Key="UserNameVisibillity"/>
         <BooleanToVisibilityConverter x:Key="PasswordVisibillity"/>
-        
+
+        <SolidColorBrush x:Key="600Gray" Color="#546E7A"/>
+        <SolidColorBrush x:Key="700Gray" Color="#455A64"/>
+        <SolidColorBrush x:Key="800Gray" Color="#37474F"/>
+        <SolidColorBrush x:Key="900Gray" Color="#263238"/>
+        <SolidColorBrush x:Key="1000Gray" Color="#152127"/>
+        <SolidColorBrush x:Key="950Gray" Color="#1D262A"/>
+
         <SolidColorBrush x:Key="Background" Color="#141424"/>
         <!--A700 Teal-->
         <SolidColorBrush x:Key="Green" Color="#00BFA5"/>
         <!--600 Light Blue-->
         <SolidColorBrush x:Key="Blue" Color="#039BE5"/>
+        <!--700 Light Blue-->
+        <SolidColorBrush x:Key="HighlightedBlue" Color="#0288D1"/>
         <!--800 Light Blue-->
         <SolidColorBrush x:Key="PressedBlue" Color="#0277BD"/>
         <!--500 Yellow-->
@@ -148,5 +162,35 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Foreground" Value="{StaticResource ErrorRed}"/>
         </Style>
+
+        <Style x:Key="TopBarLinksButton" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{StaticResource Blue}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="5 5 10 5"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource Blue}"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="{StaticResource HighlightedBlue}"/>
+                                <Setter Property="Foreground" Value="{StaticResource HighlightedBlue}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{StaticResource PressedBlue}"/>
+                                <Setter Property="Foreground" Value="{StaticResource 950Gray}"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
