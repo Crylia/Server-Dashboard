@@ -75,6 +75,42 @@
           }
         }
       },
+      "SharpVectors/1.7.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Core.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Css.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Dom.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Model.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          },
+          "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.dll": {
+            "assemblyVersion": "1.7.1.0",
+            "fileVersion": "1.7.1.0"
+          }
+        }
+      },
       "System.Data.SqlClient/4.8.2": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
@@ -195,6 +231,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SharpVectors/1.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kTiP4pkyW0qPQMxyIYsH7r9wl+cSAmk5ySynhQvc/Ma6bgH9pWWJtM6dvEIoRM4uV2C0QIhWDQeWcTN//0XP9g==",
+      "path": "sharpvectors/1.7.1",
+      "hashPath": "sharpvectors.1.7.1.nupkg.sha512"
     },
     "System.Data.SqlClient/4.8.2": {
       "type": "package",

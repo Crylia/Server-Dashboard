@@ -5,17 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server_Dashboard.Views"
         xmlns:root="clr-namespace:Server_Dashboard"
-        xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        mc:Ignorable="d"
-        Height="800" Width="1200" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="CanResize">
-    <Grid>
+        xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+        MinHeight="400" MinWidth="600"
+        Height="1000" Width="1600" WindowStyle="None" Background="Transparent" ResizeMode="CanResize">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.DataContext>
+        <root:DashboardViewModel/>
+    </Window.DataContext>
+    <Grid Background="{StaticResource BackgroundSurface_00dp}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--Window Title-->
-        <Grid Grid.Row="0" Background="{StaticResource 1000Gray}">
+        <Grid Background="{StaticResource BackgroundSurface_06dp}" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="40"/>
@@ -26,7 +34,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <Label Grid.Column="0"/>
-            <Button Grid.Column="2" Style="{StaticResource CloseButton}" Content="✕">
+            <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
@@ -35,7 +43,10 @@
             </Button>
         </Grid>
         <!--Settings, Docs, User, links etc-->
-        <Grid Grid.Row="1" x:Name="TopBarGrid" Background="{StaticResource 950Gray}" Loaded="Grid_Loaded">
+        <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1" x:Name="TopBarGrid">
+            <Grid.Effect>
+                <DropShadowEffect Direction="270" BlurRadius="5"/>
+            </Grid.Effect>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -43,94 +54,221 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource TopBarLinksButton}">
+            <Button Grid.Column="0" >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" CornerRadius="4" Padding="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <Image x:Name="TopBarButtonImage" Source="../Assets/Images/SettingsLight.png" Height="Auto"/>
+                        <Border 
+                            x:Name="Border"
+                            CornerRadius="4"
+                            Padding="2"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            >
+                            <svgc:SvgViewbox 
+                                Source="../Assets/Images/Settings.svg"
+                                Margin="5"
+                                IsHitTestVisible="False"
+                                Opacity="0.87"
+                            />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{StaticResource HighlightedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource HighlightedBlue}"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PressedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource 950Gray}"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter TargetName="TopBarButtonImage" Property="Source" Value="../Assets/Images/Settings.png"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Grid.Column="2" Content="GitHub"  Style="{StaticResource TopBarLinksButton}">
+            <Button
+                Grid.Column="4"
+                Command="{Binding OpenLinkCommand}"
+                Content="{Binding UserName}"
+                Margin="10 0 10 0"
+                Height="40"
+                >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" CornerRadius="4" Padding="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <StackPanel Orientation="Horizontal">
-                                <Image x:Name="TopBarButtonImage" Source="../Assets/Images/GitHubLight.png" Height="{TemplateBinding FontSize}" Margin="0 0 5 0"/>
-                                <TextBlock TextAlignment="Center" Padding="5" TextWrapping="Wrap" Text="GitHub" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                        <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                            </Border.Effect>
+                            <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                </Border.BorderBrush>
+                                <StackPanel Orientation="Horizontal">
+                                    <svgc:SvgViewbox 
+                                        Source="../Assets/Images/User.svg"
+                                        Margin="5"
+                                        IsHitTestVisible="False"
+                                        Opacity="0.87"
+                                    />
+                                    <TextBlock
+                                        FontSize="{TemplateBinding FontSize}"
+                                        TextAlignment="Center"
+                                        Padding="0"
+                                        TextWrapping="Wrap"
+                                        Text="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="5 0 10 0"
+                                    />
+                                </StackPanel>
+                            </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{StaticResource HighlightedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource HighlightedBlue}"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PressedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource 950Gray}"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter TargetName="TopBarButtonImage" Property="Source" Value="../Assets/Images/GitHub.png"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Grid.Column="3" Content="Docs" Style="{StaticResource TopBarLinksButton}" Cursor="Hand">
+            <Button
+                Grid.Column="3"
+                Command="{Binding OpenLinkCommand}"
+                CommandParameter="https://github.com/Crylia/Server-Dashboard/wiki"
+                Content="Docs"
+                Margin="10 0 10 0"
+                Height="40"
+                >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" CornerRadius="4" Padding="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <StackPanel Orientation="Horizontal">
-                                <Image x:Name="TopBarButtonImage" Source="../Assets/Images/DocsLight.png" Height="{TemplateBinding FontSize}" Margin="0 0 5 0"/>
-                                <TextBlock TextAlignment="Center" Padding="5" TextWrapping="Wrap" Text="Docs" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                        <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                            </Border.Effect>
+                            <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                </Border.BorderBrush>
+                                <StackPanel Orientation="Horizontal">
+                                    <svgc:SvgViewbox 
+                                        Source="../Assets/Images/Docs.svg"
+                                        Margin="5"
+                                        IsHitTestVisible="False"
+                                        Opacity="0.87"
+                                    />
+                                    <TextBlock
+                                    FontSize="{TemplateBinding FontSize}"
+                                    TextAlignment="Center"
+                                    Padding="0"
+                                    TextWrapping="Wrap"
+                                    Text="{TemplateBinding Content}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Margin="5 0 10 0"
+                                />
+                                </StackPanel>
+                            </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{StaticResource HighlightedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource HighlightedBlue}"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PressedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource 950Gray}"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter TargetName="TopBarButtonImage" Property="Source" Value="../Assets/Images/Docs.png"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Grid.Column="4" Style="{StaticResource TopBarLinksButton}" Cursor="Hand">
+            <Button
+                Grid.Column="2"
+                Command="{Binding OpenLinkCommand}"
+                CommandParameter="https://github.com/Crylia/Server-Dashboard"
+                Content="GitHub"
+                Margin="10 0 10 0"
+                Height="40"
+                Opacity="0.87"
+                >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" CornerRadius="4" Padding="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <StackPanel Orientation="Horizontal">
-                                <Image x:Name="TopBarButtonImage" Source="../Assets/Images/UserLight.png" Height="{TemplateBinding FontSize}" Margin="0 0 5 0"/>
-                                <TextBlock TextAlignment="Center" Padding="5" TextWrapping="Wrap" Text="{Binding UserName}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                        <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                            </Border.Effect>
+                            <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                </Border.BorderBrush>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image 
+                                        Source="../Assets/Images/GitHubLight.png"
+                                        Margin="5"
+                                    />
+                                    <TextBlock
+                                        FontSize="{TemplateBinding FontSize}"
+                                        TextAlignment="Center"
+                                        Padding="0"
+                                        TextWrapping="Wrap"
+                                        Text="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="5 0 10 0"
+                                    />
+                                </StackPanel>
+                            </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{StaticResource HighlightedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource HighlightedBlue}"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PressedBlue}"/>
-                                <Setter Property="Foreground" Value="{StaticResource 950Gray}"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter TargetName="TopBarButtonImage" Property="Source" Value="../Assets/Images/User.png"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

@@ -18,11 +18,5 @@ namespace Server_Dashboard.Views {
         public DashboardWindow() {
             InitializeComponent();
         }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e) {
-            foreach(Button b in TopBarGrid.Children) {
-                //b.Template.FindName("TopBarButtonImage")
-            }
-        }
     }
 }

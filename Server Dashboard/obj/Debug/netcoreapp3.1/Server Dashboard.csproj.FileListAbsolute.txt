@@ -29,6 +29,14 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.dll.config
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.g.cs
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Converters.Wpf.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Core.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Css.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Dom.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Model.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Rendering.Gdi.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Rendering.Wpf.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Runtime.Wpf.dll

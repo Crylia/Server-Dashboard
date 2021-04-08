@@ -10,10 +10,7 @@ namespace Server_Dashboard {
     public partial class LoginWindow : Window, IHavePassword {
         public LoginWindow() {
             InitializeComponent();
-            DataContext = new LoginViewModel();
         }
-
         public SecureString SecurePassword => Password.SecurePassword;
-
     }
 }

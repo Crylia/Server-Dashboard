@@ -4,12 +4,20 @@ using System.Text;
 
 namespace Server_Dashboard {
     class DashboardModule {
-        public string Name { get; set; }
+        public string ModulName { get; set; }
         public string Creator { get; set; }
-        public DateTime Uptime { get; set; }
-        public ModuleItem ModuleItem { get; set; }
+        public ModuleItem ServerInfo { get; set; }
+        public string ModuleIcon { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public string StatusIndicator { get; set; }
+        public string StatusIndicatorBG { get; set; }
+
         public DashboardModule() {
-            ModuleItem = new ModuleItem();
+            StatusIndicator = true ? "#20c657" : "#e53935";
+            StatusIndicatorBG = true ? "#94eeb0" : "#ef9a9a";
+            ServerInfo = new ModuleItem(true, 88.88, 69.69, DateTime.Now, "sudo", "Archlinux", "192.168.1.100", "84.102.25.96");
+
         }
     }
 }

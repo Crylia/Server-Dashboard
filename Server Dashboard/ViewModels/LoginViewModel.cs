@@ -41,7 +41,6 @@ namespace Server_Dashboard {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 if (DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure())) {
                     DashboardWindow window = new DashboardWindow();
-                    window.DataContext = new DashboardViewModel();
                     window.Show();
                     Close?.Invoke();
                 } else {
