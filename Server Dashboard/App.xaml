@@ -3,12 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Server_Dashboard"
              xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
+             xmlns:modulescrud="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
 
         <!--View Templates-->
         <DataTemplate x:Key="MainDashboardView" DataType="{x:Type local:DashboardViewModel}">
             <views:MainDashboardPage/>
+        </DataTemplate>
+        <DataTemplate x:Key="CreateModuleView" DataType="{x:Type local:DashboardModuleViewModel}">
+            <modulescrud:CreateModulePopup/>
         </DataTemplate>
 
         <!--Visibility converter for the login inputs-->
@@ -229,7 +233,7 @@
         </Style>
 
         <!--Checkbox default design-->
-        <Style TargetType="CheckBox">
+        <Style TargetType="{x:Type CheckBox}">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -308,6 +312,7 @@
         <!--=CUSTOM DESIGNS=-->
         <!--================-->
 
+        <!--Close button design-->
         <Style x:Key="CloseButton" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -334,6 +339,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        
     </Application.Resources>
 </Application>

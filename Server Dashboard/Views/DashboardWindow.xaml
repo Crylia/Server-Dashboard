@@ -217,7 +217,7 @@
                 Content="GitHub"
                 Margin="10 0 10 0"
                 Height="40"
-                Opacity="0.87"
+                Opacity="0.87" Cursor="Hand"
                 >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">

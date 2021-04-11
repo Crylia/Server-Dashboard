@@ -4,8 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:vm="clr-namespace:Server_Dashboard"
-      xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             mc:Ignorable="d"
+      xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages"
+      xmlns:modulescrud="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
+      xmlns:root="clr-namespace:Server_Dashboard"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:controls="clr-namespace:Server_Dashboard.Controls.ServerModules"
+      mc:Ignorable="d"
       d:DesignHeight="920" d:DesignWidth="1600">
     <UserControl.DataContext>
         <vm:DashboardModuleViewModel/>
@@ -36,21 +40,22 @@
                     Command="{Binding CreateModuleCommand}" 
                     Content="CREATE MODULE"
                     Height="50"
-                    Margin="0 10 0 0"
+                    Margin="5 10 5 0" Cursor="Hand"
+                    x:Name="CreateModule"
                 />
                 <Button 
                     Grid.Row="1" 
                     Command="{Binding DeleteModuleCommand}" 
                     Content="DELETE MODULE"
                     Height="50"
-                    Margin="0 10 0 0"
+                    Margin="5 10 5 0"
                 />
                 <Button 
                     Grid.Row="2" 
                     Command="{Binding UpdateModuleCommand}" 
                     Content="UPDATE MODULE"
                     Height="50"
-                    Margin="0 10 0 0"
+                    Margin="5 10 5 0" Cursor="Hand"
                 />
             </Grid>
             <Grid Grid.Column="1">
@@ -63,68 +68,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border MinHeight="100" MinWidth="300" Width="Auto" Height="Auto"  Margin="20">
-                                    <Border.Effect>
-                                        <DropShadowEffect BlurRadius="5" ShadowDepth="0"/>
-                                    </Border.Effect>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Border 
-                                            Grid.Row="0" 
-                                            Background="{StaticResource BackgroundSurface_08dp}" 
-                                            CornerRadius="12 12 0 0"
-                                            >
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Image Grid.Column="0" Margin="7.5 0 7.5 0" Height="25" Width="25" Source="{Binding ModuleIcon}"/>
-                                                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ModulName}"/>
-                                                <Border Background="{Binding StatusIndicator}" Grid.Column="3" CornerRadius="0 11 0 0">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Margin="7 0 30 0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Foreground="{StaticResource White}" FontSize="20" Text="Status"/>
-                                                        <Border Grid.Column="1" CornerRadius="0 11 0 0" HorizontalAlignment="Right" Background="{Binding StatusIndicatorBG}" Padding="6">
-                                                            <Ellipse Fill="{Binding StatusIndicator}" StrokeThickness="0" Width="25" Height="25"/>
-                                                        </Border>
-                                                    </Grid>
-                                                </Border>
-                                            </Grid>
-                                        </Border>
-                                        <Grid Grid.Row="2" Background="{StaticResource BackgroundSurface_02dp}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1.5*"/>
-                                                <ColumnDefinition/>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid Grid.Column="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-                                                <!--
-                                                    Add List of information later
-                                                -->
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Border>
+                                <controls:ServerModule/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
