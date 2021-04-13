@@ -11,7 +11,7 @@
         <DataTemplate x:Key="MainDashboardView" DataType="{x:Type local:DashboardViewModel}">
             <views:MainDashboardPage/>
         </DataTemplate>
-        <DataTemplate x:Key="CreateModuleView" DataType="{x:Type local:DashboardModuleViewModel}">
+        <DataTemplate x:Key="CreateModuleView" DataType="{x:Type local:DashboardViewModel}">
             <modulescrud:CreateModulePopup/>
         </DataTemplate>
 

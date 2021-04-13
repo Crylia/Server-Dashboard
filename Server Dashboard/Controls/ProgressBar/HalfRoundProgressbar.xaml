@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Server_Dashboard.Controls.ProgressBar.HalfRoundProgressbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Server_Dashboard.Controls.ProgressBar"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:root="clr-namespace:Server_Dashboard"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <UserControl.Resources>
+        <local:ValueToAngle x:Key="valueToAngle"/>
+    </UserControl.Resources>
+    <Grid>
+        <Ellipse x:Name="Background" Fill="{Binding ElementName=_this, Path=BackgroundBrush}" Margin="0" Stroke="Blue"/>
+        <ed:Arc x:Name="Indicator" ArcThickness="8" ArcThicknessUnit="Pixel" EndAngle="{Binding Converter={StaticResource valueToAngle}, ElementName=_this, Path=Value}" Fill="{Binding ElementName=_this, Path=IndicatorBrush}" Stretch="None" StartAngle="0"/>
+        <Ellipse x:Name="Border" Fill="{Binding ElementName=_this, Path=ProgressBorderBrush}" Margin="8" Stroke="Blue"/>
+    </Grid>
+</UserControl>

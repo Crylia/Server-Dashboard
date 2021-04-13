@@ -38,11 +38,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
     <PackageReference Include="SharpVectors" Version="1.7.1" />
     <PackageReference Include="SSH.NET" Version="2020.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,10 +72,6 @@
     <Resource Include="Assets\Images\User.svg" />
     <Resource Include="Assets\Images\userlogin.png" />
     <Resource Include="Assets\Images\userpasswd.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Libraries\" />
   </ItemGroup>
 
 </Project>

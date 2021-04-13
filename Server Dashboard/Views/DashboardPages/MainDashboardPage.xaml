@@ -11,9 +11,6 @@
       xmlns:controls="clr-namespace:Server_Dashboard.Controls.ServerModules"
       mc:Ignorable="d"
       d:DesignHeight="920" d:DesignWidth="1600">
-    <UserControl.DataContext>
-        <vm:DashboardModuleViewModel/>
-    </UserControl.DataContext>
     <Grid Background="{StaticResource BackgroundSurface_00dp}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,9 +23,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="{StaticResource BackgroundSurface_02dp}">
-                <Grid.Effect>
-                    <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
-                </Grid.Effect>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -60,7 +54,7 @@
             </Grid>
             <Grid Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                    <ItemsControl MaxWidth="1400" ItemsSource="{Binding Modules}">
+                    <ItemsControl ItemsSource="{Binding ModuleList}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel HorizontalAlignment="Center"/>

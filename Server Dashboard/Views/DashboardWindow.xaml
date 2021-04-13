@@ -8,8 +8,7 @@
         xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
-        MinHeight="400" MinWidth="600"
-        Height="1000" Width="1600" WindowStyle="None" Background="Transparent" ResizeMode="CanResize">
+        Height="1000" Width="Auto" WindowStyle="None" Background="Transparent" ResizeMode="CanResize">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
@@ -86,7 +85,7 @@
                 Command="{Binding OpenLinkCommand}"
                 Content="{Binding UserName}"
                 Margin="10 0 10 0"
-                Height="40"
+                Height="40" Cursor="Hand"
                 >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">

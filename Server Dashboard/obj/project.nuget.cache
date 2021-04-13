@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "35nx0Hb0qJF/yPS4skzUS56pehas03j5Ixyvt/ZIiogXxuWVHdWghQrK/cXkYEMuCnjzjF6Eb3iJRNRnpEhH9Q==",
+  "dgSpecHash": "1rW9kwGYrr8Er0KtlcGVGLHnp29SqldnKenIO5rFzWQX4CBpQnZU6bweIEFosX/O3wuDcG5e4WCUibETBvXenw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Crylia\\Documents\\Git\\Server Dashboard\\Server Dashboard\\Server Dashboard.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Crylia\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
-    "C:\\Users\\Crylia\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",

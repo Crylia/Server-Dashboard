@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\App.xaml
-5-497664748
+6-359307902
 
-22-723210175
-2061350745920
-Controls\ServerModules\ServerModule.xaml;LoginWindow.xaml;Views\DashboardPages\MainDashboardPage.xaml;Views\DashboardPages\ModuleCRUD\CreateModulePopup.xaml;Views\DashboardWindow.xaml;
+23-1796455254
+205685840547
+Controls\Dashboard\CRUD Popup\CreateModulePopup.xaml;Controls\ProgressBar\HalfRoundProgressbar.xaml;Controls\ServerModules\ServerModule.xaml;LoginWindow.xaml;Views\DashboardPages\MainDashboardPage.xaml;Views\DashboardWindow.xaml;
 
 False
 
