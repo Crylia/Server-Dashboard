@@ -9,6 +9,11 @@ using System.Reflection;
 namespace Server_Dashboard {
     public static class DatabaseHandler {
 
+        public static DataTable GetServerInformation() {
+
+            return null;
+        }
+
         public static bool CheckLogin(string uname, string passwd) {
             string valid = "False";
             ConnectToDatabase(con => {

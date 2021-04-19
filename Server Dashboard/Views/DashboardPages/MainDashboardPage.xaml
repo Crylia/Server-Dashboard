@@ -10,7 +10,9 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:controls="clr-namespace:Server_Dashboard.Controls.ServerModules"
       mc:Ignorable="d"
-      d:DesignHeight="920" d:DesignWidth="1600">
+      d:DesignHeight="920" 
+      d:DesignWidth="1600"
+      >
     <Grid Background="{StaticResource BackgroundSurface_00dp}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -31,8 +33,8 @@
                 </Grid.RowDefinitions>
                 <Button
                     Grid.Row="0" 
-                    Command="{Binding CreateModuleCommand}" 
-                    Content="CREATE MODULE"
+                    Command="{Binding CreateNewModuleCommand}" 
+                    Content="New Module"
                     Height="50"
                     Margin="5 10 5 0" Cursor="Hand"
                     x:Name="CreateModule"
@@ -40,21 +42,21 @@
                 <Button 
                     Grid.Row="1" 
                     Command="{Binding DeleteModuleCommand}" 
-                    Content="DELETE MODULE"
+                    Content="Remove Module"
                     Height="50"
                     Margin="5 10 5 0"
                 />
                 <Button 
                     Grid.Row="2" 
                     Command="{Binding UpdateModuleCommand}" 
-                    Content="UPDATE MODULE"
+                    Content="Change Module"
                     Height="50"
                     Margin="5 10 5 0" Cursor="Hand"
                 />
             </Grid>
             <Grid Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                    <ItemsControl ItemsSource="{Binding ModuleList}">
+                    <ItemsControl ItemsSource="{Binding Modules}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel HorizontalAlignment="Center"/>

@@ -4,18 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
-        xmlns:root="clr-namespace:Server_Dashboard"
+        xmlns:root="clr-namespace:Server_Dashboard" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         d:DataContext="{d:DesignInstance Type=root:DashboardModuleViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Height="450"
-        Width="300"
+        Height="700"
+        Width="500"
         AllowsTransparency="True"
         >
     <Border 
-        Width="300"
-        Height="450"
+        Width="500"
+        Height="700"
         >
         <Border.Background>
             <SolidColorBrush Color="#2D2D2D" Opacity="1"/>
@@ -40,14 +40,21 @@
                     Grid.Column="0"
                     Text="Create a new Server"
                     Margin="5 0 0 0"
-                    Foreground="{StaticResource DeepPurple_200}"
+                    Foreground="{StaticResource DeepPurple_A100}"
+                    VerticalAlignment="Center"
                 />
                 <Button 
                     Style="{StaticResource CloseButton}"
                     Grid.Column="2"
                     Content="✕"
-                    Command="{Binding ClosePopupCommand}"
-                />
+                    Cursor="Hand"
+                    >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
             </Grid>
             <Grid
                 Background="{StaticResource BackgroundSurface_04dp}"
@@ -68,7 +75,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock 
                             Text="Server Name"
-                            FontSize="16"
+                            FontSize="24"
                             Margin="0 0 0 5"
                             >
                             <TextBlock.Foreground>
@@ -78,7 +85,7 @@
                         <TextBlock 
                             Text="*" 
                             Foreground="{StaticResource ErrorRed}"
-                            FontSize="16"
+                            FontSize="20"
                         />
                     </StackPanel>
                     <Grid>
@@ -88,15 +95,15 @@
                         <TextBox 
                             Text="{Binding ServerName}"
                             Grid.Column="1"
-                            Height="30"
-                            FontSize="14"
+                            Height="40"
+                            FontSize="20"
                             x:Name="ServerName"
                         />
                         <TextBlock 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Text="My Awesome Server"
-                            FontSize="14"
+                            FontSize="20"
                             Visibility="{Binding ElementName=ServerName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}"
                             Grid.Column="1"
                             IsHitTestVisible="False"

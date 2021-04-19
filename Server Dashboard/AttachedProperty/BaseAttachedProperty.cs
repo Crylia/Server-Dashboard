@@ -16,6 +16,5 @@ namespace Server_Dashboard {
         public static Property GetValue(DependencyObject d) => (Property)d.GetValue(ValueProperty);
         public static void SetValue(DependencyObject d, Property value) => d.SetValue(ValueProperty, value);
         public virtual void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e) { }
-        public virtual void OnClose(DependencyObject sender, DependencyPropertyChangedEventArgs e) { }
     }
 }

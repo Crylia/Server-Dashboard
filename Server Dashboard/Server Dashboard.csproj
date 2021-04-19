@@ -74,4 +74,17 @@
     <Resource Include="Assets\Images\userpasswd.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Controls\DoubleRoundProgressBar\DoubleRoundProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\DoubleRoundProgressBar\DoubleRoundProgressBar.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

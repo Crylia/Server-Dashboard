@@ -144,6 +144,7 @@
             <Setter Property="Foreground" Value="{StaticResource DeepPurple_A100}"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -196,6 +197,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="{StaticResource Fontstyle}"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Foreground">
                 <Setter.Value>
                     <SolidColorBrush Color="White" Opacity="0.64"/>
@@ -216,6 +218,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Foreground">
                 <Setter.Value>
                     <SolidColorBrush Color="White" Opacity="0.64"/>
@@ -238,6 +241,7 @@
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Effect">
                 <Setter.Value>
@@ -251,7 +255,7 @@
                             <BulletDecorator.Bullet>
                                 <Border Width="20" Height="20" CornerRadius="2" Background="#FF1B1B1B" BorderThickness="0">
                                     <Border x:Name="Border" Width="20" Height="20" CornerRadius="2" Background="Transparent" BorderThickness="0">
-                                        <Path Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource DeepPurple_200}" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
+                                        <Path Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource DeepPurple_A100}" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
                                     </Border>
                                 </Border>
                             </BulletDecorator.Bullet>
@@ -308,6 +312,18 @@
             </Style.Triggers>
         </Style>
 
+        <!--Border default design (Makes text rendering in it crystal clear)-->
+        <Style TargetType="Border">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
+
+        <!--Grid default design (Makes text rendering in it crystal clear)-->
+        <Style TargetType="Grid">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
+
         <!--================-->
         <!--=CUSTOM DESIGNS=-->
         <!--================-->
@@ -316,6 +332,7 @@
         <Style x:Key="CloseButton" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Foreground">
                 <Setter.Value>
                     <SolidColorBrush Color="White" Opacity="0.12"/>

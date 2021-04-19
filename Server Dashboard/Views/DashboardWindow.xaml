@@ -8,7 +8,14 @@
         xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
-        Height="1000" Width="Auto" WindowStyle="None" Background="Transparent" ResizeMode="CanResize">
+        Height="1000" 
+        Width="Auto" 
+        WindowStyle="None"
+        Background="Transparent"
+        ResizeMode="CanResize"
+        mc:Ignorable="d"
+        d:Height="1000" d:Width="1900"
+        >
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0"/>
     </WindowChrome.WindowChrome>

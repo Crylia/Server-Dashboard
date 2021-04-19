@@ -9,7 +9,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Controls\ProgressBar\HalfRoundProgressbar.xaml.cs">
+    <Compile Update="Controls\HalfRoundProgressBar\HalfRoundProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\ServerModules\ServerModule.xaml.cs">
@@ -26,7 +26,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\ProgressBar\HalfRoundProgressbar.xaml">
+    <Page Update="Controls\DoubleRoundProgressBar\DoubleRoundProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HalfRoundProgressBar\HalfRoundProgressBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ServerModules\ServerModule.xaml">

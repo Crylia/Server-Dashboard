@@ -9,13 +9,14 @@ namespace Server_Dashboard {
         public ServerInformation ServerInfo { get; set; }
         public string StatusIndicator { get; set; }
         public string StatusIndicatorBG { get; set; }
-        public bool ActiveConnection { get; set; }
+        public bool ServerAvailable { get; set; }
         public string ModuleIcon { get; set; }
+        public string CreationDate { get; set; }
 
-        public DashboardModule(bool activeConnection) {
-            ActiveConnection = activeConnection;
-            StatusIndicator = ActiveConnection ? "#20c657" : "#e53935";
-            StatusIndicatorBG = ActiveConnection ? "#94eeb0" : "#ef9a9a";
+        public DashboardModule(bool serverAvailable) {
+            ServerAvailable = serverAvailable;
+            StatusIndicator = ServerAvailable ? "#20c657" : "#e53935";
+            StatusIndicatorBG = ServerAvailable ? "#94eeb0" : "#ef9a9a";
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Server_Dashboard.Views.DashboardPages {
     public partial class MainDashboardPage : UserControl {
         public MainDashboardPage() {
             InitializeComponent();
-            DataContext = new DashboardModuleViewModel();
+            DataContext = new DashboardViewModel();
         }
     }
 }
