@@ -81,6 +81,50 @@
           }
         }
       },
+      "SharpVectors/1.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Core.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Css.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Dom.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Model.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Core.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Css.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Dom.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Model.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.dll": {},
+          "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.dll": {}
+        }
+      },
+      "SSH.NET/2020.0.1": {
+        "type": "package",
+        "dependencies": {
+          "SshNet.Security.Cryptography": "[1.3.0]"
+        },
+        "compile": {
+          "lib/netstandard2.0/Renci.SshNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Renci.SshNet.dll": {}
+        }
+      },
+      "SshNet.Security.Cryptography/1.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {}
+        }
+      },
       "System.Data.SqlClient/4.8.2": {
         "type": "package",
         "dependencies": {
@@ -298,6 +342,194 @@
         "version.txt"
       ]
     },
+    "SharpVectors/1.7.1": {
+      "sha512": "kTiP4pkyW0qPQMxyIYsH7r9wl+cSAmk5ySynhQvc/Ma6bgH9pWWJtM6dvEIoRM4uV2C0QIhWDQeWcTN//0XP9g==",
+      "type": "package",
+      "path": "sharpvectors/1.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/SharpVectors64.png",
+        "lib/net40/SharpVectors.Converters.Wpf.dll",
+        "lib/net40/SharpVectors.Converters.Wpf.xml",
+        "lib/net40/SharpVectors.Core.dll",
+        "lib/net40/SharpVectors.Core.xml",
+        "lib/net40/SharpVectors.Css.dll",
+        "lib/net40/SharpVectors.Css.xml",
+        "lib/net40/SharpVectors.Dom.dll",
+        "lib/net40/SharpVectors.Dom.xml",
+        "lib/net40/SharpVectors.Model.dll",
+        "lib/net40/SharpVectors.Model.xml",
+        "lib/net40/SharpVectors.Rendering.Gdi.dll",
+        "lib/net40/SharpVectors.Rendering.Gdi.xml",
+        "lib/net40/SharpVectors.Rendering.Wpf.dll",
+        "lib/net40/SharpVectors.Rendering.Wpf.xml",
+        "lib/net40/SharpVectors.Runtime.Wpf.dll",
+        "lib/net40/SharpVectors.Runtime.Wpf.xml",
+        "lib/net45/SharpVectors.Converters.Wpf.dll",
+        "lib/net45/SharpVectors.Converters.Wpf.xml",
+        "lib/net45/SharpVectors.Core.dll",
+        "lib/net45/SharpVectors.Core.xml",
+        "lib/net45/SharpVectors.Css.dll",
+        "lib/net45/SharpVectors.Css.xml",
+        "lib/net45/SharpVectors.Dom.dll",
+        "lib/net45/SharpVectors.Dom.xml",
+        "lib/net45/SharpVectors.Model.dll",
+        "lib/net45/SharpVectors.Model.xml",
+        "lib/net45/SharpVectors.Rendering.Gdi.dll",
+        "lib/net45/SharpVectors.Rendering.Gdi.xml",
+        "lib/net45/SharpVectors.Rendering.Wpf.dll",
+        "lib/net45/SharpVectors.Rendering.Wpf.xml",
+        "lib/net45/SharpVectors.Runtime.Wpf.dll",
+        "lib/net45/SharpVectors.Runtime.Wpf.xml",
+        "lib/net46/SharpVectors.Converters.Wpf.dll",
+        "lib/net46/SharpVectors.Converters.Wpf.xml",
+        "lib/net46/SharpVectors.Core.dll",
+        "lib/net46/SharpVectors.Core.xml",
+        "lib/net46/SharpVectors.Css.dll",
+        "lib/net46/SharpVectors.Css.xml",
+        "lib/net46/SharpVectors.Dom.dll",
+        "lib/net46/SharpVectors.Dom.xml",
+        "lib/net46/SharpVectors.Model.dll",
+        "lib/net46/SharpVectors.Model.xml",
+        "lib/net46/SharpVectors.Rendering.Gdi.dll",
+        "lib/net46/SharpVectors.Rendering.Gdi.xml",
+        "lib/net46/SharpVectors.Rendering.Wpf.dll",
+        "lib/net46/SharpVectors.Rendering.Wpf.xml",
+        "lib/net46/SharpVectors.Runtime.Wpf.dll",
+        "lib/net46/SharpVectors.Runtime.Wpf.xml",
+        "lib/net47/SharpVectors.Converters.Wpf.dll",
+        "lib/net47/SharpVectors.Converters.Wpf.xml",
+        "lib/net47/SharpVectors.Core.dll",
+        "lib/net47/SharpVectors.Core.xml",
+        "lib/net47/SharpVectors.Css.dll",
+        "lib/net47/SharpVectors.Css.xml",
+        "lib/net47/SharpVectors.Dom.dll",
+        "lib/net47/SharpVectors.Dom.xml",
+        "lib/net47/SharpVectors.Model.dll",
+        "lib/net47/SharpVectors.Model.xml",
+        "lib/net47/SharpVectors.Rendering.Gdi.dll",
+        "lib/net47/SharpVectors.Rendering.Gdi.xml",
+        "lib/net47/SharpVectors.Rendering.Wpf.dll",
+        "lib/net47/SharpVectors.Rendering.Wpf.xml",
+        "lib/net47/SharpVectors.Runtime.Wpf.dll",
+        "lib/net47/SharpVectors.Runtime.Wpf.xml",
+        "lib/net48/SharpVectors.Converters.Wpf.dll",
+        "lib/net48/SharpVectors.Converters.Wpf.xml",
+        "lib/net48/SharpVectors.Core.dll",
+        "lib/net48/SharpVectors.Core.xml",
+        "lib/net48/SharpVectors.Css.dll",
+        "lib/net48/SharpVectors.Css.xml",
+        "lib/net48/SharpVectors.Dom.dll",
+        "lib/net48/SharpVectors.Dom.xml",
+        "lib/net48/SharpVectors.Model.dll",
+        "lib/net48/SharpVectors.Model.xml",
+        "lib/net48/SharpVectors.Rendering.Gdi.dll",
+        "lib/net48/SharpVectors.Rendering.Gdi.xml",
+        "lib/net48/SharpVectors.Rendering.Wpf.dll",
+        "lib/net48/SharpVectors.Rendering.Wpf.xml",
+        "lib/net48/SharpVectors.Runtime.Wpf.dll",
+        "lib/net48/SharpVectors.Runtime.Wpf.xml",
+        "lib/net5.0-windows/SharpVectors.Converters.Wpf.dll",
+        "lib/net5.0-windows/SharpVectors.Converters.Wpf.xml",
+        "lib/net5.0-windows/SharpVectors.Core.dll",
+        "lib/net5.0-windows/SharpVectors.Core.xml",
+        "lib/net5.0-windows/SharpVectors.Css.dll",
+        "lib/net5.0-windows/SharpVectors.Css.xml",
+        "lib/net5.0-windows/SharpVectors.Dom.dll",
+        "lib/net5.0-windows/SharpVectors.Dom.xml",
+        "lib/net5.0-windows/SharpVectors.Model.dll",
+        "lib/net5.0-windows/SharpVectors.Model.xml",
+        "lib/net5.0-windows/SharpVectors.Rendering.Gdi.dll",
+        "lib/net5.0-windows/SharpVectors.Rendering.Gdi.xml",
+        "lib/net5.0-windows/SharpVectors.Rendering.Wpf.dll",
+        "lib/net5.0-windows/SharpVectors.Rendering.Wpf.xml",
+        "lib/net5.0-windows/SharpVectors.Runtime.Wpf.dll",
+        "lib/net5.0-windows/SharpVectors.Runtime.Wpf.xml",
+        "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.dll",
+        "lib/netcoreapp3.1/SharpVectors.Converters.Wpf.xml",
+        "lib/netcoreapp3.1/SharpVectors.Core.dll",
+        "lib/netcoreapp3.1/SharpVectors.Core.xml",
+        "lib/netcoreapp3.1/SharpVectors.Css.dll",
+        "lib/netcoreapp3.1/SharpVectors.Css.xml",
+        "lib/netcoreapp3.1/SharpVectors.Dom.dll",
+        "lib/netcoreapp3.1/SharpVectors.Dom.xml",
+        "lib/netcoreapp3.1/SharpVectors.Model.dll",
+        "lib/netcoreapp3.1/SharpVectors.Model.xml",
+        "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.dll",
+        "lib/netcoreapp3.1/SharpVectors.Rendering.Gdi.xml",
+        "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.dll",
+        "lib/netcoreapp3.1/SharpVectors.Rendering.Wpf.xml",
+        "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.dll",
+        "lib/netcoreapp3.1/SharpVectors.Runtime.Wpf.xml",
+        "sharpvectors.1.7.1.nupkg.sha512",
+        "sharpvectors.nuspec"
+      ]
+    },
+    "SSH.NET/2020.0.1": {
+      "sha512": "DhVeQ8JzoS8Z25VwZfQ/9HEjTO8eWs4ldsMkcMsUFK7TFc8GnpxBeRBj3X8mc5+rwvzZNNmLDm08a8TpPZNF/g==",
+      "type": "package",
+      "path": "ssh.net/2020.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Renci.SshNet.dll",
+        "lib/net35/Renci.SshNet.xml",
+        "lib/net40/Renci.SshNet.dll",
+        "lib/net40/Renci.SshNet.xml",
+        "lib/netstandard1.3/Renci.SshNet.dll",
+        "lib/netstandard1.3/Renci.SshNet.xml",
+        "lib/netstandard2.0/Renci.SshNet.dll",
+        "lib/netstandard2.0/Renci.SshNet.xml",
+        "lib/sl4/Renci.SshNet.dll",
+        "lib/sl4/Renci.SshNet.xml",
+        "lib/sl5/Renci.SshNet.dll",
+        "lib/sl5/Renci.SshNet.xml",
+        "lib/uap10/Renci.SshNet.dll",
+        "lib/uap10/Renci.SshNet.xml",
+        "lib/wp71/Renci.SshNet.dll",
+        "lib/wp71/Renci.SshNet.xml",
+        "lib/wp8/Renci.SshNet.dll",
+        "lib/wp8/Renci.SshNet.xml",
+        "ssh.net.2020.0.1.nupkg.sha512",
+        "ssh.net.nuspec"
+      ]
+    },
+    "SshNet.Security.Cryptography/1.3.0": {
+      "sha512": "5pBIXRjcSO/amY8WztpmNOhaaCNHY/B6CcYDI7FSTgqSyo/ZUojlLiKcsl+YGbxQuLX439qIkMfP0PHqxqJi/Q==",
+      "type": "package",
+      "path": "sshnet.security.cryptography/1.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/SshNet.Security.Cryptography.dll",
+        "lib/net20/SshNet.Security.Cryptography.xml",
+        "lib/net40/SshNet.Security.Cryptography.dll",
+        "lib/net40/SshNet.Security.Cryptography.xml",
+        "lib/net45/SshNet.Security.Cryptography.dll",
+        "lib/net45/SshNet.Security.Cryptography.xml",
+        "lib/netstandard1.0/SshNet.Security.Cryptography.dll",
+        "lib/netstandard1.0/SshNet.Security.Cryptography.xml",
+        "lib/netstandard1.3/SshNet.Security.Cryptography.dll",
+        "lib/netstandard1.3/SshNet.Security.Cryptography.xml",
+        "lib/netstandard2.0/SshNet.Security.Cryptography.dll",
+        "lib/netstandard2.0/SshNet.Security.Cryptography.xml",
+        "lib/portable-net45+win8+wpa81/SshNet.Security.Cryptography.dll",
+        "lib/portable-net45+win8+wpa81/SshNet.Security.Cryptography.xml",
+        "lib/sl4/SshNet.Security.Cryptography.dll",
+        "lib/sl4/SshNet.Security.Cryptography.xml",
+        "lib/sl5/SshNet.Security.Cryptography.dll",
+        "lib/sl5/SshNet.Security.Cryptography.xml",
+        "lib/uap10.0/SshNet.Security.Cryptography.dll",
+        "lib/uap10.0/SshNet.Security.Cryptography.xml",
+        "lib/wp71/SshNet.Security.Cryptography.dll",
+        "lib/wp71/SshNet.Security.Cryptography.xml",
+        "lib/wp8/SshNet.Security.Cryptography.dll",
+        "lib/wp8/SshNet.Security.Cryptography.xml",
+        "sshnet.security.cryptography.1.3.0.nupkg.sha512",
+        "sshnet.security.cryptography.nuspec"
+      ]
+    },
     "System.Data.SqlClient/4.8.2": {
       "sha512": "80vGtW6uLB4AkyrdVuKTXYUyuXDPAsSKbTVfvjndZaRAYxzFzWhJbvUfeAKrN+128ycWZjLIAl61dFUwWHOOTw==",
       "type": "package",
@@ -488,6 +720,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.Xaml.Behaviors.Wpf >= 1.1.31",
+      "SSH.NET >= 2020.0.1",
+      "SharpVectors >= 1.7.1",
       "System.Data.SqlClient >= 4.8.2"
     ]
   },
@@ -538,6 +772,14 @@
           "Microsoft.Xaml.Behaviors.Wpf": {
             "target": "Package",
             "version": "[1.1.31, )"
+          },
+          "SSH.NET": {
+            "target": "Package",
+            "version": "[2020.0.1, )"
+          },
+          "SharpVectors": {
+            "target": "Package",
+            "version": "[1.7.1, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",

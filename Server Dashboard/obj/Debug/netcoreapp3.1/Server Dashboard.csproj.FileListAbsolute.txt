@@ -4,7 +4,6 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.runtimeconfig.dev.json
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.pdb
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server Dashboard.csprojAssemblyReference.cache
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server Dashboard_MarkupCompile.cache
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server Dashboard_MarkupCompile.lref
@@ -28,3 +27,28 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.dll.config
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Converters.Wpf.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Core.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Css.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Dom.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Model.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Rendering.Gdi.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Rendering.Wpf.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Runtime.Wpf.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\ServerModules\ServerModule.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\ServerModules\ServerModule.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\Dashboard\CRUD Popup\CreateModulePopup.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\Dashboard\CRUD Popup\CreateModulePopup.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Expression.Drawing.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Expression.Drawing.xml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server Dashboard.csprojAssemblyReference.cache
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\HalfRoundProgressBar\HalfRoundProgressBar.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\HalfRoundProgressBar\HalfRoundProgressBar.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\DoubleRoundProgressBar\DoubleRoundProgressBar.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\DoubleRoundProgressBar\DoubleRoundProgressBar.baml

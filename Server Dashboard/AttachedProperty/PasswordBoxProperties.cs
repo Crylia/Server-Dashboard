@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Server_Dashboard {
@@ -22,6 +19,7 @@ namespace Server_Dashboard {
             HasTextProperty.SetValue((PasswordBox)sender);
         }
     }
+
     public class HasTextProperty : BaseAttachedProperty<HasTextProperty, bool> {
         public static void SetValue(DependencyObject sender) {
             SetValue(sender, ((PasswordBox)sender).SecurePassword.Length < 1);

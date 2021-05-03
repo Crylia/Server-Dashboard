@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Server_Dashboard.Views.DashboardPages.MainDashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:Server_Dashboard"
+      xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages"
+      xmlns:modulescrud="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
+      xmlns:root="clr-namespace:Server_Dashboard"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:controls="clr-namespace:Server_Dashboard.Controls.ServerModules"
+      mc:Ignorable="d"
+      d:DesignHeight="920" 
+      d:DesignWidth="1600"
+      >
+    <Grid Background="{StaticResource BackgroundSurface_00dp}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Dashboard and Options-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="{StaticResource BackgroundSurface_02dp}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="0" 
+                    Command="{Binding CreateNewModuleCommand}" 
+                    Content="New Module"
+                    Height="50"
+                    Margin="5 10 5 0" Cursor="Hand"
+                    x:Name="CreateModule"
+                />
+                <Button 
+                    Grid.Row="1" 
+                    Command="{Binding DeleteModuleCommand}" 
+                    Content="Remove Module"
+                    Height="50"
+                    Margin="5 10 5 0"
+                />
+                <Button 
+                    Grid.Row="2" 
+                    Command="{Binding UpdateModuleCommand}" 
+                    Content="Change Module"
+                    Height="50"
+                    Margin="5 10 5 0" Cursor="Hand"
+                />
+            </Grid>
+            <Grid Grid.Column="1">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl ItemsSource="{Binding Modules}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ServerModule/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

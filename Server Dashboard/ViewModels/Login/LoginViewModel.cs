@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Server_Dashboard.Views;
+using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Text;
 using System.Windows.Input;
 
 namespace Server_Dashboard {
-    class LoginViewModel : BaseViewModel {
+    class LoginViewModel : BaseViewModel, IWindowHelper {
 
         private string username;
 
@@ -28,7 +29,7 @@ namespace Server_Dashboard {
                 OnPropertyChanged(nameof(errorText));
             }
         }
-
+        public Action Close { get ; set; }
 
         public LoginViewModel() {
             LoginCommand = new RelayCommand(Login);
@@ -39,7 +40,9 @@ namespace Server_Dashboard {
         private void Login(object parameter) {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 if (DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure())) {
-                    Console.WriteLine();
+                    DashboardWindow window = new DashboardWindow();
+                    window.Show();
+                    Close?.Invoke();
                 } else {
                     ErrorText = "Username or password is wrong.";
                     return;
