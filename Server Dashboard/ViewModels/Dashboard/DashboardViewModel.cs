@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using Server_Dashboard_Socket;
 
 namespace Server_Dashboard {
     class DashboardViewModel : BaseViewModel {
@@ -30,26 +31,30 @@ namespace Server_Dashboard {
         }
 
         public DashboardViewModel() {
+            EchoServer echoServer = new EchoServer();
+            echoServer.Start();
             OpenLinkCommand = new RelayCommand(OpenLink);
-            CreateNewModuleCommand = new RelayCommand(CreateNewModule);
+            OpenNewModuleWindowCommand = new RelayCommand(OpenNewModuleWindow);
+            CreateModuleCommand = new RelayCommand(CreateModule);
             Modules = dmvm.Modules;
-
         }
 
         public ICommand OpenLinkCommand { get; set; }
-        public ICommand CreateNewModuleCommand { get; set; }
-
+        public ICommand OpenNewModuleWindowCommand { get; set; }
+        public ICommand CreateModuleCommand { get; set; }
         private void OpenLink(object param) {
             Process.Start(new ProcessStartInfo((string)param) { UseShellExecute = true });
         }
 
-        private void CreateNewModule(object param) {
+        private void OpenNewModuleWindow(object param) {
             CreateModulePopup cmp = new CreateModulePopup {
                 DataContext = this
             };
-            cmp.Owner = Application.Current.MainWindow;
-            cmp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            cmp.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cmp.ShowDialog();
+        }
+        private void CreateModule(object param) {
+            
         }
     }
 }

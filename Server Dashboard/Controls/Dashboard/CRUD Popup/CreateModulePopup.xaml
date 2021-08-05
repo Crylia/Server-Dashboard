@@ -7,12 +7,14 @@
         xmlns:root="clr-namespace:Server_Dashboard" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         d:DataContext="{d:DesignInstance Type=root:DashboardModuleViewModel}"
         mc:Ignorable="d"
-        WindowStyle="None"
         ResizeMode="NoResize"
         Height="700"
         Width="500"
-        AllowsTransparency="True"
+        d:WindowStyle="None"
         >
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0"/>
+    </WindowChrome.WindowChrome>
     <Border 
         Width="500"
         Height="700"
@@ -20,18 +22,20 @@
         <Border.Background>
             <SolidColorBrush Color="#2D2D2D" Opacity="1"/>
         </Border.Background>
-        <Border.Effect>
-            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
-        </Border.Effect>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid 
+            <Grid
                 Background="{StaticResource BackgroundSurface_04dp}"
                 Grid.Row="0"
                 >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="40"/>
@@ -65,6 +69,7 @@
                     <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
                 </Grid.Effect>
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -119,7 +124,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock 
                             Text="Password"
-                            FontSize="16"
+                            FontSize="24"
                             Margin="0 0 0 5"
                             >
                             <TextBlock.Foreground>
@@ -129,7 +134,7 @@
                         <TextBlock 
                             Text="*" 
                             Foreground="{StaticResource ErrorRed}"
-                            FontSize="16"
+                            FontSize="20"
                         />
                     </StackPanel>
                     <Grid>
@@ -137,14 +142,14 @@
                             <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
                         </Grid.Effect>
                         <PasswordBox
-                            Width="220"
+                            Width="420"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             root:MonitorPasswordProperty.Value="True"
                             Grid.Column="1"
-                            FontSize="14"
+                            FontSize="20"
                             x:Name="Password"
-                            Height="30"
+                            Height="40"
                             >
                         </PasswordBox>
                         <TextBlock
@@ -155,7 +160,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Margin="5 0 0 0"
-                            FontSize="14"
+                            FontSize="20"
                             >
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="White" Opacity="0.12"/>
@@ -167,7 +172,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock 
                             Text="Username"
-                            FontSize="16"
+                            FontSize="24"
                             Margin="0 0 0 5"
                             >
                             <TextBlock.Foreground>
@@ -187,15 +192,15 @@
                         <TextBox 
                             Text="{Binding Username}"
                             Grid.Column="1"
-                            Height="30"
-                            FontSize="14"
+                            Height="40"
+                            FontSize="20"
                             x:Name="UserName"
                         />
                         <TextBlock 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Text="Name"
-                            FontSize="14"
+                            FontSize="20"
                             Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}"
                             Grid.Column="1"
                             IsHitTestVisible="False"
@@ -211,7 +216,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock 
                             Text="IP Adress"
-                            FontSize="16"
+                            FontSize="24"
                             Margin="0 0 0 5"
                             >
                             <TextBlock.Foreground>
@@ -231,15 +236,15 @@
                         <TextBox 
                             Text="{Binding IPAdress}"
                             Grid.Column="1"
-                            Height="30"
-                            FontSize="14"
+                            Height="40"
+                            FontSize="20"
                             x:Name="IPAdress"
                         />
                         <TextBlock 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Text="sample.ssh.com"
-                            FontSize="14"
+                            FontSize="20"
                             Visibility="{Binding ElementName=IPAdress, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}"
                             Grid.Column="1"
                             IsHitTestVisible="False"
@@ -254,7 +259,7 @@
                 <StackPanel VerticalAlignment="Center" Grid.Row="4" Margin="20 0 20 0">
                     <TextBlock 
                         Text="Port"
-                        FontSize="16"
+                        FontSize="24"
                         Margin="0 0 0 5"
                         >
                         <TextBlock.Foreground>
@@ -268,15 +273,15 @@
                         <TextBox 
                             Text="{Binding Port}"
                             Grid.Column="1"
-                            Height="30"
-                            FontSize="14"
+                            Height="40"
+                            FontSize="20"
                             x:Name="Port"
                         />
                         <TextBlock 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Text="22"
-                            FontSize="14"
+                            FontSize="20"
                             Visibility="{Binding ElementName=Port, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}"
                             Grid.Column="1"
                             IsHitTestVisible="False"
@@ -288,6 +293,15 @@
                         </TextBlock>
                     </Grid>
                 </StackPanel>
+                <Button
+                    Height="60"
+                    Width="350"
+                    Command="{Binding CreateModuleCommand}"
+                    CommandParameter="{Binding ElementName=CREATE_MODULE}"
+                    Grid.Row="5"
+                    Content="CREATE MODULE"
+                    Grid.ColumnSpan="2"
+                />
             </Grid>
         </Grid>
     </Border>

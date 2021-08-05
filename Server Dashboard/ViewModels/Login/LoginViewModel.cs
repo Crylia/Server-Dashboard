@@ -1,8 +1,6 @@
 ﻿using Server_Dashboard.Views;
+using Server_Dashboard.Properties;
 using System;
-using System.Collections.Generic;
-using System.Security;
-using System.Text;
 using System.Windows.Input;
 
 namespace Server_Dashboard {
@@ -29,10 +27,26 @@ namespace Server_Dashboard {
                 OnPropertyChanged(nameof(errorText));
             }
         }
+
+        private bool rememberUser;
+
+        public bool RememberUser {
+            get { return rememberUser; }
+            set {
+                if(value != rememberUser)
+                    rememberUser = value;
+                OnPropertyChanged(nameof(rememberUser));
+            }
+        }
+
         public Action Close { get ; set; }
 
         public LoginViewModel() {
             LoginCommand = new RelayCommand(Login);
+            if (!String.IsNullOrEmpty(Settings.Default.Username)) {
+                Username = Settings.Default.Username;
+                RememberUser = Settings.Default.RememberMe;
+            }
         }
 
         public ICommand LoginCommand { get; set; }
@@ -40,6 +54,24 @@ namespace Server_Dashboard {
         private void Login(object parameter) {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 if (DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure())) {
+                    if (RememberUser && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                        DatabaseHandler.CheckCookie(Settings.Default.Cookies, Username);
+                    }
+                    if (!RememberUser && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                        Settings.Default.Cookies = null;
+                        Settings.Default.Username = "";
+                        Settings.Default.RememberMe = false;
+                        Settings.Default.Save();
+                        DatabaseHandler.DeleteCookie(Username);
+                    }
+                    if (RememberUser && String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                        var guid = new Guid().ToString() + Username;
+                        Settings.Default.Cookies = guid;
+                        Settings.Default.Username = Username;
+                        Settings.Default.RememberMe = true;
+                        Settings.Default.Save();
+                        DatabaseHandler.AddCookie(Username, guid);
+                    }
                     DashboardWindow window = new DashboardWindow();
                     window.Show();
                     Close?.Invoke();

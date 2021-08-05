@@ -7,7 +7,7 @@
              xmlns:halfroundprogressbar="clr-namespace:Server_Dashboard.Controls.HalfRoundProgressBar" 
              xmlns:doubleroundprogressbar="clr-namespace:Server_Dashboard.Controls.DoubleRoundProgressBar"
              mc:Ignorable="d">
-    <Border Background="{StaticResource BackgroundSurface_02dp}" MinHeight="100" MinWidth="300" Width="Auto" Height="Auto" Margin="10">
+    <Border Background="{StaticResource BackgroundSurface_02dp}" MinHeight="100" MinWidth="300" Width="Auto" Height="Auto" Margin="10" CornerRadius="5">
         <Border.Effect>
             <DropShadowEffect BlurRadius="5" ShadowDepth="0"/>
         </Border.Effect>
@@ -17,6 +17,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border 
+                CornerRadius="5 5 0 0"
                 Grid.Row="0" 
                 Background="{StaticResource BackgroundSurface_08dp}" 
                 >
@@ -29,7 +30,7 @@
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Margin="7.5 0 7.5 0" Height="25" Width="25" Source="{Binding ModuleIcon}"/>
                     <TextBlock Foreground="{StaticResource DeepPurple_A100}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding ModulName}"/>
-                    <Border Background="{Binding StatusIndicator}" Grid.Column="3">
+                    <Border CornerRadius="0 5 0 0" Background="{Binding StatusIndicator}" Grid.Column="3">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -40,7 +41,7 @@
                                     <SolidColorBrush Color="White" Opacity="0.87"/>
                                 </TextBlock.Foreground>
                             </TextBlock>
-                            <Border Grid.Column="1" HorizontalAlignment="Right" Background="{Binding StatusIndicatorBG}" Padding="6">
+                            <Border CornerRadius="0 5 0 0" Grid.Column="1" HorizontalAlignment="Right" Background="{Binding StatusIndicatorBG}" Padding="6">
                                 <Ellipse Fill="{Binding StatusIndicator}" StrokeThickness="0" Width="25" Height="25"/>
                             </Border>
                         </Grid>
@@ -149,7 +150,7 @@
                             BackgroundBrush="{StaticResource BackgroundSurface_08dp}" 
                             Height="100"
                             Width="100"
-                            Value="60" 
+                            Value="{Binding ServerInfo.CpuUsage}" 
                             IndicatorBrush="{StaticResource Teal_A100}"
                         />
                         <TextBlock
@@ -167,7 +168,7 @@
                             BackgroundBrush="{StaticResource BackgroundSurface_08dp}"
                             Height="100"
                             Width="100" 
-                            Value="60"
+                            Value="{Binding ServerInfo.GpuUsage}"
                             IndicatorBrush="{StaticResource Teal_A100}"
                         />
                         <TextBlock 
