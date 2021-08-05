@@ -156,6 +156,11 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
+      "Server Dashboard Socket/1.0.0": {
+        "runtime": {
+          "Server Dashboard Socket.dll": {}
+        }
+      },
       "Microsoft.Expression.Drawing/4.0.0.0": {
         "runtime": {
           "Microsoft.Expression.Drawing.dll": {
@@ -262,6 +267,11 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "Server Dashboard Socket/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.Expression.Drawing/4.0.0.0": {
       "type": "reference",

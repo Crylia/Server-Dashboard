@@ -186,6 +186,16 @@
             "rid": "win"
           }
         }
+      },
+      "Server Dashboard Socket/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Server Dashboard Socket.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Server Dashboard Socket.dll": {}
+        }
       }
     }
   },
@@ -715,12 +725,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Server Dashboard Socket/1.0.0": {
+      "type": "project",
+      "path": "../Server Dashboard Socket/Server Dashboard Socket.csproj",
+      "msbuildProject": "../Server Dashboard Socket/Server Dashboard Socket.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.Xaml.Behaviors.Wpf >= 1.1.31",
       "SSH.NET >= 2020.0.1",
+      "Server Dashboard Socket >= 1.0.0",
       "SharpVectors >= 1.7.1",
       "System.Data.SqlClient >= 4.8.2"
     ]
@@ -756,7 +772,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Crylia\\Documents\\Git\\Server Dashboard\\Server Dashboard Socket\\Server Dashboard Socket.csproj": {
+              "projectPath": "C:\\Users\\Crylia\\Documents\\Git\\Server Dashboard\\Server Dashboard Socket\\Server Dashboard Socket.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

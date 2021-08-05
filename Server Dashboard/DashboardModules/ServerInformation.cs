@@ -13,5 +13,7 @@ namespace Server_Dashboard {
         public string DeployDate { get; set; }
         public string PublicIpAdress { get; set; }
         public string PrivateIpAdress { get; set; }
+        public string GpuUsage { get; set; }
+        public string CpuUsage { get; set; }
     }
 }

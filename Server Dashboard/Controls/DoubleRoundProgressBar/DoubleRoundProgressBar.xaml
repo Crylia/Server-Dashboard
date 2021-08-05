@@ -15,6 +15,7 @@
     <Grid>
         <Ellipse
             x:Name="Background"
+            
             Fill="{Binding 
                         ElementName=_this, 
                         Path=BackgroundBrush

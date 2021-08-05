@@ -30,6 +30,53 @@ namespace Server_Dashboard {
             return Convert.ToBoolean(valid);
         }
 
+        public static bool CheckCookie(string cookie, string username) {
+            string valid = "False";
+            ConnectToDatabase(con => {
+                string query = "EXEC CheckUserCookie @Cookie = @cookie, @UserName = @username, @Valid = @valid OUTPUT";
+                using (SqlCommand com = new SqlCommand(query, con)) {
+                    com.Parameters.AddWithValue("@cookie", cookie);
+                    com.Parameters.AddWithValue("@username", username);
+                    com.Parameters.Add("@valid", SqlDbType.NVarChar, 250);
+                    com.Parameters["@valid"].Direction = ParameterDirection.Output;
+                    com.ExecuteNonQuery();
+                    valid = Convert.ToString(com.Parameters["@Valid"].Value);
+                }
+            });
+            return Convert.ToBoolean(valid);
+        }
+
+        public static bool DeleteCookie(string username) {
+            string valid = "False";
+            ConnectToDatabase(con => {
+                string query = "EXEC DeleteUserCookie @Username = @username, @ResponseMessage = @response OUTPUT";
+                using (SqlCommand com = new SqlCommand(query, con)) {
+                    com.Parameters.AddWithValue("@username", username);
+                    com.Parameters.Add("@response", SqlDbType.NVarChar, 250);
+                    com.Parameters["@response"].Direction = ParameterDirection.Output;
+                    com.ExecuteNonQuery();
+                    valid = Convert.ToString(com.Parameters["@ResponseMessage"].Value);
+                }
+            });
+            return Convert.ToBoolean(valid);
+        }
+
+        public static bool AddCookie(string cookie, string username) {
+            string valid = "False";
+            ConnectToDatabase(con => {
+                string query = "EXEC AddCookieToUser @Cookie = @cookie, @UserName = @username, @ResponseMessage = @response OUTPUT";
+                using (SqlCommand com = new SqlCommand(query, con)) {
+                    com.Parameters.AddWithValue("@cookie", cookie);
+                    com.Parameters.AddWithValue("@username", username);
+                    com.Parameters.Add("@response", SqlDbType.NVarChar, 250);
+                    com.Parameters["@response"].Direction = ParameterDirection.Output;
+                    com.ExecuteNonQuery();
+                    valid = Convert.ToString(com.Parameters["@ResponseMessage"].Value);
+                }
+            });
+            return Convert.ToBoolean(valid);
+        }
+
         #region Private methods
         /// <summary>
         /// Opens a database connection

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Server_Dashboard {
     class DashboardModule {
-        public string ModulName { get; set; }
+        public string ModuleName { get; set; }
         public string Creator { get; set; }
         public ServerInformation ServerInfo { get; set; }
         public string StatusIndicator { get; set; }

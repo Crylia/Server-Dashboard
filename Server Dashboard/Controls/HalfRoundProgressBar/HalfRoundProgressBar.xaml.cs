@@ -13,9 +13,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Server_Dashboard.Controls.HalfRoundProgressBar {
-    /// <summary>
-    /// Interaktionslogik für HalfRoundProgressBar.xaml
-    /// </summary>
     public partial class HalfRoundProgressBar : UserControl {
 
         public static DependencyProperty IndicatorBrushProperty = DependencyProperty.Register("IndicatorBrush", typeof(Brush), typeof(HalfRoundProgressBar));

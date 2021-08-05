@@ -33,7 +33,7 @@
                 </Grid.RowDefinitions>
                 <Button
                     Grid.Row="0" 
-                    Command="{Binding CreateNewModuleCommand}" 
+                    Command="{Binding OpenNewModuleWindowCommand}" 
                     Content="New Module"
                     Height="50"
                     Margin="5 10 5 0" Cursor="Hand"
@@ -41,14 +41,14 @@
                 />
                 <Button 
                     Grid.Row="1" 
-                    Command="{Binding DeleteModuleCommand}" 
+                    Command="{Binding OpenDeleteModuleWindowCommand}" 
                     Content="Remove Module"
                     Height="50"
                     Margin="5 10 5 0"
                 />
                 <Button 
                     Grid.Row="2" 
-                    Command="{Binding UpdateModuleCommand}" 
+                    Command="{Binding OpenUpdateModuleWindowCommand}" 
                     Content="Change Module"
                     Height="50"
                     Margin="5 10 5 0" Cursor="Hand"
