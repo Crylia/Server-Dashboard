@@ -1,0 +1,2 @@
+C:\Users\Crylia\Documents\Git\Server Dashboard\Socket\obj\Debug\SocketServer.csproj.CoreCompileInputs.cache
+C:\Users\Crylia\Documents\Git\Server Dashboard\Socket\obj\Debug\SocketServer.csprojAssemblyReference.cache

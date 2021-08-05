@@ -1,15 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "Ys8lDS/3T/6A/sckiwSOsrsN0Lv8FKN7haYCcS3mkpDpqXsorYgNFm3xwecHcRSPPhR8+xRgpeJ1c3ShYikNbg==",
+  "dgSpecHash": "HXRDkeOq6+C/ByDU4F1SMIP1JghG7OjBlyJpDMYJu2MsBWBCCGqu1D1TkY9/AYS2Wb1ebiR2JrXDxpATbPuPhQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Crylia\\Documents\\Git\\Server Dashboard\\Server Dashboard\\Server Dashboard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Crylia\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Crylia\\.nuget\\packages\\sharpvectors\\1.7.1\\sharpvectors.1.7.1.nupkg.sha512",
+    "C:\\Users\\Crylia\\.nuget\\packages\\ssh.net\\2020.0.1\\ssh.net.2020.0.1.nupkg.sha512",
+    "C:\\Users\\Crylia\\.nuget\\packages\\sshnet.security.cryptography\\1.3.0\\sshnet.security.cryptography.1.3.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\system.data.sqlclient\\4.8.2\\system.data.sqlclient.4.8.2.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\Crylia\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"

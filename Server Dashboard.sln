@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server Dashboard", "Server Dashboard\Server Dashboard.csproj", "{1183B3CA-7F78-4749-B571-0BCF52EA4FCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server Dashboard", "Server Dashboard\Server Dashboard.csproj", "{1183B3CA-7F78-4749-B571-0BCF52EA4FCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server Dashboard Socket", "Server Dashboard Socket\Server Dashboard Socket.csproj", "{426A7389-BB4B-498B-B405-3ADCB0353A80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1183B3CA-7F78-4749-B571-0BCF52EA4FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1183B3CA-7F78-4749-B571-0BCF52EA4FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1183B3CA-7F78-4749-B571-0BCF52EA4FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426A7389-BB4B-498B-B405-3ADCB0353A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426A7389-BB4B-498B-B405-3ADCB0353A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426A7389-BB4B-498B-B405-3ADCB0353A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426A7389-BB4B-498B-B405-3ADCB0353A80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

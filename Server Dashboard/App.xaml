@@ -2,124 +2,354 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Server_Dashboard"
-             StartupUri="MainWindow.xaml">
+             xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
+             xmlns:modulescrud="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
+             StartupUri="LoginWindow.xaml">
     <Application.Resources>
 
-        <RadialGradientBrush x:Key="LoginBackground" GradientOrigin="0.5, 0.5" Center="0.5, 0.5">
-            <RadialGradientBrush.GradientStops>
-                <GradientStop Color="#2A2D30" Offset="1"/>
-                <GradientStop Color="#444C4E" Offset="0"/>
-            </RadialGradientBrush.GradientStops>
-        </RadialGradientBrush>
+        <!--View Templates-->
+        <DataTemplate x:Key="MainDashboardView" DataType="{x:Type local:DashboardViewModel}">
+            <views:MainDashboardPage/>
+        </DataTemplate>
+        <DataTemplate x:Key="CreateModuleView" DataType="{x:Type local:DashboardViewModel}">
+            <modulescrud:CreateModulePopup/>
+        </DataTemplate>
 
-        <SolidColorBrush x:Key="Background" Color="#141424"/>
-        <!--A700 Teal-->
-        <SolidColorBrush x:Key="Green" Color="#00BFA5"/>
-        <!--600 Light Blue-->
-        <SolidColorBrush x:Key="Blue" Color="#039BE5"/>
-        <!--800 Light Blue-->
-        <SolidColorBrush x:Key="PressedBlue" Color="#0277BD"/>
-        <!--500 Yellow-->
-        <SolidColorBrush x:Key="Yellow" Color="#FFEB3B"/>
-        <!--700 Yellow-->
-        <SolidColorBrush x:Key="PressedYellow" Color="#FBC02D"/>
+        <!--Visibility converter for the login inputs-->
+        <BooleanToVisibilityConverter x:Key="UserNameVisibillity"/>
+        <BooleanToVisibilityConverter x:Key="PasswordVisibillity"/>
         
-        <Style x:Key="loginButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#25AEA6"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                
-            </Style.Triggers>
-        </Style>
+        <!--Fonts-->
+        <FontFamily x:Key="Fontstyle" >Open Sans</FontFamily> 
+        <!--#region  Colors-->
+        <!--
+        Material Rules:
+            Percentages:
+                4%  = 0A
+                8%  = 14
+                10% = 19
+                12% = 1E
+                24% = 3D
+                38% = 60
+                60% = 99
+                87% = DD
+            Button:
+                Enabled = Default
+                Hovered = Overlay 4%
+                Focused = Overlay 12% + Stroke Overlay Color 100%
+                Pressed = Ripple Overlay color 10%
+                Dragged = Overlay 8% + Shadow 08dp
+        -->
+        <!--Material Colors-->
+        <SolidColorBrush x:Key="BackgroundSurface_00dp" Color="#121212"/>
+        <SolidColorBrush x:Key="BackgroundSurface_01dp" Color="#1D1D1D"/>
+        <SolidColorBrush x:Key="BackgroundSurface_02dp" Color="#202020"/>
+        <SolidColorBrush x:Key="BackgroundSurface_03dp" Color="#252525"/>
+        <SolidColorBrush x:Key="BackgroundSurface_04dp" Color="#262626"/>
+        <SolidColorBrush x:Key="BackgroundSurface_06dp" Color="#2C2C2C"/>
+        <SolidColorBrush x:Key="BackgroundSurface_08dp" Color="#2D2D2D"/>
+        <SolidColorBrush x:Key="BackgroundSurface_12dp" Color="#323232"/>
+        <SolidColorBrush x:Key="BackgroundSurface_16dp" Color="#343434"/>
+        <SolidColorBrush x:Key="BackgroundSurface_24dp" Color="#363636"/>
+        <SolidColorBrush x:Key="OnPrimarySecondaryError" Color="#000000"/>
+        <SolidColorBrush x:Key="White" Color="#FFFFFFFF"/><!--0%-->
+        <SolidColorBrush x:Key="White12" Color="#1EFFFFFF"/><!--12%-->
+        <SolidColorBrush x:Key="White38" Color="#60FFFFFF"/><!--38%-->
+        <SolidColorBrush x:Key="White60" Color="#99FFFFFF"/><!--60%-->
+        <SolidColorBrush x:Key="White87" Color="#DEFFFFFF"/><!--87%-->
+        <SolidColorBrush x:Key="ErrorRed" Color="#CF6679"/>
 
-        <Style x:Key="LoginViewBorder" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="#25AEA6"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Background" Value="{StaticResource LoginBackground}"/>
-        </Style>
+        <!--Indigo-->
+        <SolidColorBrush x:Key="Indigo_50 " Color="#E8EAF6"/>
+        <SolidColorBrush x:Key="Indigo_100" Color="#C5CAE9"/>
+        <SolidColorBrush x:Key="Indigo_200" Color="#9FA8DA"/>
+        <SolidColorBrush x:Key="Indigo_300" Color="#7986CB"/>
+        <SolidColorBrush x:Key="Indigo_400" Color="#5C6BC0"/>
+        <SolidColorBrush x:Key="Indigo_500" Color="#3F51B5"/>
+        <SolidColorBrush x:Key="Indigo_600" Color="#3949AB"/>
+        <SolidColorBrush x:Key="Indigo_700" Color="#303F9F"/>
+        <SolidColorBrush x:Key="Indigo_800" Color="#283593"/>
+        <SolidColorBrush x:Key="Indigo_900" Color="#1A237E"/>
+        <SolidColorBrush x:Key="Indigo_A100" Color="#8C9EFF"/>
+        <SolidColorBrush x:Key="Indigo_A200" Color="#536DFE"/>
+        <SolidColorBrush x:Key="Indigo_A400" Color="#3D5AFE"/>
+        <SolidColorBrush x:Key="Indigo_A700" Color="#304FFE"/>
+        
+        <!--Yellow-->
+        <SolidColorBrush x:Key="Yellow_50 " Color="#FFFDE7"/>
+        <SolidColorBrush x:Key="Yellow_100" Color="#FFF9C4"/>
+        <SolidColorBrush x:Key="Yellow_200" Color="#FFF59D"/>
+        <SolidColorBrush x:Key="Yellow_300" Color="#FFF176"/>
+        <SolidColorBrush x:Key="Yellow_400" Color="#FFEE58"/>
+        <SolidColorBrush x:Key="Yellow_500" Color="#FFEB3B"/>
+        <SolidColorBrush x:Key="Yellow_600" Color="#FDD835"/>
+        <SolidColorBrush x:Key="Yellow_700" Color="#FBC02D"/>
+        <SolidColorBrush x:Key="Yellow_800" Color="#F9A825"/>
+        <SolidColorBrush x:Key="Yellow_900" Color="#F57F17"/>
+        <SolidColorBrush x:Key="Yellow_A100" Color="#FFFF8D"/>
+        <SolidColorBrush x:Key="Yellow_A200" Color="#FFFF00"/>
+        <SolidColorBrush x:Key="Yellow_A400" Color="#FFEA00"/>
+        <SolidColorBrush x:Key="Yellow_A700" Color="#FFD600"/>
 
-        <Style x:Key="LoginFormsBorder" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="#1B1C20"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="Background" Value="#1B1C20"/>
-        </Style>
+        <!--Deep Purple-->
+        <SolidColorBrush x:Key="DeepPurple_50 " Color="#EDE7F6"/>
+        <SolidColorBrush x:Key="DeepPurple_100" Color="#D1C4E9"/>
+        <SolidColorBrush x:Key="DeepPurple_200" Color="#B39DDB"/><!--Primary-->
+        <SolidColorBrush x:Key="DeepPurple_300" Color="#9575CD"/>
+        <SolidColorBrush x:Key="DeepPurple_400" Color="#7E57C2"/>
+        <SolidColorBrush x:Key="DeepPurple_500" Color="#673AB7"/><!--Primary Variant-->
+        <SolidColorBrush x:Key="DeepPurple_600" Color="#5E35B1"/>
+        <SolidColorBrush x:Key="DeepPurple_700" Color="#512DA8"/>
+        <SolidColorBrush x:Key="DeepPurple_800" Color="#4527A0"/>
+        <SolidColorBrush x:Key="DeepPurple_900" Color="#311B92"/>
+        <SolidColorBrush x:Key="DeepPurple_A100" Color="#B388FF"/>
+        <SolidColorBrush x:Key="DeepPurple_A200" Color="#7C4DFF"/>
+        <SolidColorBrush x:Key="DeepPurple_A400" Color="#651FFF"/>
+        <SolidColorBrush x:Key="DeepPurple_A700" Color="#6200EA"/>
 
-        <Style x:Name="LoginFormHint" x:Key="LoginFormTooltip" TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="#40AAAAAA"/>
-            <Setter Property="FontFamily" Value="Arial"/>
+        <!--Deep Purple-->
+        <SolidColorBrush x:Key="Teal_50 " Color="#E0F2F1"/>
+        <SolidColorBrush x:Key="Teal_100" Color="#B2DFDB"/>
+        <SolidColorBrush x:Key="Teal_200" Color="#80CBC4"/>
+        <SolidColorBrush x:Key="Teal_300" Color="#4DB6AC"/>
+        <SolidColorBrush x:Key="Teal_400" Color="#26A69A"/>
+        <SolidColorBrush x:Key="Teal_500" Color="#009688"/>
+        <SolidColorBrush x:Key="Teal_600" Color="#00897B"/>
+        <SolidColorBrush x:Key="Teal_700" Color="#00796B"/>
+        <SolidColorBrush x:Key="Teal_800" Color="#00695C"/>
+        <SolidColorBrush x:Key="Teal_900" Color="#004D40"/>
+        <SolidColorBrush x:Key="Teal_A100" Color="#A7FFEB"/>
+        <SolidColorBrush x:Key="Teal_A200" Color="#64FFDA"/>
+        <SolidColorBrush x:Key="Teal_A400" Color="#1DE9B6"/>
+        <SolidColorBrush x:Key="Teal_A700" Color="#00BFA5"/>
+        <!--#endregion-->
+        
+        <!--=================-->
+        <!--=DEFAULT DESIGNS=-->
+        <!--=================-->
+        
+        <!--Textblock default design-->
+        <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="{StaticResource White}"/>
+            <Setter Property="FontFamily" Value="{StaticResource Fontstyle}"/>
         </Style>
-
-        <Style x:Key="LoginFormsInputBorder" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="#1B1C20"/>
-            <Setter Property="BorderThickness" Value="1"/>
-        </Style>
-
-        <Style x:Key="LoginFormInput" TargetType="{x:Type TextBox}">
-            <Setter Property="CaretBrush" Value="#BBBBBB"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#878787"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="290"/>
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Background" Value="Transparent"/>
-        </Style>
-
-        <Style x:Key="LoginFormPassword" TargetType="{x:Type PasswordBox}">
-            <Setter Property="PasswordChar" Value="*"/>
-            <Setter Property="CaretBrush" Value="#BBBBBB"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#878787"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="290"/>
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Background" Value="Transparent"/>
-        </Style>
-
-        <Style x:Key="LoginFormButton" TargetType="{x:Type Button}">
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="Background" Value="#25AEA6"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground" Value="{StaticResource Background}"/>
-            <Setter Property="FontSize" Value="25"/>
-            <Setter Property="FontFamily" Value="Arial"/>
+        
+        <!--Button default design-->
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="{StaticResource BackgroundSurface_01dp}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource Fontstyle}"/>
+            <Setter Property="Foreground" Value="{StaticResource DeepPurple_A100}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <TextBlock TextAlignment="Center" Padding="5" TextWrapping="Wrap" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                            </Border.Effect>
+                            <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                </Border.BorderBrush>
+                                <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#35bEb6"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#159E96"/>
+                                <Setter TargetName="BackgroundOverlay" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--Textbox default design-->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="CaretBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.64"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource Fontstyle}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.64"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundSurface_01dp}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        
+        <!--Passwordbox default design-->
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="PasswordChar" Value="*"/>
+            <Setter Property="CaretBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.64"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.64"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundSurface_01dp}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!--Checkbox default design-->
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <BulletDecorator Background="Transparent">
+                            <BulletDecorator.Bullet>
+                                <Border Width="20" Height="20" CornerRadius="2" Background="#FF1B1B1B" BorderThickness="0">
+                                    <Border x:Name="Border" Width="20" Height="20" CornerRadius="2" Background="Transparent" BorderThickness="0">
+                                        <Path Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource DeepPurple_A100}" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
+                                    </Border>
+                                </Border>
+                            </BulletDecorator.Bullet>
+                            <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" RecognizesAccessKey="True"/>
+                        </BulletDecorator>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="false">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter TargetName="CheckMark" Property="Data" Value="M 0 20 L 20 0" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#FF6C6C6C"/>
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Hyperlink default design-->
+        <Style TargetType="{x:Type Hyperlink}">
+            <Setter Property="TextDecorations" Value="None"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="#64FFDA" Opacity="0.64"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground">
+                        <Setter.Value>
+                            <SolidColorBrush Color="#64FFDA" Opacity="0.87"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Border default design (Makes text rendering in it crystal clear)-->
+        <Style TargetType="Border">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
+
+        <!--Grid default design (Makes text rendering in it crystal clear)-->
+        <Style TargetType="Grid">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
+
+        <!--================-->
+        <!--=CUSTOM DESIGNS=-->
+        <!--================-->
+
+        <!--Close button design-->
+        <Style x:Key="CloseButton" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <TextBlock TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="Foreground" Value="{StaticResource BackgroundSurface_00dp}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

@@ -1,0 +1,8 @@
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\bin\Debug\netcoreapp3.1\Server Dashboard Socket.deps.json
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\bin\Debug\netcoreapp3.1\Server Dashboard Socket.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\bin\Debug\netcoreapp3.1\Server Dashboard Socket.pdb
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\obj\Debug\netcoreapp3.1\Server Dashboard Socket.AssemblyInfoInputs.cache
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\obj\Debug\netcoreapp3.1\Server Dashboard Socket.AssemblyInfo.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\obj\Debug\netcoreapp3.1\Server Dashboard Socket.csproj.CoreCompileInputs.cache
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\obj\Debug\netcoreapp3.1\Server Dashboard Socket.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard Socket\obj\Debug\netcoreapp3.1\Server Dashboard Socket.pdb
