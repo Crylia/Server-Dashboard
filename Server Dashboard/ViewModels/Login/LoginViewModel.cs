@@ -66,8 +66,12 @@ namespace Server_Dashboard {
 
         private async void LoginAsync(object parameter) {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
+                int result = 0;
+                if (RememberUser && !String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies) && Settings.Default.Password.Length == 6) {
+                    result = await Task.Run(() => DatabaseHandler.CheckCookie(Settings.Default.Cookies, Username));
+                }
                 Loading = "Visible";
-                int result = await Task.Run(() => DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure()));
+                result = await Task.Run(() => DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure()));
                 Loading = "Hidden";
                 switch (result) {
                     case 0:
@@ -81,6 +85,7 @@ namespace Server_Dashboard {
                             Settings.Default.Cookies = null;
                             Settings.Default.Username = "";
                             Settings.Default.RememberMe = false;
+                            Settings.Default.Password = "";
                             Settings.Default.Save();
                             DatabaseHandler.DeleteCookie(Username);
                         }
@@ -89,6 +94,7 @@ namespace Server_Dashboard {
                             Settings.Default.Cookies = guid;
                             Settings.Default.Username = Username;
                             Settings.Default.RememberMe = true;
+                            Settings.Default.Password = "*****";
                             Settings.Default.Save();
                             DatabaseHandler.AddCookie(Username, guid);
                         }
