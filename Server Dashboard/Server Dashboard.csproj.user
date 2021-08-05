@@ -12,6 +12,9 @@
     <Compile Update="Controls\HalfRoundProgressBar\HalfRoundProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\LoadingIndicator\LoadingIndicator.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\ServerModules\ServerModule.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +33,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\HalfRoundProgressBar\HalfRoundProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\LoadingIndicator\LoadingIndicator.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ServerModules\ServerModule.xaml">

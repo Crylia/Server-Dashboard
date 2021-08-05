@@ -14,20 +14,25 @@ namespace Server_Dashboard {
             return null;
         }
 
-        public static bool CheckLogin(string uname, string passwd) {
-            string valid = "False";
-            ConnectToDatabase(con => {
-                string query = "EXEC ValidateUserLogin @Username = @uname, @Password = @passwd, @Valid = @valid OUTPUT";
-                using (SqlCommand com = new SqlCommand(query, con)) {
-                    com.Parameters.AddWithValue("@uname", uname);
-                    com.Parameters.AddWithValue("@passwd", passwd);
-                    com.Parameters.Add("@valid", SqlDbType.NVarChar, 250);
-                    com.Parameters["@valid"].Direction = ParameterDirection.Output;
-                    com.ExecuteNonQuery();
-                    valid = Convert.ToString(com.Parameters["@Valid"].Value);
+        public static int CheckLogin(string uname, string passwd) {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString)) {
+                try {
+                    con.Open();
+                    string query = "EXEC ValidateUserLogin @Username = @uname, @Password = @passwd, @Valid = @valid OUTPUT";
+                    using (SqlCommand com = new SqlCommand(query, con)) {
+                        com.Parameters.AddWithValue("@uname", uname);
+                        com.Parameters.AddWithValue("@passwd", passwd);
+                        com.Parameters.Add("@valid", SqlDbType.NVarChar, 250);
+                        com.Parameters["@valid"].Direction = ParameterDirection.Output;
+                        com.ExecuteNonQuery();
+                        return Convert.ToInt32(com.Parameters["@Valid"].Value);
+                    }
+                } catch (SqlException ex) {
+                    return ex.Number;
+                } finally {
+                    con.Close();
                 }
-            });
-            return Convert.ToBoolean(valid);
+            }
         }
 
         public static bool CheckCookie(string cookie, string username) {
@@ -89,7 +94,9 @@ namespace Server_Dashboard {
                     con.Open();
                     callback(con);
                     con.Close();
-                } catch { return null; }
+                } catch (SqlException ex) {
+                    return null;
+                }
             }
             return null;
         }
