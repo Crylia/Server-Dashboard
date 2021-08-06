@@ -7,7 +7,7 @@ namespace Server_Dashboard {
     class RelayCommand : ICommand {
 
         //New Action
-        private Action<object> execAction;
+        private readonly Action<object> execAction;
 
         //Never gets fires, but needs to be implemented
         public event EventHandler CanExecuteChanged = (sender, e) => { };

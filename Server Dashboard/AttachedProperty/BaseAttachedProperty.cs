@@ -4,6 +4,11 @@ using System.Text;
 using System.Windows;
 
 namespace Server_Dashboard {
+    /// <summary>
+    /// Attached property base class
+    /// </summary>
+    /// <typeparam name="Parent"></typeparam>
+    /// <typeparam name="Property"></typeparam>
     public abstract class BaseAttachedProperty<Parent, Property>
         where Parent : BaseAttachedProperty<Parent, Property>, new() {
         public event Action<DependencyObject, DependencyPropertyChangedEventArgs> ValueChanged = (sender, e) => { };

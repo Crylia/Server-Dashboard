@@ -5,8 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Documents;
 
-namespace Server_Dashboard
-    {
+namespace Server_Dashboard {
     public static class HyperlinkExtensions {
         public static bool GetIsExternal(DependencyObject obj) {
             return (bool)obj.GetValue(IsExternalProperty);
