@@ -60,18 +60,15 @@ namespace Server_Dashboard {
                 Username = Settings.Default.Username;
                 RememberUser = Settings.Default.RememberMe;
             }
+            AutoLoginAsync();
         }
 
         public ICommand LoginCommand { get; set; }
 
         private async void LoginAsync(object parameter) {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
-                int result = 0;
-                if (RememberUser && !String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies) && Settings.Default.Password.Length == 6) {
-                    result = await Task.Run(() => DatabaseHandler.CheckCookie(Settings.Default.Cookies, Username));
-                }
                 Loading = "Visible";
-                result = await Task.Run(() => DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure()));
+                int result = await Task.Run(() => DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure()));
                 Loading = "Hidden";
                 switch (result) {
                     case 0:
@@ -123,5 +120,19 @@ namespace Server_Dashboard {
             }
             ErrorText = "";
         }
+        //TODO: Add autologin function that locks the UI untill the user hits the abort button or the login completes
+        /*private async void AutoLoginAsync() {
+            if (Settings.Default.RememberMe && !String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                Loading = "Visible";
+                int result = await Task.Run(() => DatabaseHandler.CheckCookie(Settings.Default.Cookies, Username));
+                Loading = "Hidden";
+                if (result == 1) {
+                    DashboardWindow window = new DashboardWindow();
+                    window.Show();
+                    Close?.Invoke();
+                    return;
+                }
+            }
+        }*/
     }
 }
