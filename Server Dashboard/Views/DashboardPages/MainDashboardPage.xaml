@@ -9,15 +9,11 @@
       xmlns:root="clr-namespace:Server_Dashboard"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:controls="clr-namespace:Server_Dashboard.Controls.ServerModules"
-      mc:Ignorable="d"
-      d:DesignHeight="920" 
-      d:DesignWidth="1600"
-      >
+      mc:Ignorable="d" d:DesignHeight="920" d:DesignWidth="1600">
     <Grid Background="{StaticResource BackgroundSurface_00dp}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
         <!--Dashboard and Options-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -31,29 +27,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button
-                    Grid.Row="0" 
-                    Command="{Binding OpenNewModuleWindowCommand}" 
-                    Content="New Module"
-                    Height="50"
-                    Margin="5 10 5 0" Cursor="Hand"
-                    x:Name="CreateModule"
-                />
-                <Button 
-                    Grid.Row="1" 
-                    Command="{Binding OpenDeleteModuleWindowCommand}" 
-                    Content="Remove Module"
-                    Height="50"
-                    Margin="5 10 5 0"
-                />
-                <Button 
-                    Grid.Row="2" 
-                    Command="{Binding OpenUpdateModuleWindowCommand}" 
-                    Content="Change Module"
-                    Height="50"
-                    Margin="5 10 5 0" Cursor="Hand"
-                />
+                <Button Grid.Row="0" Command="{Binding OpenNewModuleWindowCommand}"  Content="New Module" Height="50" Margin="5 10 5 0" Cursor="Hand" x:Name="CreateModule"/>
+                <Button Grid.Row="1" Command="{Binding OpenDeleteModuleWindowCommand}" Content="Remove Module" Height="50" Margin="5 10 5 0" Cursor="Hand" x:Name="RemoveModule"/>
+                <Button Grid.Row="2" Command="{Binding OpenUpdateModuleWindowCommand}" Content="Change Module" Height="50" Margin="5 10 5 0" Cursor="Hand" x:Name="ChangeModule"/>
             </Grid>
+            <!--ItemsControl list for the Dashboardmodules-->
             <Grid Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <ItemsControl ItemsSource="{Binding Modules}">

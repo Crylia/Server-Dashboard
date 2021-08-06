@@ -8,20 +8,14 @@
         xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
-        Height="1000" 
-        Width="Auto" 
-        WindowStyle="None"
-        Background="Transparent"
-        ResizeMode="CanResize"
-        mc:Ignorable="d"
-        d:Height="1000" d:Width="1900"
-        >
+        Height="1000" Width="Auto" WindowStyle="None" Background="Transparent" ResizeMode="CanResize" mc:Ignorable="d" d:Height="1000" d:Width="1900">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
     <Window.DataContext>
         <root:DashboardViewModel/>
     </Window.DataContext>
+    <!--Dashboard Window and Container for the Dashboards-->
     <Grid Background="{StaticResource BackgroundSurface_00dp}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -63,20 +57,8 @@
             <Button Grid.Column="0" >
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border 
-                            x:Name="Border"
-                            CornerRadius="4"
-                            Padding="2"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            BorderThickness="0"
-                            >
-                            <svgc:SvgViewbox 
-                                Source="../Assets/Images/Settings.svg"
-                                Margin="5"
-                                IsHitTestVisible="False"
-                                Opacity="0.87"
-                            />
+                        <Border x:Name="Border" CornerRadius="4" Padding="2" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" >
+                            <svgc:SvgViewbox Source="../Assets/Images/Settings.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -87,13 +69,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button
-                Grid.Column="4"
-                Command="{Binding OpenLinkCommand}"
-                Content="{Binding UserName}"
-                Margin="10 0 10 0"
-                Height="40" Cursor="Hand"
-                >
+            <Button Grid.Column="4" Command="{Binding OpenLinkCommand}" Content="{Binding UserName}" Margin="10 0 10 0" Height="40" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
@@ -105,23 +81,8 @@
                                     <SolidColorBrush Color="White" Opacity="0.12"/>
                                 </Border.BorderBrush>
                                 <StackPanel Orientation="Horizontal">
-                                    <svgc:SvgViewbox 
-                                        Source="../Assets/Images/User.svg"
-                                        Margin="5"
-                                        IsHitTestVisible="False"
-                                        Opacity="0.87"
-                                    />
-                                    <TextBlock
-                                        FontSize="{TemplateBinding FontSize}"
-                                        TextAlignment="Center"
-                                        Padding="0"
-                                        TextWrapping="Wrap"
-                                        Text="{TemplateBinding Content}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Margin="5 0 10 0"
-                                    />
+                                    <svgc:SvgViewbox Source="../Assets/Images/User.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87"/>
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0"/>
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -151,14 +112,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button
-                Grid.Column="3"
-                Command="{Binding OpenLinkCommand}"
-                CommandParameter="https://github.com/Crylia/Server-Dashboard/wiki"
-                Content="Docs"
-                Margin="10 0 10 0"
-                Height="40"
-                >
+            <Button Grid.Column="3" Command="{Binding OpenLinkCommand}" CommandParameter="https://github.com/Crylia/Server-Dashboard/wiki" Content="Docs" Margin="10 0 10 0" Height="40">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
@@ -170,23 +124,8 @@
                                     <SolidColorBrush Color="White" Opacity="0.12"/>
                                 </Border.BorderBrush>
                                 <StackPanel Orientation="Horizontal">
-                                    <svgc:SvgViewbox 
-                                        Source="../Assets/Images/Docs.svg"
-                                        Margin="5"
-                                        IsHitTestVisible="False"
-                                        Opacity="0.87"
-                                    />
-                                    <TextBlock
-                                    FontSize="{TemplateBinding FontSize}"
-                                    TextAlignment="Center"
-                                    Padding="0"
-                                    TextWrapping="Wrap"
-                                    Text="{TemplateBinding Content}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Margin="5 0 10 0"
-                                />
+                                    <svgc:SvgViewbox Source="../Assets/Images/Docs.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87"/>
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0"/>
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -216,15 +155,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button
-                Grid.Column="2"
-                Command="{Binding OpenLinkCommand}"
-                CommandParameter="https://github.com/Crylia/Server-Dashboard"
-                Content="GitHub"
-                Margin="10 0 10 0"
-                Height="40"
-                Opacity="0.87" Cursor="Hand"
-                >
+            <Button Grid.Column="2" Command="{Binding OpenLinkCommand}" CommandParameter="https://github.com/Crylia/Server-Dashboard" Content="GitHub" Margin="10 0 10 0" Height="40" Opacity="0.87" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
@@ -236,21 +167,8 @@
                                     <SolidColorBrush Color="White" Opacity="0.12"/>
                                 </Border.BorderBrush>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image 
-                                        Source="../Assets/Images/GitHubLight.png"
-                                        Margin="5"
-                                    />
-                                    <TextBlock
-                                        FontSize="{TemplateBinding FontSize}"
-                                        TextAlignment="Center"
-                                        Padding="0"
-                                        TextWrapping="Wrap"
-                                        Text="{TemplateBinding Content}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Margin="5 0 10 0"
-                                    />
+                                    <Image Source="../Assets/Images/GitHubLight.png" Margin="5"/>
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0"/>
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -281,6 +199,7 @@
                 </Button.Template>
             </Button>
         </Grid>
+        <!--UserControl Container for the Dashboard pages-->
         <UserControl Grid.Row="3">
             <views:MainDashboardPage/>
         </UserControl>

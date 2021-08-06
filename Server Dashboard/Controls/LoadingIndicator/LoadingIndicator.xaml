@@ -5,50 +5,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Server_Dashboard.Controls"
-             mc:Ignorable="d" 
-             >
+             mc:Ignorable="d">
+    <!--The Loading indicator circle-->
     <Grid DataContext="{Binding RelativeSource={RelativeSource Self}}">
-        <Path 
-            Stroke="Transparent"
-            StrokeThickness=".5"
-            RenderTransformOrigin=".5,.5"
-            Width="60"
-            Height="60"
-            >
+        <Path Stroke="Transparent" StrokeThickness=".5" RenderTransformOrigin=".5,.5" Width="60" Height="60">
             <Path.Effect>
                 <DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#B388FF"/>
             </Path.Effect>
             <Path.Data>
-                <CombinedGeometry 
-                    GeometryCombineMode="Xor"
-                    >
+                <CombinedGeometry GeometryCombineMode="Xor">
                     <CombinedGeometry.Geometry1>
-                        <EllipseGeometry 
-                            RadiusX="30"
-                            RadiusY="30"
-                            Center="30,30"
-                            />
+                        <EllipseGeometry RadiusX="30" RadiusY="30" Center="30,30"/>
                     </CombinedGeometry.Geometry1>
                     <CombinedGeometry.Geometry2>
-                        <EllipseGeometry 
-                            RadiusX="24"
-                            RadiusY="24"
-                            Center="30,30"
-                            />
+                        <EllipseGeometry  RadiusX="24" RadiusY="24" Center="30,30"/>
                     </CombinedGeometry.Geometry2>
                 </CombinedGeometry>
             </Path.Data>
             <Path.Fill>
-                <LinearGradientBrush
-                    StartPoint="0,0"
-                    EndPoint="1,1"
-                    >
-                    <GradientStop 
-                        Color="#B388FF" Offset="0"
-                        />
-                    <GradientStop 
-                        Color="#A7FFEB" Offset="1"
-                        />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#B388FF" Offset="0"/>
+                    <GradientStop Color="#A7FFEB" Offset="1"/>
                 </LinearGradientBrush>
             </Path.Fill>
             <Path.RenderTransform>
@@ -56,17 +33,10 @@
                 <!--This is necessary for the animation not to stop-->
             </Path.RenderTransform>
             <Path.Triggers>
-                <EventTrigger
-                    RoutedEvent="Loaded"
-                    >
+                <EventTrigger RoutedEvent="Loaded">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation 
-                                Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
-                                To="360"
-                                Duration="0:0:.8"
-                                RepeatBehavior="Forever"
-                                />
+                            <DoubleAnimation  Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)" To="360" Duration="0:0:.8" RepeatBehavior="Forever"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>

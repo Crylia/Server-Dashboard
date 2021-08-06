@@ -12,83 +12,13 @@
     <UserControl.Resources>
         <root:ValueToAngleConverter x:Key="valueToAngle"/>
     </UserControl.Resources>
+    <!--Circular Prograss bar-->
     <Grid>
-        <Ellipse
-            x:Name="Background"
-            
-            Fill="{Binding 
-                        ElementName=_this, 
-                        Path=BackgroundBrush
-            }"
-            Margin="0"
-            Stroke="{Binding 
-                        ElementName=_this, 
-                        Path=BackgroundBrush
-            }"
-        />
-        <ed:Arc
-            ArcThickness="8"
-            ArcThicknessUnit="Pixel" 
-            EndAngle="{Binding 
-                            Converter={StaticResource valueToAngle},
-                            ElementName=_this,
-                            Path=ValueRead
-            }" 
-            Fill="{Binding 
-                        ElementName=_this, 
-                        Path=ReadIndicatorBrush
-            }"
-            Stretch="None" 
-            StartAngle="0"
-        />
-        <Ellipse
-            x:Name="Seperator"
-            Fill="Transparent"
-            Margin="7"
-            Stroke="{Binding 
-                        ElementName=_this, 
-                        Path=ProgressBorderBrush
-            }"
-            Panel.ZIndex="1"
-        />
-        <Ellipse
-            x:Name="Seperator2"
-            Fill="Transparent"
-            Margin="8"
-            Stroke="{Binding 
-                        ElementName=_this, 
-                        Path=ProgressBorderBrush
-            }"
-            Panel.ZIndex="1"
-        />
-        <ed:Arc
-            Margin="8"
-            ArcThickness="8"
-            ArcThicknessUnit="Pixel" 
-            EndAngle="{Binding 
-                            Converter={StaticResource valueToAngle},
-                            ElementName=_this,
-                            Path=ValueWrite
-            }" 
-            Fill="{Binding 
-                        ElementName=_this, 
-                        Path=WriteIndicatorBrush
-            }"
-            Stretch="None" 
-            StartAngle="0"
-        />
-        <Ellipse
-            x:Name="Border"
-            Fill="{Binding 
-                        ElementName=_this, 
-                        Path=ProgressBorderBrush
-            }"
-            Margin="16"
-            Stroke="{Binding 
-                        ElementName=_this, 
-                        Path=ProgressBorderBrush
-            }"
-            
-        />
+        <Ellipse x:Name="Background" Fill="{Binding ElementName=_this, Path=BackgroundBrush}" Margin="0" Stroke="{Binding ElementName=_this, Path=BackgroundBrush}"/>
+        <ed:Arc ArcThickness="8" ArcThicknessUnit="Pixel" EndAngle="{Binding Converter={StaticResource valueToAngle}, ElementName=_this, Path=ValueRead}"  Fill="{Binding ElementName=_this, Path=ReadIndicatorBrush}" Stretch="None"  StartAngle="0"/>
+        <Ellipse x:Name="Seperator" Fill="Transparent" Margin="7" Stroke="{Binding ElementName=_this, Path=ProgressBorderBrush}" Panel.ZIndex="1"/>
+        <Ellipse x:Name="Seperator2" Fill="Transparent" Margin="8" Stroke="{Binding ElementName=_this, Path=ProgressBorderBrush}" Panel.ZIndex="1"/>
+        <ed:Arc Margin="8" ArcThickness="8" ArcThicknessUnit="Pixel" EndAngle="{Binding Converter={StaticResource valueToAngle}, ElementName=_this, Path=ValueWrite}" Fill="{Binding ElementName=_this, Path=WriteIndicatorBrush}" Stretch="None" StartAngle="0"/>
+        <Ellipse x:Name="Border" Fill="{Binding ElementName=_this, Path=ProgressBorderBrush}" Margin="16" Stroke="{Binding ElementName=_this, Path=ProgressBorderBrush}"/>
     </Grid>
 </UserControl>

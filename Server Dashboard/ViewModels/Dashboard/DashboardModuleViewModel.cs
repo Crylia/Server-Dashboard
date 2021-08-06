@@ -4,19 +4,14 @@ using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Server_Dashboard {
+    /// <summary>
+    /// View Model for the modules
+    /// </summary>
     class DashboardModuleViewModel : BaseViewModel {
+        //List with all Modules inside
         public ObservableCollection<DashboardModule> Modules { get; set; }
-        private int gpuUsage;
 
-        public int GPUUsage {
-            get { return gpuUsage; }
-            set {
-                if(value != gpuUsage)
-                    gpuUsage = value;
-                OnPropertyChanged(nameof(gpuUsage));
-            }
-        }
-
+        //Creates Default Modules, remove before release and when implementing the actual data comming from the socket
         public DashboardModuleViewModel() {
             Modules = new ObservableCollection<DashboardModule>();
             for (int i = 0; i < 10; i++) {

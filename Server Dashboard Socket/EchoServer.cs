@@ -4,6 +4,9 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace Server_Dashboard_Socket {
+    /// <summary>
+    /// Basic echo server to test the socket connection
+    /// </summary>
     public class EchoServer {
         public void Start(int port = 9565) {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
