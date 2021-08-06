@@ -60,6 +60,7 @@ namespace Server_Dashboard {
                 Username = Settings.Default.Username;
                 RememberUser = Settings.Default.RememberMe;
             }
+            AutoLoginAsync();
         }
 
         public ICommand LoginCommand { get; set; }
@@ -81,6 +82,7 @@ namespace Server_Dashboard {
                             Settings.Default.Cookies = null;
                             Settings.Default.Username = "";
                             Settings.Default.RememberMe = false;
+                            Settings.Default.Password = "";
                             Settings.Default.Save();
                             DatabaseHandler.DeleteCookie(Username);
                         }
@@ -89,6 +91,7 @@ namespace Server_Dashboard {
                             Settings.Default.Cookies = guid;
                             Settings.Default.Username = Username;
                             Settings.Default.RememberMe = true;
+                            Settings.Default.Password = "*****";
                             Settings.Default.Save();
                             DatabaseHandler.AddCookie(Username, guid);
                         }
@@ -117,5 +120,19 @@ namespace Server_Dashboard {
             }
             ErrorText = "";
         }
+        //TODO: Add autologin function that locks the UI untill the user hits the abort button or the login completes
+        /*private async void AutoLoginAsync() {
+            if (Settings.Default.RememberMe && !String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                Loading = "Visible";
+                int result = await Task.Run(() => DatabaseHandler.CheckCookie(Settings.Default.Cookies, Username));
+                Loading = "Hidden";
+                if (result == 1) {
+                    DashboardWindow window = new DashboardWindow();
+                    window.Show();
+                    Close?.Invoke();
+                    return;
+                }
+            }
+        }*/
     }
 }
