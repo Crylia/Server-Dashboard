@@ -50,23 +50,21 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <!--Server Name-->
                 <StackPanel VerticalAlignment="Center" Grid.Row="0" Margin="20 0 20 0">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Server Name" FontSize="24" Margin="0 0 0 5">
+                        <TextBlock Text="Module Name" FontSize="24" Margin="0 0 0 5">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="White" Opacity="0.87"/>
                             </TextBlock.Foreground>
                         </TextBlock>
-                        <TextBlock Text="*" Foreground="{StaticResource ErrorRed}" FontSize="20"/>
                     </StackPanel>
                     <Grid>
                         <Grid.Effect>
                             <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
                         </Grid.Effect>
-                        <TextBox Text="{Binding ServerName}" Grid.Column="1" Height="40" FontSize="20" x:Name="ServerName"/>
+                        <TextBox Text="{Binding ModuleName}" Grid.Column="1" Height="40" FontSize="20" x:Name="ServerName"/>
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="My Awesome Server" FontSize="20" Visibility="{Binding ElementName=ServerName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="White" Opacity="0.12"/>
@@ -74,44 +72,20 @@
                         </TextBlock>
                     </Grid>
                 </StackPanel>
-                <!--Password-->
+                <!--Username-->
                 <StackPanel VerticalAlignment="Center" Grid.Row="1" Margin="20 0 20 0">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Password" FontSize="24" Margin="0 0 0 5">
+                        <TextBlock Text="Server Name" FontSize="24" Margin="0 0 0 5">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="White" Opacity="0.87"/>
                             </TextBlock.Foreground>
                         </TextBlock>
-                        <TextBlock Text="*" Foreground="{StaticResource ErrorRed}" FontSize="20"/>
                     </StackPanel>
                     <Grid>
                         <Grid.Effect>
                             <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
                         </Grid.Effect>
-                        <PasswordBox Width="420" VerticalAlignment="Center" HorizontalAlignment="Left" root:MonitorPasswordProperty.Value="True" Grid.Column="1" FontSize="20" x:Name="Password" Height="40">
-                        </PasswordBox>
-                        <TextBlock Visibility="{Binding ElementName=Password, Path=(root:HasTextProperty.Value), Converter={StaticResource UserNameVisibillity}}" x:Name="PasswordHint" Text="********" Grid.Column="1" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0 0 0" FontSize="20">
-                            <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.12"/>
-                            </TextBlock.Foreground>
-                        </TextBlock>
-                    </Grid>
-                </StackPanel>
-                <!--Username-->
-                <StackPanel VerticalAlignment="Center" Grid.Row="2" Margin="20 0 20 0">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Username" FontSize="24" Margin="0 0 0 5">
-                            <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.87"/>
-                            </TextBlock.Foreground>
-                        </TextBlock>
-                        <TextBlock Text="*" Foreground="{StaticResource ErrorRed}" FontSize="16"/>
-                    </StackPanel>
-                    <Grid>
-                        <Grid.Effect>
-                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
-                        </Grid.Effect>
-                        <TextBox Text="{Binding Username}" Grid.Column="1" Height="40" FontSize="20" x:Name="UserName"/>
+                        <TextBox Text="{Binding ServerName}" Grid.Column="1" Height="40" FontSize="20" x:Name="UserName"/>
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Name" FontSize="20" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="White" Opacity="0.12"/>
@@ -120,7 +94,7 @@
                     </Grid>
                 </StackPanel>
                 <!--IP Adress-->
-                <StackPanel VerticalAlignment="Center" Grid.Row="3" Margin="20 0 20 0">
+                <StackPanel VerticalAlignment="Center" Grid.Row="2" Margin="20 0 20 0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="IP Adress" FontSize="24" Margin="0 0 0 5">
                             <TextBlock.Foreground>
@@ -142,7 +116,7 @@
                     </Grid>
                 </StackPanel>
                 <!--Port-->
-                <StackPanel VerticalAlignment="Center" Grid.Row="4" Margin="20 0 20 0">
+                <StackPanel VerticalAlignment="Center" Grid.Row="3" Margin="20 0 20 0">
                     <TextBlock Text="Port" FontSize="24" Margin="0 0 0 5">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="White" Opacity="0.87"/>

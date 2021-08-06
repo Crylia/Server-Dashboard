@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using Server_Dashboard_Socket;
+using System;
 
 namespace Server_Dashboard {
     /// <summary>
@@ -15,6 +16,47 @@ namespace Server_Dashboard {
         #endregion
 
         #region Properties
+
+        private string serverName;
+        public string ServerName {
+            get { return serverName; }
+            set {
+                if(serverName != value)
+                    serverName = value;
+                OnPropertyChanged(nameof(serverName));
+            }
+        }
+
+        private string moduleName;
+        public string ModuleName {
+            get { return moduleName; }
+            set {
+                if (moduleName != value)
+                    moduleName = value;
+                OnPropertyChanged(nameof(moduleName));
+            }
+        }
+
+        private string ipAdress;
+        public string IPAdress {
+            get { return ipAdress; }
+            set {
+                if (ipAdress != value)
+                    ipAdress = value;
+                OnPropertyChanged(nameof(ipAdress));
+            }
+        }
+
+        private string port;
+        public string Port {
+            get { return port; }
+            set {
+                if (port != value)
+                    port = value;
+                OnPropertyChanged(nameof(port));
+            }
+        }
+
         //The Username displayed defaults to Username
         private string userName = "Username";
         public string UserName {
@@ -87,7 +129,11 @@ namespace Server_Dashboard {
         /// </summary>
         /// <param name="param">Nothing</param>
         private void CreateModule(object param) {
-            
+            if (!String.IsNullOrWhiteSpace(IPAdress)) {
+                
+            } else {
+                //error
+            }
         }
         #endregion
     }

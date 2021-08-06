@@ -3,6 +3,7 @@ using Server_Dashboard.Properties;
 using System;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using Server_Dashboard_Socket;
 
 namespace Server_Dashboard {
     /// <summary>
@@ -59,6 +60,7 @@ namespace Server_Dashboard {
 
         #region Constructor
         public LoginViewModel() {
+            SocketClient sc = new SocketClient();
             //Loading circle is hidden on startup
             Loading = "Hidden";
             //Command inits
