@@ -1,26 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace Server_Dashboard {
+
     /// <summary>
     /// Dashboard Module class that holds all the information that gets displayed
     /// </summary>
-    class DashboardModule {
+    internal class DashboardModule {
+
         //The name the user gives the module
         public string ModuleName { get; set; }
+
         //The user who created it
         public string Creator { get; set; }
+
         //All the information that the server had
         public ServerInformation ServerInfo { get; set; }
+
         //The status indicator
         public string StatusIndicator { get; set; }
+
         //The background color of the status indicator
         public string StatusIndicatorBG { get; set; }
+
         //If the server is avaibale or not
         public bool ServerAvailable { get; set; }
+
         //The Module icon the user give the server, defaults to a generic server symbol
-        public string ModuleIcon { get; set; }
+        public BitmapImage ModuleIcon { get; set; }
+
         //Creation date with System.DateTime.Now
         public string CreationDate { get; set; }
 

@@ -8,7 +8,7 @@ namespace Server_Dashboard {
     /// Base View Model all the other view models inherit from
     /// Makes me write the INotifyPropertyChanged only once
     /// </summary>
-    class BaseViewModel : INotifyPropertyChanged {
+    public class BaseViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 
         protected void OnPropertyChanged(string prop) {

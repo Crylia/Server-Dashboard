@@ -12,10 +12,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Server_Dashboard.Controls {
+
     /// <summary>
     /// Interaction logic for LoadingIndicator.xaml
     /// </summary>
     public partial class LoadingIndicator : UserControl {
+
         public LoadingIndicator() {
             InitializeComponent();
         }

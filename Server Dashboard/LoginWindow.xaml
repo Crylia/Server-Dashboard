@@ -31,11 +31,6 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height=".3*"/>
             </Grid.RowDefinitions>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
-                    <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
             <!--#region Custom title bar-->
             <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="0" Grid.ColumnSpan="2">
                 <Grid.Effect>
@@ -45,8 +40,14 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0"/>
-                <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕">
+                <TextBlock Grid.Column="0" Text="Login" Margin="5 0 0 0" Foreground="{StaticResource DeepPurple_A100}" VerticalAlignment="Center">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
+                <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
