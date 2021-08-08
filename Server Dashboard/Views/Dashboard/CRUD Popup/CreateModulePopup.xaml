@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
-        xmlns:root="clr-namespace:Server_Dashboard" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:ap="clr-namespace:Server_Dashboard"
+        xmlns:root="clr-namespace:Server_Dashboard" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         d:DataContext="{d:DesignInstance Type=root:DashboardModuleViewModel}"
-        mc:Ignorable="d" ResizeMode="NoResize" Height="700" Width="500" d:WindowStyle="None">
+        mc:Ignorable="d" ResizeMode="NoResize" Height="700" Width="500" d:WindowStyle="None" ap:CloseProperty.Value="True">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="0"/>
     </WindowChrome.WindowChrome>
@@ -22,16 +23,17 @@
             </Grid.RowDefinitions>
             <!--Title Bar-->
             <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDown">
-                        <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Create a new Server" Margin="5 0 0 0" Foreground="{StaticResource DeepPurple_A100}" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Text="Create a new Server" Margin="5 0 0 0" Foreground="{StaticResource DeepPurple_A100}" VerticalAlignment="Center">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
                 <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -40,6 +42,7 @@
                     </i:Interaction.Triggers>
                 </Button>
             </Grid>
+            <!--Main Content-->
             <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1" Margin="20">
                 <Grid.Effect>
                     <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
@@ -49,6 +52,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <!--Server Name-->
@@ -134,8 +139,59 @@
                         </TextBlock>
                     </Grid>
                 </StackPanel>
+                <!--Module Icon-->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="102"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Cursor="Hand" Command="{Binding SelectIconCommand}" HorizontalAlignment="Left" Margin="20 0 20 0" Height="62" Width="62">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="4" x:Name="Border" Background="{StaticResource BackgroundSurface_04dp}" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Rectangle RadiusX="4" RadiusY="4">
+                                                        <Rectangle.Fill>
+                                                            <ImageBrush ImageSource="{Binding ModuleIcon}"/>
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Border CornerRadius="100" Background="{StaticResource BackgroundSurface_04dp}" Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
+                                                        <svgc:SvgViewbox IsHitTestVisible="False" Source="../../../Assets/Images/AddIcon.svg" Opacity="1"/>
+                                                    </Border>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Command="{Binding RemoveIconCommand}" HorizontalAlignment="Left" Grid.Column="1" Content="Remove Icon" Height="40" Width="150"/>
+                </Grid>
+                <!--Error Text / Test Connection Result-->
+                <TextBlock Text="{Binding UserInformationMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5" FontSize="14">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="#64FFDA" Opacity="0.64"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
                 <!--Create Module button-->
-                <Button Height="60" Width="350" Command="{Binding CreateModuleCommand}" CommandParameter="{Binding ElementName=CREATE_MODULE}" Grid.Row="5" Content="CREATE MODULE" Grid.ColumnSpan="2"/>
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="20 0 10 0" Height="60" Width="Auto" Command="{Binding CreateModuleCommand}" CommandParameter="{Binding ElementName=CREATE_MODULE}" Content="CREATE MODULE" Grid.Column="0"/>
+                    <Button Margin="10 0 20 0" Height="60" Width="Auto" Command="{Binding TestConnectionCommand}" Content="TEST CONNECTION" Grid.Column="1"/>
+                </Grid>
             </Grid>
         </Grid>
     </Border>

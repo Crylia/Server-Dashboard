@@ -6,38 +6,36 @@
         xmlns:local="clr-namespace:Server_Dashboard.Views"
         xmlns:root="clr-namespace:Server_Dashboard"
         xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         Height="1000" Width="Auto" WindowStyle="None" Background="Transparent" ResizeMode="CanResize" mc:Ignorable="d" d:Height="1000" d:Width="1900">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0"/>
+        <WindowChrome CaptionHeight="0" />
     </WindowChrome.WindowChrome>
-    <Window.DataContext>
-        <root:DashboardViewModel/>
-    </Window.DataContext>
     <!--Dashboard Window and Container for the Dashboards-->
     <Grid Background="{StaticResource BackgroundSurface_00dp}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--Window Title-->
         <Grid Background="{StaticResource BackgroundSurface_06dp}" Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
-                    <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <Label Grid.Column="0"/>
+            <Label Grid.Column="0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
             <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
-                        <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                        <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
@@ -45,20 +43,20 @@
         <!--Settings, Docs, User, links etc-->
         <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1" x:Name="TopBarGrid">
             <Grid.Effect>
-                <DropShadowEffect Direction="270" BlurRadius="5"/>
+                <DropShadowEffect Direction="270" BlurRadius="5" />
             </Grid.Effect>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" >
+            <Button Grid.Column="0">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" CornerRadius="4" Padding="2" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" >
-                            <svgc:SvgViewbox Source="../Assets/Images/Settings.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87"/>
+                        <Border x:Name="Border" CornerRadius="4" Padding="2" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                            <svgc:SvgViewbox Source="../Assets/Images/Settings.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -74,15 +72,15 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
                             <Border.Effect>
-                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
                             </Border.Effect>
                             <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                    <SolidColorBrush Color="White" Opacity="0.12" />
                                 </Border.BorderBrush>
                                 <StackPanel Orientation="Horizontal">
-                                    <svgc:SvgViewbox Source="../Assets/Images/User.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87"/>
-                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0"/>
+                                    <svgc:SvgViewbox Source="../Assets/Images/User.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87" />
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0" />
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -90,7 +88,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="BackgroundOverlay" Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -99,12 +97,12 @@
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="BackgroundOverlay" Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12" />
                                     </Setter.Value>
                                 </Setter>
                                 <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -117,15 +115,15 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
                             <Border.Effect>
-                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
                             </Border.Effect>
                             <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                    <SolidColorBrush Color="White" Opacity="0.12" />
                                 </Border.BorderBrush>
                                 <StackPanel Orientation="Horizontal">
-                                    <svgc:SvgViewbox Source="../Assets/Images/Docs.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87"/>
-                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0"/>
+                                    <svgc:SvgViewbox Source="../Assets/Images/Docs.svg" Margin="5" IsHitTestVisible="False" Opacity="0.87" />
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0" />
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -133,7 +131,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="BackgroundOverlay" Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -142,12 +140,12 @@
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="BackgroundOverlay" Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12" />
                                     </Setter.Value>
                                 </Setter>
                                 <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -160,15 +158,15 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
                             <Border.Effect>
-                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
                             </Border.Effect>
                             <Border x:Name="BackgroundOverlay" CornerRadius="4" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="White" Opacity="0.12"/>
+                                    <SolidColorBrush Color="White" Opacity="0.12" />
                                 </Border.BorderBrush>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="../Assets/Images/GitHubLight.png" Margin="5"/>
-                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0"/>
+                                    <Image Source="../Assets/Images/GitHubLight.png" Margin="5" />
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0 10 0" />
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -176,7 +174,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="BackgroundOverlay" Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity="0.04"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.04" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -185,12 +183,12 @@
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="BackgroundOverlay" Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity="0.12"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity="0.12" />
                                     </Setter.Value>
                                 </Setter>
                                 <Setter TargetName="BackgroundOverlay" Property="BorderBrush">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="#B388FF" Opacity=".87"/>
+                                        <SolidColorBrush Color="#B388FF" Opacity=".87" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -201,7 +199,7 @@
         </Grid>
         <!--UserControl Container for the Dashboard pages-->
         <UserControl Grid.Row="3">
-            <views:MainDashboardPage/>
+            <views:MainDashboardPage />
         </UserControl>
     </Grid>
 </Window>

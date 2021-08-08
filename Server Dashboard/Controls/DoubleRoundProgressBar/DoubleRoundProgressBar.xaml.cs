@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
+
     /// <summary>
     /// DependencyProperties
     /// </summary>
@@ -20,6 +21,7 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
         //Property for the ReadIndicatorBrush
         public static DependencyProperty ReadIndicatorBrushProperty = DependencyProperty.Register("ReadIndicatorBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+
         public Brush ReadIndicatorBrush {
             get { return (Brush)GetValue(ReadIndicatorBrushProperty); }
             set { SetValue(ReadIndicatorBrushProperty, value); }
@@ -27,6 +29,7 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
         //Property for the WriteIndicatorBrush
         public static DependencyProperty WriteIndicatorBrushProperty = DependencyProperty.Register("WriteIndicatorBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+
         public Brush WriteIndicatorBrush {
             get { return (Brush)GetValue(WriteIndicatorBrushProperty); }
             set { SetValue(WriteIndicatorBrushProperty, value); }
@@ -34,6 +37,7 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
         //Property for the BackgroundBrush
         public static DependencyProperty BackgroundBrushProperty = DependencyProperty.Register("BackgroundBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+
         public Brush BackgroundBrush {
             get { return (Brush)GetValue(BackgroundBrushProperty); }
             set { SetValue(BackgroundBrushProperty, value); }
@@ -41,6 +45,7 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
         //Property for the ProgressBorderBrush
         public static DependencyProperty ProgressBorderBrushProperty = DependencyProperty.Register("ProgressBorderBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+
         public Brush ProgressBorderBrush {
             get { return (Brush)GetValue(ProgressBorderBrushProperty); }
             set { SetValue(ProgressBorderBrushProperty, value); }
@@ -48,6 +53,7 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
         //Property for the Value Write
         public static DependencyProperty ValueWriteProperty = DependencyProperty.Register("ValueWrite", typeof(int), typeof(DoubleRoundProgressBar));
+
         public int ValueWrite {
             get { return (int)GetValue(ValueWriteProperty); }
             set { SetValue(ValueWriteProperty, value); }
@@ -55,6 +61,7 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
         //Property for the Value Read
         public static DependencyProperty ValueReadProperty = DependencyProperty.Register("ValueRead", typeof(int), typeof(DoubleRoundProgressBar));
+
         public int ValueRead {
             get { return (int)GetValue(ValueReadProperty); }
             set { SetValue(ValueReadProperty, value); }
