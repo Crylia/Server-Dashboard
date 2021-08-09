@@ -5,19 +5,13 @@ using System.Windows.Media.Imaging;
 
 namespace Server_Dashboard {
 
-    /// <summary>
-    /// Dashboard Module class that holds all the information that gets displayed
-    /// </summary>
-    internal class DashboardModule {
+    internal class ModuleData {
 
         //The name the user gives the module
         public string ModuleName { get; set; }
 
         //The user who created it
         public string Creator { get; set; }
-
-        //All the information that the server had
-        public ServerInformation ServerInfo { get; set; }
 
         //The status indicator
         public string StatusIndicator { get; set; }
@@ -32,13 +26,16 @@ namespace Server_Dashboard {
         public BitmapImage ModuleIcon { get; set; }
 
         //Creation date with System.DateTime.Now
-        public string CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
+
+        //List that contains all the serverinformation over a period of time(lifespan of the module)
+        public List<ServerInformation> ServerInformation { get; set; }
 
         /// <summary>
         /// This will set the Module status indicator red or green if the server is available or not
         /// </summary>
         /// <param name="serverAvailable"></param>
-        public DashboardModule(bool serverAvailable) {
+        public ModuleData(bool serverAvailable) {
             ServerAvailable = serverAvailable;
             StatusIndicator = ServerAvailable ? "#20c657" : "#e53935";
             StatusIndicatorBG = ServerAvailable ? "#94eeb0" : "#ef9a9a";

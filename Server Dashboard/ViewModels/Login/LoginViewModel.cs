@@ -140,9 +140,9 @@ namespace Server_Dashboard {
                             DatabaseHandler.DeleteCookie(Username);
                         }
                         //If the remember user option is checked and the cookie is not set save everything locally
-                        if (RememberUser && String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                        if (RememberUser && Settings.Default.Username != Username) {
                             //Creates a new GUID with the username at the end, this is the cookie
-                            var cookie = new Guid().ToString() + Username;
+                            var cookie = $"{Guid.NewGuid().ToString()}+user:{Username}";
                             //Saves cookie, Username Remember me option to the local storage (Settings.settings)
                             Settings.Default.Cookies = cookie;
                             Settings.Default.Username = Username;

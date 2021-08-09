@@ -67,7 +67,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Grid.Column="4" Command="{Binding OpenLinkCommand}" Content="{Binding UserName}" Margin="10 0 10 0" Height="40" Cursor="Hand">
+            <Button Grid.Column="4" Command="{Binding OpenLinkCommand}" Content="{Binding User.UserName}" Margin="10 0 10 0" Height="40" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">

@@ -14,46 +14,40 @@ namespace Server_Dashboard {
     internal class DashboardModuleViewModel : BaseViewModel {
 
         //List with all Modules inside
-        public ObservableCollection<DashboardModule> Modules { get; set; }
+        public ObservableCollection<ModuleData> Modules { get; set; }
 
         //Creates Default Modules, remove before release and when implementing the actual data comming from the socket
-        public DashboardModuleViewModel(DataTable userdata) {
-            GetModules(userdata);
+        public DashboardModuleViewModel(DataTable moduleData) {
+            Modules = new ObservableCollection<ModuleData>();
+            foreach (DataRow row in moduleData.Rows) {
+                if (row[0] != null) {
+                    byte[] iconBytes = row[3] == DBNull.Value ? null : (byte[])row[3];
+                    Modules.Add(new ModuleData(true) {
+                        ModuleName = (string)row?[2],
+                        Creator = (string)row?[0],
+                        ModuleIcon = ConvertByteToBitmapImage(iconBytes),
+                        CreationDate = (DateTime)row?[1],
+                        ServerInformation = null
+                    });
+                }
+            }
         }
 
-        public void GetModules(DataTable userdata) {
-            Modules = new ObservableCollection<DashboardModule>();
-            foreach (DataRow row in userdata.Rows) {
-                BitmapImage moduleIcon = null;
-                if (row[5] != DBNull.Value) {
-                    using MemoryStream ms = new MemoryStream((byte[])row[5]);
-                    moduleIcon = new BitmapImage();
+        private BitmapImage ConvertByteToBitmapImage(byte[] icon) {
+            if (icon != null) {
+                try {
+                    using MemoryStream ms = new MemoryStream(icon);
+                    BitmapImage moduleIcon = new BitmapImage();
                     moduleIcon.BeginInit();
                     moduleIcon.StreamSource = ms;
                     moduleIcon.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
                     moduleIcon.CacheOption = BitmapCacheOption.OnLoad;
                     moduleIcon.EndInit();
                     moduleIcon.Freeze();
-                }
-                Modules.Add(new DashboardModule(true) {
-                    ModuleName = (string)row[4],
-                    Creator = (string)row[1],
-                    ModuleIcon = moduleIcon,
-                    CreationDate = DateTime.Now.ToString(),
-                    ServerInfo = new ServerInformation() {
-                        GpuUsage = "20",
-                        CpuUsage = "20",
-                        CpuTemp = "88.88",
-                        DeployDate = DateTime.Now.ToString(),
-                        GpuTemp = "69.69",
-                        ServerName = "Ubuntu",
-                        OSUserName = "crylia ",
-                        PrivateIpAdress = "192.168.1.1",
-                        PublicIpAdress = "85.69.102.58",
-                        Uptime = DateTime.Now.ToString()
-                    }
-                });
+                    return moduleIcon;
+                } catch { }
             }
+            return null;
         }
     }
 }

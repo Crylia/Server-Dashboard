@@ -6,6 +6,8 @@ using System.Windows.Input;
 using Server_Dashboard_Socket;
 using System;
 using System.Data;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server_Dashboard {
 
@@ -16,28 +18,28 @@ namespace Server_Dashboard {
 
         #region Private Values
 
-        private readonly DashboardModuleViewModel dmvm;
+        private DashboardModuleViewModel dmvm;
 
         #endregion Private Values
 
         #region Properties
 
         //The Username displayed defaults to Username
-        private string userName;
+        private User user;
 
-        public string UserName {
-            get { return userName; }
+        public User User {
+            get { return user; }
             set {
-                if (userName != value)
-                    userName = value;
-                OnPropertyChanged(nameof(userName));
+                if (user != value)
+                    user = value;
+                OnPropertyChanged(nameof(user));
             }
         }
 
         //List that contains every Module
-        private ObservableCollection<DashboardModule> modules;
+        private ObservableCollection<ModuleData> modules;
 
-        public ObservableCollection<DashboardModule> Modules {
+        public ObservableCollection<ModuleData> Modules {
             get { return modules; }
             set {
                 if (value != modules)
@@ -51,15 +53,13 @@ namespace Server_Dashboard {
         #region Constructor
 
         public DashboardViewModel(string username) {
-            UserName = username;
             //Command inits
             OpenLinkCommand = new RelayCommand(OpenLink);
             OpenNewModuleWindowCommand = new RelayCommand(OpenNewModuleWindow);
 
-            DataTable Userdata = DatabaseHandler.GetUserData(username);
-            dmvm = new DashboardModuleViewModel(Userdata);
-            //Sets the local module to the dashboardviewmodule modules
-            Modules = dmvm.Modules;
+            DataTable userData = DatabaseHandler.GetUserData(username);
+            User = new User(userData);
+            GetModules();
         }
 
         #endregion Constructor
@@ -88,12 +88,20 @@ namespace Server_Dashboard {
         private void OpenNewModuleWindow(object param) {
             //Creates a new CreateModulePopup and sets this view model as datacontext
             CreateModulePopup cmp = new CreateModulePopup {
-                DataContext = new CreateModuleViewModel(UserName)
+                DataContext = new CreateModuleViewModel(User.UserName)
             };
             //Opens it in the middle of the screen, setting the parent window as owner causes the
             //application to crash when NOT in debug mode(???)
             cmp.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cmp.ShowDialog();
+            GetModules();
+        }
+
+        private void GetModules() {
+            DataTable moduleData = DatabaseHandler.GetUserModuleData(User.UID);
+            dmvm = new DashboardModuleViewModel(moduleData);
+            //Sets the local module to the dashboardviewmodule modules
+            Modules = dmvm.Modules;
         }
 
         #endregion Commands
