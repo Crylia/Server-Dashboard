@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
         xmlns:ap="clr-namespace:Server_Dashboard"
         xmlns:root="clr-namespace:Server_Dashboard" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
-        d:DataContext="{d:DesignInstance Type=root:DashboardModuleViewModel}"
-        mc:Ignorable="d" ResizeMode="NoResize" Height="700" Width="500" d:WindowStyle="None" ap:CloseProperty.Value="True">
+        Height="700" Width="500" WindowStyle="None" Background="Transparent" ResizeMode="CanResize" ap:CloseProperty.Value="True">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="0" />
     </WindowChrome.WindowChrome>
@@ -27,7 +26,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Create a new Server" Margin="5 0 0 0" Foreground="{StaticResource DeepPurple_A100}" VerticalAlignment="Center">
+                <TextBlock FontSize="18" Grid.Column="0" Text="Create a new Server" Margin="5 0 0 0" Foreground="White" VerticalAlignment="Center">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
@@ -161,9 +160,15 @@
                                                             <ImageBrush ImageSource="{Binding ModuleIcon}" />
                                                         </Rectangle.Fill>
                                                     </Rectangle>
-                                                    <Border CornerRadius="100" Background="{StaticResource BackgroundSurface_04dp}" Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
-                                                        <svgc:SvgViewbox IsHitTestVisible="False" Source="../../../Assets/Images/AddIcon.svg" Opacity="0.87" />
-                                                    </Border>
+                                                    <Viewbox Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
+                                                        <Canvas Width="24" Height="24">
+                                                            <Path Data="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z">
+                                                                <Path.Fill>
+                                                                    <SolidColorBrush Color="White" Opacity="0.87" />
+                                                                </Path.Fill>
+                                                            </Path>
+                                                        </Canvas>
+                                                    </Viewbox>
                                                 </Grid>
                                             </Border>
                                             <ControlTemplate.Triggers>

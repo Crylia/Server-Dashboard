@@ -227,7 +227,7 @@
                             <SolidColorBrush Color="White" Opacity="0.67" />
                         </TextBlock.Foreground>
                     </TextBlock>
-                    <RadioButton Command="{Binding SwitchViewModelCommand}" CommandParameter="dashboardviewmodel" Grid.Row="1" Content="Dashboard" Height="50">
+                    <RadioButton IsChecked="True" Command="{Binding SwitchViewModelCommand}" CommandParameter="dashboardviewmodel" Grid.Row="1" Content="Dashboard" Height="50">
                         <RadioButton.Style>
                             <Style TargetType="{x:Type RadioButton}">
                                 <Setter Property="Cursor" Value="Hand" />
