@@ -18,6 +18,12 @@
     <Compile Update="Controls\ServerModules\ServerModule.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Dashboard\AnalyticsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Dashboard\SettingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Pages\MainDashboardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +48,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dashboard\AnalyticsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dashboard\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\MainDashboardPage.xaml">

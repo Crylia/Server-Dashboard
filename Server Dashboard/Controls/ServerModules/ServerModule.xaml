@@ -7,7 +7,7 @@
              xmlns:halfroundprogressbar="clr-namespace:Server_Dashboard.Controls.HalfRoundProgressBar"
              xmlns:doubleroundprogressbar="clr-namespace:Server_Dashboard.Controls.DoubleRoundProgressBar" mc:Ignorable="d">
     <!--Module-->
-    <Button>
+    <Button Cursor="Hand">
         <Button.Style>
             <Style TargetType="Button">
                 <Setter Property="Template">

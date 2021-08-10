@@ -167,24 +167,25 @@ namespace Server_Dashboard {
 
                     default:
                         //Sets the error text
-                        ErrorText = "An unknown error has occured";
+                        ErrorText = "An unknown error has occurred";
                         return;
                 }
                 //If the Username and password is blank
                 //All these IF's could be one but i made multiple for the different errors so the user knows whats wrong
-            } else if (String.IsNullOrWhiteSpace(Username) && String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
+            }
+            if (string.IsNullOrWhiteSpace(Username) && string.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 //Sets the error text
                 ErrorText = "Please provide a username and password";
                 return;
             }
             //Only if the Username is empty
-            if (String.IsNullOrWhiteSpace(Username)) {
+            if (string.IsNullOrWhiteSpace(Username)) {
                 //Sets the error text
                 ErrorText = "Username cannot be empty.";
                 return;
             }
             //Only if the password is empty
-            if (String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
+            if (string.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 //Sets the error text
                 ErrorText = "Password cannot be empty.";
                 return;

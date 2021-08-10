@@ -98,7 +98,7 @@
                         </TextBlock>
                     </Grid>
                 </StackPanel>
-                <!--IP Adress-->
+                <!--IP Address-->
                 <StackPanel VerticalAlignment="Center" Grid.Row="2" Margin="20 0 20 0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="IP Address" FontSize="24" Margin="0 0 0 5">
@@ -112,7 +112,7 @@
                         <Grid.Effect>
                             <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
                         </Grid.Effect>
-                        <TextBox Text="{Binding IpAddress}" Height="40" FontSize="20" />
+                        <TextBox Text="{Binding IpAddress}" Height="40" FontSize="20" x:Name="IpAddress" />
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="sample.ssh.com" FontSize="20" Visibility="{Binding ElementName=IpAddress, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="White" Opacity="0.12" />
@@ -162,7 +162,7 @@
                                                         </Rectangle.Fill>
                                                     </Rectangle>
                                                     <Border CornerRadius="100" Background="{StaticResource BackgroundSurface_04dp}" Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
-                                                        <svgc:SvgViewbox IsHitTestVisible="False" Source="../../../Assets/Images/AddIcon.svg" Opacity="1" />
+                                                        <svgc:SvgViewbox IsHitTestVisible="False" Source="../../../Assets/Images/AddIcon.svg" Opacity="0.87" />
                                                     </Border>
                                                 </Grid>
                                             </Border>

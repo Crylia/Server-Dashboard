@@ -57,3 +57,7 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.baml
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Pages\MainDashboardPage.baml
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\AnalyticsPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\SettingsPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\AnalyticsPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\SettingsPage.baml

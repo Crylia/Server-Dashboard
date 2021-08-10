@@ -4,12 +4,20 @@
              xmlns:local="clr-namespace:Server_Dashboard"
              xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
              xmlns:modulescrud="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
+             xmlns:dashboardviews="clr-namespace:Server_Dashboard.Views.Dashboard"
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
 
         <!--View Templates-->
-        <DataTemplate x:Key="MainDashboardView" DataType="{x:Type local:DashboardViewModel}">
+        <DataTemplate DataType="{x:Type local:DashboardViewModel}">
             <views:MainDashboardPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AnalyticsViewModel}">
+            <dashboardviews:AnalyticsPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:SettingsViewModel}">
+            <dashboardviews:SettingsPage />
         </DataTemplate>
         <DataTemplate x:Key="CreateModuleView" DataType="{x:Type local:DashboardViewModel}">
             <modulescrud:CreateModulePopup />
@@ -248,7 +256,6 @@
             <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Effect">
                 <Setter.Value>

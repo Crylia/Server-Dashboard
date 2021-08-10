@@ -9,68 +9,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!--Dashboard and Options-->
+        <!--ItemsControl list for the Dashboard modules-->
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="{StaticResource BackgroundSurface_02dp}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Navigation" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.67" />
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <Button Grid.Row="1" Content="PLACEHOLDER" Height="50" Margin="5 10 5 0" Cursor="Hand" />
-                    <Button Grid.Row="2" Content="PLACEHOLDER" Height="50" Margin="5 10 5 0" Cursor="Hand" />
-                    <Button Grid.Row="3" Content="PLACEHOLDER" Height="50" Margin="5 10 5 0" Cursor="Hand" />
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Module" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.67" />
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <Button Grid.Row="1" Command="{Binding OpenNewModuleWindowCommand}"  Content="New Module" Height="50" Margin="5 10 5 0" Cursor="Hand" />
-                    <Button Grid.Row="2" Command="{Binding OpenDeleteModuleWindowCommand}" Content="Remove Module" Height="50" Margin="5 10 5 0" Cursor="Hand" />
-                    <Button Grid.Row="3" Command="{Binding OpenUpdateModuleWindowCommand}" Content="Change Module" Height="50" Margin="5 10 5 0" Cursor="Hand" />
-                </Grid>
-            </Grid>
-            <!--ItemsControl list for the Dashboard modules-->
-            <Grid Grid.Column="1">
-                <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                    <ItemsControl ItemsSource="{Binding Modules}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Left" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <controls:ServerModule />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <ItemsControl ItemsSource="{Binding Modules}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:ServerModule />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </UserControl>

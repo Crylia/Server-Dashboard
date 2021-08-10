@@ -6,51 +6,52 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Server_Dashboard"
         xmlns:loading="clr-namespace:Server_Dashboard.Controls"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         x:Name="Login"
         mc:Ignorable="d"
         Title="Server Dashboard"
         Height="700" Width="500" WindowStyle="None" Background="Transparent" ResizeMode="CanResize" local:CloseProperty.Value="True">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0" />
     </WindowChrome.WindowChrome>
     <Window.DataContext>
-        <local:LoginViewModel/>
+        <local:LoginViewModel />
     </Window.DataContext>
     <!--#region Login forms main container-->
     <Border Background="{StaticResource BackgroundSurface_00dp}">
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height=".3*"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height=".3*" />
             </Grid.RowDefinitions>
             <!--#region Custom title bar-->
             <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="0" Grid.ColumnSpan="2">
                 <Grid.Effect>
-                    <DropShadowEffect Direction="270" ShadowDepth="0" BlurRadius="5"/>
+                    <DropShadowEffect Direction="270" ShadowDepth="0" BlurRadius="5" />
                 </Grid.Effect>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Login" Margin="5 0 0 0" Foreground="{StaticResource DeepPurple_A100}" VerticalAlignment="Center">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBlock>
-                <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
+                <Button Style="{StaticResource CloseButton}" Grid.Column="1" Content="✕">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
-                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
@@ -58,38 +59,46 @@
             <!--#endregion-->
             <!--#region Greeting text-->
             <Border Height="100" BorderBrush="{StaticResource DeepPurple_400}" BorderThickness="0 2 0 2" Background="{StaticResource BackgroundSurface_00dp}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0 0 0 10">
-                <StackPanel VerticalAlignment="Center" Margin="0 0 0 5" >
+                <StackPanel VerticalAlignment="Center" Margin="0 0 0 5">
                     <TextBlock Text="Server Dashboard" FontSize="30" HorizontalAlignment="Center">
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.64"/>
+                            <SolidColorBrush Color="White" Opacity="0.64" />
                         </TextBlock.Foreground>
                     </TextBlock>
                     <TextBlock Text="Login" FontSize="30" HorizontalAlignment="Center">
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.64"/>
+                            <SolidColorBrush Color="White" Opacity="0.64" />
                         </TextBlock.Foreground>
                     </TextBlock>
                 </StackPanel>
             </Border>
             <UserControl Grid.Row="2" Visibility="{Binding Loading}">
-                <loading:LoadingIndicator/>
+                <loading:LoadingIndicator />
             </UserControl>
             <!--#endregion-->
             <!--#region Username form-->
             <Border CornerRadius="4" Margin="0 10 0 10" Width="350" Height="60" Background="{StaticResource BackgroundSurface_01dp}" Grid.Row="3" Grid.ColumnSpan="2">
                 <Border.Effect>
-                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
                 </Border.Effect>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Height="30" Source="Assets/Images/userlogin.png"/>
-                    <TextBox Text="{Binding Username}" x:Name="UserName" Grid.Column="1" Margin="0 0 5 0"/>
+                    <Viewbox Grid.Column="0" Width="30" Height="30">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z">
+                                <Path.Fill>
+                                    <SolidColorBrush Color="White" Opacity="0.38" />
+                                </Path.Fill>
+                            </Path>
+                        </Canvas>
+                    </Viewbox>
+                    <TextBox Text="{Binding Username}" x:Name="UserName" Grid.Column="1" Margin="0 0 5 0" />
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Username" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False">
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.12"/>
+                            <SolidColorBrush Color="White" Opacity="0.12" />
                         </TextBlock.Foreground>
                     </TextBlock>
                 </Grid>
@@ -98,49 +107,57 @@
             <!--#region Password form-->
             <Border Margin="0 10 0 10" Background="{StaticResource BackgroundSurface_01dp}" Grid.Row="4" Grid.ColumnSpan="2" Width="350" CornerRadius="4" Padding="0 0 5 0">
                 <Border.Effect>
-                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
                 </Border.Effect>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Height="30" Source="Assets/Images/userpasswd.png"/>
+                    <Viewbox Grid.Column="0" Width="30" Height="30">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z">
+                                <Path.Fill>
+                                    <SolidColorBrush Color="White" Opacity="0.38" />
+                                </Path.Fill>
+                            </Path>
+                        </Canvas>
+                    </Viewbox>
                     <PasswordBox Width="290" Height="60" local:MonitorPasswordProperty.Value="True" Grid.Column="1" x:Name="Password">
                         <PasswordBox.InputBindings>
-                            <KeyBinding Key="Return" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}"/>
+                            <KeyBinding Key="Return" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}" />
                         </PasswordBox.InputBindings>
                     </PasswordBox>
                     <TextBlock Visibility="{Binding ElementName=Password, Path=(local:HasTextProperty.Value), Converter={StaticResource UserNameVisibillity}}" x:Name="PasswordHint" Text="Password" Grid.Column="1" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <TextBlock.InputBindings>
-                            <KeyBinding Key="Return" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}"/>
+                            <KeyBinding Key="Return" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}" />
                         </TextBlock.InputBindings>
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.12"/>
+                            <SolidColorBrush Color="White" Opacity="0.12" />
                         </TextBlock.Foreground>
                     </TextBlock>
                 </Grid>
             </Border>
             <!--#endregion-->
             <!--#region Login button-->
-            <Button Height="60" Width="350" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}" Grid.Row="5" Content="LOGIN" Grid.ColumnSpan="2"/>
+            <Button Height="60" Width="350" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}" Grid.Row="5" Content="LOGIN" Grid.ColumnSpan="2" />
             <!--#endregion-->
             <!--#region Error text-->
-            <TextBlock Text="{Binding ErrorText}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" Foreground="{StaticResource ErrorRed}" FontSize="14"/>
+            <TextBlock Text="{Binding ErrorText}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" Foreground="{StaticResource ErrorRed}" FontSize="14" />
             <!--#endregion-->
 
             <!--#region Remember me and Password forgotten link-->
             <Grid Grid.Row="7">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <CheckBox IsChecked="{Binding RememberUser}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="75 0 0 0"/>
+                <CheckBox IsChecked="{Binding RememberUser}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="75 0 0 0" />
                 <TextBlock Grid.Column="1" Text="Remember me?" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
                     <TextBlock.Foreground>
-                        <SolidColorBrush Color="White" Opacity="0.64"/>
+                        <SolidColorBrush Color="White" Opacity="0.64" />
                     </TextBlock.Foreground>
                 </TextBlock>
                 <TextBlock Grid.Column="3" FontSize="14" Margin="0 0 75 0" VerticalAlignment="Center" HorizontalAlignment="Right">
@@ -149,7 +166,7 @@
                         Forgot password
                     </Hyperlink>
                     <TextBlock.Foreground>
-                        <SolidColorBrush Color="White" Opacity="0.64"/>
+                        <SolidColorBrush Color="White" Opacity="0.64" />
                     </TextBlock.Foreground>
                 </TextBlock>
             </Grid>
@@ -159,10 +176,10 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Don't have an account?" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.64"/>
+                            <SolidColorBrush Color="White" Opacity="0.64" />
                         </TextBlock.Foreground>
                     </TextBlock>
-                    <Button Command="{Binding RegisterCommand}" Content="REGISTER" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Height="30" Width="80" Margin="10 0 0 0"/>
+                    <Button Command="{Binding RegisterCommand}" Content="REGISTER" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Height="30" Width="80" Margin="10 0 0 0" />
                 </StackPanel>
             </Grid>
             <!--#endregion-->

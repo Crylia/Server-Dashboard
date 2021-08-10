@@ -18,6 +18,13 @@ namespace Server_Dashboard {
 
         #endregion Private Values
 
+        #region Public Values
+
+        public SettingsViewModel SettingsViewModel { get; set; }
+        public AnalyticsViewModel AnalyticsViewModel { get; set; }
+
+        #endregion Public Values
+
         #region Properties
 
         //The Username displayed defaults to Username
@@ -44,6 +51,17 @@ namespace Server_Dashboard {
             }
         }
 
+        private object currentView;
+
+        public object CurrentView {
+            get => currentView;
+            set {
+                if (value != currentView)
+                    currentView = value;
+                OnPropertyChanged(nameof(currentView));
+            }
+        }
+
         #endregion Properties
 
         #region Constructor
@@ -52,6 +70,10 @@ namespace Server_Dashboard {
             //Command init
             OpenLinkCommand = new RelayCommand(OpenLink);
             OpenNewModuleWindowCommand = new RelayCommand(OpenNewModuleWindow);
+            SwitchViewModelCommand = new RelayCommand(SwitchViewModel);
+            AnalyticsViewModel = new AnalyticsViewModel();
+            SettingsViewModel = new SettingsViewModel();
+            CurrentView = this;
 
             DataTable userData = DatabaseHandler.GetUserData(username);
             User = new User(userData);
@@ -64,16 +86,33 @@ namespace Server_Dashboard {
 
         public ICommand OpenLinkCommand { get; set; }
         public ICommand OpenNewModuleWindowCommand { get; set; }
+        public ICommand SwitchViewModelCommand { get; set; }
 
         #endregion ICommands
 
         #region Commands
 
+        private void SwitchViewModel(object param) {
+            switch (param) {
+                case "settingsviewmodel":
+                    CurrentView = SettingsViewModel;
+                    break;
+
+                case "analyticsviewmodel":
+                    CurrentView = AnalyticsViewModel;
+                    break;
+
+                case "dashboardviewmodel":
+                    CurrentView = this;
+                    break;
+            }
+        }
+
         /// <summary>
         /// Opens a given link in the default browser
         /// </summary>
         /// <param name="param">The Link to be opened e.g. https://github.com/Crylia/Server-Dashboard </param>
-        private static void OpenLink(object param) => Process.Start(new ProcessStartInfo((string)param) { UseShellExecute = true });
+        private void OpenLink(object param) => Process.Start(new ProcessStartInfo((string)param) { UseShellExecute = true });
 
         /// <summary>
         /// Creates a new window to create a new Module
