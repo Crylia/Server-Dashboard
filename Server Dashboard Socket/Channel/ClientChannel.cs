@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server_Dashboard_Socket {
+
     /// <summary>
     /// Client Socket
     /// </summary>
     /// <typeparam name="TProtocol">The Protocol type, either JsonMessageProtocol or XmlMessageProtocol</typeparam>
     /// <typeparam name="TMessageType">The message type, either JObject or XDocument</typeparam>
     public class ClientChannel<TProtocol, TMessageType> : SocketChannel<TProtocol, TMessageType>
-        where TProtocol : Protocol<TMessageType>, new(){
+        where TProtocol : Protocol<TMessageType>, new() {
 
         /// <summary>
         /// Connect to the socket async

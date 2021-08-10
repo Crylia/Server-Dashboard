@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <root:ValueToAngleConverter x:Key="valueToAngle" />
     </UserControl.Resources>
-    <!--Circular Prograss bar-->
+    <!--Circular Progress bar-->
     <Grid>
         <Ellipse x:Name="Background" Fill="{Binding ElementName=_this, Path=BackgroundBrush}" Margin="0" Stroke="{Binding ElementName=_this, Path=BackgroundBrush}" />
         <ed:Arc ArcThickness="8" ArcThicknessUnit="Pixel" EndAngle="{Binding Converter={StaticResource valueToAngle}, ElementName=_this, Path=ValueRead}"  Fill="{Binding ElementName=_this, Path=ReadIndicatorBrush}" Stretch="None"  StartAngle="0" />

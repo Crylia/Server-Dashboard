@@ -9,35 +9,35 @@
         d:DataContext="{d:DesignInstance Type=root:DashboardModuleViewModel}"
         mc:Ignorable="d" ResizeMode="NoResize" Height="700" Width="500" d:WindowStyle="None" ap:CloseProperty.Value="True">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0" />
     </WindowChrome.WindowChrome>
     <!--Create new Server Form-->
     <Border Width="500" Height="700">
         <Border.Background>
-            <SolidColorBrush Color="#2D2D2D" Opacity="1"/>
+            <SolidColorBrush Color="#2D2D2D" Opacity="1" />
         </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <!--Title Bar-->
             <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Create a new Server" Margin="5 0 0 0" Foreground="{StaticResource DeepPurple_A100}" VerticalAlignment="Center">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBlock>
-                <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
+                <Button Style="{StaticResource CloseButton}" Grid.Column="1" Content="✕">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
-                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
@@ -45,34 +45,34 @@
             <!--Main Content-->
             <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1" Margin="20">
                 <Grid.Effect>
-                    <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
+                    <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
                 </Grid.Effect>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <!--Server Name-->
                 <StackPanel VerticalAlignment="Center" Grid.Row="0" Margin="20 0 20 0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Module Name" FontSize="24" Margin="0 0 0 5">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.87"/>
+                                <SolidColorBrush Color="White" Opacity="0.87" />
                             </TextBlock.Foreground>
                         </TextBlock>
                     </StackPanel>
                     <Grid>
                         <Grid.Effect>
-                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
                         </Grid.Effect>
-                        <TextBox Text="{Binding ModuleName}" Grid.Column="1" Height="40" FontSize="20" x:Name="ServerName"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="My Awesome Server" FontSize="20" Visibility="{Binding ElementName=ServerName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
+                        <TextBox Text="{Binding ModuleName}" Height="40" FontSize="20" x:Name="ServerName" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="My Awesome Server" FontSize="20" Visibility="{Binding ElementName=ServerName, PresentationTraceSources.TraceLevel=High, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.12"/>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
                             </TextBlock.Foreground>
                         </TextBlock>
                     </Grid>
@@ -82,18 +82,18 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Server Name" FontSize="24" Margin="0 0 0 5">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.87"/>
+                                <SolidColorBrush Color="White" Opacity="0.87" />
                             </TextBlock.Foreground>
                         </TextBlock>
                     </StackPanel>
                     <Grid>
                         <Grid.Effect>
-                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
                         </Grid.Effect>
-                        <TextBox Text="{Binding ServerName}" Grid.Column="1" Height="40" FontSize="20" x:Name="UserName"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Name" FontSize="20" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
+                        <TextBox Text="{Binding ServerName}" Height="40" FontSize="20" x:Name="UserName" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Name" FontSize="20" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.12"/>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
                             </TextBlock.Foreground>
                         </TextBlock>
                     </Grid>
@@ -101,21 +101,21 @@
                 <!--IP Adress-->
                 <StackPanel VerticalAlignment="Center" Grid.Row="2" Margin="20 0 20 0">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="IP Adress" FontSize="24" Margin="0 0 0 5">
+                        <TextBlock Text="IP Address" FontSize="24" Margin="0 0 0 5">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.87"/>
+                                <SolidColorBrush Color="White" Opacity="0.87" />
                             </TextBlock.Foreground>
                         </TextBlock>
-                        <TextBlock Text="*" Foreground="{StaticResource ErrorRed}" FontSize="16"/>
+                        <TextBlock Text="*" Foreground="{StaticResource ErrorRed}" FontSize="16" />
                     </StackPanel>
                     <Grid>
                         <Grid.Effect>
-                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
                         </Grid.Effect>
-                        <TextBox Text="{Binding IPAdress}" Grid.Column="1" Height="40" FontSize="20" x:Name="IPAdress"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="sample.ssh.com" FontSize="20" Visibility="{Binding ElementName=IPAdress, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
+                        <TextBox Text="{Binding IpAddress}" Height="40" FontSize="20" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="sample.ssh.com" FontSize="20" Visibility="{Binding ElementName=IpAddress, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.12"/>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
                             </TextBlock.Foreground>
                         </TextBlock>
                     </Grid>
@@ -124,17 +124,17 @@
                 <StackPanel VerticalAlignment="Center" Grid.Row="3" Margin="20 0 20 0">
                     <TextBlock Text="Port" FontSize="24" Margin="0 0 0 5">
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="White" Opacity="0.87"/>
+                            <SolidColorBrush Color="White" Opacity="0.87" />
                         </TextBlock.Foreground>
                     </TextBlock>
                     <Grid>
                         <Grid.Effect>
-                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0"/>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
                         </Grid.Effect>
-                        <TextBox Text="{Binding Port}" Grid.Column="1" Height="40" FontSize="20" x:Name="Port"/>
+                        <TextBox Text="{Binding Port}" Height="40" FontSize="20" x:Name="Port" />
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="22" FontSize="20" Visibility="{Binding ElementName=Port, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
                             <TextBlock.Foreground>
-                                <SolidColorBrush Color="White" Opacity="0.12"/>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
                             </TextBlock.Foreground>
                         </TextBlock>
                     </Grid>
@@ -142,8 +142,8 @@
                 <!--Module Icon-->
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="102"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="102" />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Button Cursor="Hand" Command="{Binding SelectIconCommand}" HorizontalAlignment="Left" Margin="20 0 20 0" Height="62" Width="62">
                         <Button.Style>
@@ -153,21 +153,20 @@
                                         <ControlTemplate TargetType="{x:Type Button}">
                                             <Border CornerRadius="4" x:Name="Border" Background="{StaticResource BackgroundSurface_04dp}" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
                                                 <Border.Effect>
-                                                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5"/>
+                                                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
                                                 </Border.Effect>
                                                 <Grid>
                                                     <Rectangle RadiusX="4" RadiusY="4">
                                                         <Rectangle.Fill>
-                                                            <ImageBrush ImageSource="{Binding ModuleIcon}"/>
+                                                            <ImageBrush ImageSource="{Binding ModuleIcon}" />
                                                         </Rectangle.Fill>
                                                     </Rectangle>
                                                     <Border CornerRadius="100" Background="{StaticResource BackgroundSurface_04dp}" Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
-                                                        <svgc:SvgViewbox IsHitTestVisible="False" Source="../../../Assets/Images/AddIcon.svg" Opacity="1"/>
+                                                        <svgc:SvgViewbox IsHitTestVisible="False" Source="../../../Assets/Images/AddIcon.svg" Opacity="1" />
                                                     </Border>
                                                 </Grid>
                                             </Border>
                                             <ControlTemplate.Triggers>
-
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -175,22 +174,22 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Command="{Binding RemoveIconCommand}" HorizontalAlignment="Left" Grid.Column="1" Content="Remove Icon" Height="40" Width="150"/>
+                    <Button Command="{Binding RemoveIconCommand}" HorizontalAlignment="Left" Grid.Column="1" Content="Remove Icon" Height="40" Width="150" />
                 </Grid>
                 <!--Error Text / Test Connection Result-->
                 <TextBlock Text="{Binding UserInformationMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5" FontSize="14">
                     <TextBlock.Foreground>
-                        <SolidColorBrush Color="#64FFDA" Opacity="0.64"/>
+                        <SolidColorBrush Color="#64FFDA" Opacity="0.64" />
                     </TextBlock.Foreground>
                 </TextBlock>
                 <!--Create Module button-->
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Margin="20 0 10 0" Height="60" Width="Auto" Command="{Binding CreateModuleCommand}" CommandParameter="{Binding ElementName=CREATE_MODULE}" Content="CREATE MODULE" Grid.Column="0"/>
-                    <Button Margin="10 0 20 0" Height="60" Width="Auto" Command="{Binding TestConnectionCommand}" Content="TEST CONNECTION" Grid.Column="1"/>
+                    <Button Margin="20 0 10 0" Height="60" Width="Auto" Command="{Binding CreateModuleCommand}" CommandParameter="{Binding ElementName=CREATE_MODULE}" Content="CREATE MODULE" Grid.Column="0" />
+                    <Button Margin="10 0 20 0" Height="60" Width="Auto" Command="{Binding TestConnectionCommand}" Content="TEST CONNECTION" Grid.Column="1" />
                 </Grid>
             </Grid>
         </Grid>

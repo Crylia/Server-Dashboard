@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Server_Dashboard.Views"
-        xmlns:root="clr-namespace:Server_Dashboard"
         xmlns:views="clr-namespace:Server_Dashboard.Views.DashboardPages"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
@@ -32,7 +30,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>
-            <Button Style="{StaticResource CloseButton}" Grid.Column="2" Content="✕" Cursor="Hand">
+            <Button Style="{StaticResource CloseButton}" Grid.Column="1" Content="✕">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
@@ -41,7 +39,7 @@
             </Button>
         </Grid>
         <!--Settings, Docs, User, links etc-->
-        <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1" x:Name="TopBarGrid">
+        <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1">
             <Grid.Effect>
                 <DropShadowEffect Direction="270" BlurRadius="5" />
             </Grid.Effect>
@@ -198,7 +196,7 @@
             </Button>
         </Grid>
         <!--UserControl Container for the Dashboard pages-->
-        <UserControl Grid.Row="3">
+        <UserControl Grid.Row="2">
             <views:MainDashboardPage />
         </UserControl>
     </Grid>

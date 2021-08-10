@@ -12,10 +12,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Server_Dashboard.Views.DashboardPages {
+
     /// <summary>
     /// Interaktionslogik für MainDashboardPage.xaml
     /// </summary>
     public partial class MainDashboardPage : UserControl {
+
         public MainDashboardPage() {
             InitializeComponent();
         }

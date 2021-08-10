@@ -29,7 +29,7 @@ namespace Server_Dashboard {
         public DateTime CreationDate { get; set; }
 
         //List that contains all the serverinformation over a period of time(lifespan of the module)
-        public List<ServerInformation> ServerInformation { get; set; }
+        public ServerInformation ServerInformation { get; set; }
 
         /// <summary>
         /// This will set the Module status indicator red or green if the server is available or not

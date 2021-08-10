@@ -7,21 +7,21 @@ using System.IO;
 using System.Text;
 
 namespace Server_Dashboard_Socket.Protocol {
+
     /// <summary>
     /// Json serializer class
     /// </summary>
     public class JsonMessageProtocol : Protocol<JObject> {
 
         //The Json serializer and the settings
-        static readonly JsonSerializer serializer;
-        static readonly JsonSerializerSettings settings;
+        private static readonly JsonSerializer serializer;
 
         /// <summary>
         /// Settings for the Json Serializer
         /// </summary>
         static JsonMessageProtocol() {
             //Set the settings
-            settings = new JsonSerializerSettings {
+            JsonSerializerSettings settings = new JsonSerializerSettings {
                 Formatting = Formatting.Indented,
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc,
                 ContractResolver = new DefaultContractResolver {
@@ -34,6 +34,7 @@ namespace Server_Dashboard_Socket.Protocol {
             //Creates the serializer with the settings
             serializer = JsonSerializer.Create(settings);
         }
+
         //Decode the message, to Json
         protected override JObject Decode(byte[] message) => JObject.Parse(Encoding.UTF8.GetString(message));
 

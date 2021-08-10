@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
 
 namespace Server_Dashboard_Socket {
+
     public class SocketClient {
 
         public SocketClient() {
@@ -22,7 +23,7 @@ namespace Server_Dashboard_Socket {
         }
 
         private async void Start() {
-            //Creates a new endpoint with the IP adress and port
+            //Creates a new endpoint with the IP address and port
             var endpoint = new IPEndPoint(IPAddress.Loopback, 9000);
 
             //Creates a new Channel for the Json protocol
@@ -50,16 +51,17 @@ namespace Server_Dashboard_Socket {
         /// </summary>
         /// <param name="jobject">The json to be converted back</param>
         /// <returns>Task completed</returns>
-        static Task OnMessage(JObject jobject) {
+        private static Task OnMessage(JObject jobject) {
             Console.WriteLine(Convert(jobject));
             return Task.CompletedTask;
         }
+
         /// <summary>
         /// When it receives a message it gets converted from XDocument back to MyMessage
         /// </summary>
         /// <param name="xDocument">The xml to be converted back</param>
         /// <returns>Task completed</returns>
-        static Task OnMessage(XDocument xDocument) {
+        private static Task OnMessage(XDocument xDocument) {
             Console.WriteLine(Convert(xDocument));
             return Task.CompletedTask;
         }
@@ -69,14 +71,14 @@ namespace Server_Dashboard_Socket {
         /// </summary>
         /// <param name="jObject">The json to be converted</param>
         /// <returns>MyMessage object</returns>
-        static MyMessage Convert(JObject jObject) => jObject.ToObject(typeof(MyMessage)) as MyMessage;
+        private static MyMessage Convert(JObject jObject) => jObject.ToObject(typeof(MyMessage)) as MyMessage;
 
         /// <summary>
         /// Converts XDocument to MyMessage
         /// </summary>
         /// <param name="xmlDocument">The xml to be converted</param>
         /// <returns>MyMessage object</returns>
-        static MyMessage Convert(XDocument xmlDocument) => new XmlSerializer(typeof(MyMessage)).Deserialize(new StringReader(xmlDocument.ToString())) as MyMessage;
+        private static MyMessage Convert(XDocument xmlDocument) => new XmlSerializer(typeof(MyMessage)).Deserialize(new StringReader(xmlDocument.ToString())) as MyMessage;
     }
 
     /// <summary>

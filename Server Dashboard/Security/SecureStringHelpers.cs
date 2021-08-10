@@ -5,10 +5,12 @@ using System.Security;
 using System.Text;
 
 namespace Server_Dashboard {
+
     /// <summary>
     /// Secure string helper class to unsecure the Password b4 it goes to the database
     /// </summary>
     public static class SecureStringHelpers {
+
         //Unsecures a given password
         public static string Unsecure(this SecureString secureString) {
             //If empty return nothing

@@ -81,11 +81,11 @@ namespace Server_Dashboard {
             LoginCommand = new RelayCommand(LoginAsync);
             //Checks if the Username and Cookie is saved in the Settings.settings
             if (!String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
-                //Takes the saved Username and Remember me button status and prefills the username and checks the Remember me button
+                //Takes the saved Username and Remember me button status and pre fills the username and checks the Remember me button
                 Username = Settings.Default.Username;
                 RememberUser = Settings.Default.RememberMe;
             }
-            //TODO: Autologin
+            //TODO: Auto login
             //AutoLoginAsync();
         }
 
@@ -108,7 +108,7 @@ namespace Server_Dashboard {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 //Sets loading to true to show the loading icon
                 Loading = "Visible";
-                //Sends the Username and Password to the database and saved the result, 1 successfull, 0 wrong username or password
+                //Sends the Username and Password to the database and saved the result, 1 successful, 0 wrong username or password
                 int result = await Task.Run(() => DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure()));
                 //hides the loading again
                 Loading = "Hidden";
@@ -142,7 +142,7 @@ namespace Server_Dashboard {
                         //If the remember user option is checked and the cookie is not set save everything locally
                         if (RememberUser && Settings.Default.Username != Username) {
                             //Creates a new GUID with the username at the end, this is the cookie
-                            var cookie = $"{Guid.NewGuid().ToString()}+user:{Username}";
+                            var cookie = $"{Guid.NewGuid()}+user:{Username}";
                             //Saves cookie, Username Remember me option to the local storage (Settings.settings)
                             Settings.Default.Cookies = cookie;
                             Settings.Default.Username = Username;
@@ -197,7 +197,7 @@ namespace Server_Dashboard {
 
         #region private functions
 
-        //TODO: Add autologin function that locks the UI untill the user hits the abort button or the login completes
+        //TODO: Add auto login function that locks the UI until the user hits the abort button or the login completes
         /*private async void AutoLoginAsync() {
             if (Settings.Default.RememberMe && !String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
                 Loading = "Visible";

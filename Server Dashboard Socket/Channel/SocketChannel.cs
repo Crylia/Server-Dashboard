@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Server_Dashboard_Socket {
+
     /// <summary>
     /// Generic Channel class that handles the connection and message sending / receiving
     /// Inherits IDisposable to correctly cut the connection to the server
@@ -14,13 +15,12 @@ namespace Server_Dashboard_Socket {
     /// <typeparam name="TMessageType">The message type, either JObject or XDocument</typeparam>
     public abstract class SocketChannel<TProtocol, TMessageType> : IDisposable
         where TProtocol : Protocol<TMessageType>, new() {
-
         protected bool isDisposable = false;
-        NetworkStream networkStream;
-        readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        readonly TProtocol protocol = new TProtocol();
+        private NetworkStream networkStream;
+        private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private readonly TProtocol protocol = new TProtocol();
 
-        Func<TMessageType, Task> messageCallback;
+        private Func<TMessageType, Task> messageCallback;
 
         /// <summary>
         /// Attaches the socket to a network stream that owns the socket
@@ -69,10 +69,12 @@ namespace Server_Dashboard_Socket {
         /// Deconstructor sets Dispose to false
         /// </summary>
         ~SocketChannel() => Dispose(false);
+
         /// <summary>
         /// Sets dispose to true
         /// </summary>
         public void Dispose() => Dispose(true);
+
         /// <summary>
         /// Disposes open sockets
         /// </summary>
@@ -86,7 +88,7 @@ namespace Server_Dashboard_Socket {
                 Close();
                 //If its closed, dispose it
                 networkStream?.Dispose();
-                //Wait with the garbage collection untill the disposing is done
+                //Wait with the garbage collection until the disposing is done
                 if (isDisposing)
                     GC.SuppressFinalize(this);
             }

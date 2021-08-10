@@ -4,10 +4,12 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace Server_Dashboard_Socket {
+
     /// <summary>
     /// Basic echo server to test the socket connection
     /// </summary>
     public class EchoServer {
+
         /// <summary>
         /// Start the socket on 127.0.0.1:9000
         /// </summary>
@@ -32,25 +34,24 @@ namespace Server_Dashboard_Socket {
         /// <returns>poop</returns>
         private async Task DoEcho(Socket socket) {
             while (true) {
-                //Listen for incomming connection requests and accept them
+                //Listen for incoming connection requests and accept them
                 Socket clientSocket = await Task.Factory.FromAsync(
                     new Func<AsyncCallback, object, IAsyncResult>(socket.BeginAccept),
                     new Func<IAsyncResult, Socket>(socket.EndAccept),
                     null).ConfigureAwait(false);
                 //Create a network stream and make it the owner of the socket
                 //This will close the socket if the stream is closed and vice verca
-                using(NetworkStream stream = new NetworkStream(clientSocket, true)) {
-                    //New buffer for the message in bytes
-                    byte[] buffer = new byte[1024];
-                    while (true) {
-                        //Read everything that somes in
-                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
-                        //If its 0 just leave since its a obscolete connection
-                        if (bytesRead == 0)
-                            break;
-                        //Send it back to the sender
-                        await stream.WriteAsync(buffer, 0, bytesRead).ConfigureAwait(false);
-                    }
+                await using NetworkStream stream = new NetworkStream(clientSocket, true);
+                //New buffer for the message in bytes
+                byte[] buffer = new byte[1024];
+                while (true) {
+                    //Read everything that comes in
+                    int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                    //If its 0 just leave since its a obsolete connection
+                    if (bytesRead == 0)
+                        break;
+                    //Send it back to the sender
+                    await stream.WriteAsync(buffer, 0, bytesRead).ConfigureAwait(false);
                 }
             }
         }

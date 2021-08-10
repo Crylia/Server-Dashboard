@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
 
@@ -20,51 +10,51 @@ namespace Server_Dashboard.Controls.DoubleRoundProgressBar {
     public partial class DoubleRoundProgressBar : UserControl {
 
         //Property for the ReadIndicatorBrush
-        public static DependencyProperty ReadIndicatorBrushProperty = DependencyProperty.Register("ReadIndicatorBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+        public static readonly DependencyProperty ReadIndicatorBrushProperty = DependencyProperty.Register("ReadIndicatorBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
 
         public Brush ReadIndicatorBrush {
-            get { return (Brush)GetValue(ReadIndicatorBrushProperty); }
-            set { SetValue(ReadIndicatorBrushProperty, value); }
+            get => (Brush)GetValue(ReadIndicatorBrushProperty);
+            set => SetValue(ReadIndicatorBrushProperty, value);
         }
 
         //Property for the WriteIndicatorBrush
-        public static DependencyProperty WriteIndicatorBrushProperty = DependencyProperty.Register("WriteIndicatorBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+        public static readonly DependencyProperty WriteIndicatorBrushProperty = DependencyProperty.Register("WriteIndicatorBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
 
         public Brush WriteIndicatorBrush {
-            get { return (Brush)GetValue(WriteIndicatorBrushProperty); }
-            set { SetValue(WriteIndicatorBrushProperty, value); }
+            get => (Brush)GetValue(WriteIndicatorBrushProperty);
+            set => SetValue(WriteIndicatorBrushProperty, value);
         }
 
         //Property for the BackgroundBrush
-        public static DependencyProperty BackgroundBrushProperty = DependencyProperty.Register("BackgroundBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+        public static readonly DependencyProperty BackgroundBrushProperty = DependencyProperty.Register("BackgroundBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
 
         public Brush BackgroundBrush {
-            get { return (Brush)GetValue(BackgroundBrushProperty); }
-            set { SetValue(BackgroundBrushProperty, value); }
+            get => (Brush)GetValue(BackgroundBrushProperty);
+            set => SetValue(BackgroundBrushProperty, value);
         }
 
         //Property for the ProgressBorderBrush
-        public static DependencyProperty ProgressBorderBrushProperty = DependencyProperty.Register("ProgressBorderBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
+        public static readonly DependencyProperty ProgressBorderBrushProperty = DependencyProperty.Register("ProgressBorderBrush", typeof(Brush), typeof(DoubleRoundProgressBar));
 
         public Brush ProgressBorderBrush {
-            get { return (Brush)GetValue(ProgressBorderBrushProperty); }
-            set { SetValue(ProgressBorderBrushProperty, value); }
+            get => (Brush)GetValue(ProgressBorderBrushProperty);
+            set => SetValue(ProgressBorderBrushProperty, value);
         }
 
         //Property for the Value Write
-        public static DependencyProperty ValueWriteProperty = DependencyProperty.Register("ValueWrite", typeof(int), typeof(DoubleRoundProgressBar));
+        public static readonly DependencyProperty ValueWriteProperty = DependencyProperty.Register("ValueWrite", typeof(int), typeof(DoubleRoundProgressBar));
 
         public int ValueWrite {
-            get { return (int)GetValue(ValueWriteProperty); }
-            set { SetValue(ValueWriteProperty, value); }
+            get => (int)GetValue(ValueWriteProperty);
+            set => SetValue(ValueWriteProperty, value);
         }
 
         //Property for the Value Read
-        public static DependencyProperty ValueReadProperty = DependencyProperty.Register("ValueRead", typeof(int), typeof(DoubleRoundProgressBar));
+        public static readonly DependencyProperty ValueReadProperty = DependencyProperty.Register("ValueRead", typeof(int), typeof(DoubleRoundProgressBar));
 
         public int ValueRead {
-            get { return (int)GetValue(ValueReadProperty); }
-            set { SetValue(ValueReadProperty, value); }
+            get => (int)GetValue(ValueReadProperty);
+            set => SetValue(ValueReadProperty, value);
         }
 
         public DoubleRoundProgressBar() {

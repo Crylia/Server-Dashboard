@@ -17,7 +17,7 @@ namespace Server_Dashboard {
         private string serverName;
 
         public string ServerName {
-            get { return serverName; }
+            get => serverName;
             set {
                 if (serverName != value)
                     serverName = value;
@@ -28,7 +28,7 @@ namespace Server_Dashboard {
         private string moduleName;
 
         public string ModuleName {
-            get { return moduleName; }
+            get => moduleName;
             set {
                 if (moduleName != value)
                     moduleName = value;
@@ -36,21 +36,21 @@ namespace Server_Dashboard {
             }
         }
 
-        private string ipAdress;
+        private string ipAddress;
 
-        public string IPAdress {
-            get { return ipAdress; }
+        public string IpAddress {
+            get => ipAddress;
             set {
-                if (ipAdress != value)
-                    ipAdress = value;
-                OnPropertyChanged(nameof(ipAdress));
+                if (ipAddress != value)
+                    ipAddress = value;
+                OnPropertyChanged(nameof(ipAddress));
             }
         }
 
         private string port;
 
         public string Port {
-            get { return port; }
+            get => port;
             set {
                 if (port != value)
                     port = value;
@@ -61,7 +61,7 @@ namespace Server_Dashboard {
         private BitmapImage moduleIcon;
 
         public BitmapImage ModuleIcon {
-            get { return moduleIcon; }
+            get => moduleIcon;
             set {
                 if (moduleIcon != value)
                     moduleIcon = value;
@@ -72,7 +72,7 @@ namespace Server_Dashboard {
         private string userInformationMessage;
 
         public string UserInformationMessage {
-            get { return userInformationMessage; }
+            get => userInformationMessage;
             set {
                 if (userInformationMessage != value)
                     userInformationMessage = value;
@@ -108,39 +108,39 @@ namespace Server_Dashboard {
         /// <param name="param">Nothing</param>
         private async void CreateModuleAsync(object param) {
             //Checks if the IP field is not empty and valid
-            if (!String.IsNullOrWhiteSpace(ipAdress) && ipFilter.IsMatch(ipAdress)) {
-                //Gives the Module a default name if the user doesnt name it
-                if (String.IsNullOrWhiteSpace(moduleName))
+            if (!string.IsNullOrWhiteSpace(ipAddress) && ipFilter.IsMatch(ipAddress)) {
+                //Gives the Module a default name if the user doesn't name it
+                if (string.IsNullOrWhiteSpace(moduleName))
                     moduleName = "Module";
-                //Gives the Server a default name is the user doesnt name it
-                if (String.IsNullOrWhiteSpace(serverName))
+                //Gives the Server a default name is the user doesn't name it
+                if (string.IsNullOrWhiteSpace(serverName))
                     serverName = "Server";
-                //Makes sure the name isnt any longer than characters
+                //Makes sure the name isn't any longer than characters
                 if (moduleName.Length >= 20) {
                     UserInformationMessage = "The Module Name is too long";
                     return;
                 }
-                //Makes sure the name isnt any longer than characters
+                //Makes sure the name isn't any longer than characters
                 if (serverName.Length >= 20) {
                     UserInformationMessage = "The Server Name is too long";
                     return;
                 }
-                //Clears the error message if there isnt any error
+                //Clears the error message if there isn't any error
                 UserInformationMessage = "";
                 byte[] moduleIconStream = null;
                 if (moduleIcon != null) {
                     try {
                         JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                         encoder.Frames.Add(BitmapFrame.Create(moduleIcon));
-                        using MemoryStream ms = new MemoryStream();
+                        await using MemoryStream ms = new MemoryStream();
                         encoder.Save(ms);
                         moduleIconStream = ms.ToArray();
-                    } catch { }
+                    } catch (Exception) { }
                 }
-                if (await Task.Run(() => DatabaseHandler.CreateNewModule(ipAdress, moduleName, serverName, username, moduleIconStream, port)) == 0) {
+                if (await Task.Run(() => DatabaseHandler.CreateNewModule(ipAddress, moduleName, serverName, username, moduleIconStream, port)) == 0) {
                     Close?.Invoke();
                 } else {
-                    UserInformationMessage = "Unknown error occured, please try again later";
+                    UserInformationMessage = "Unknown error occurred, please try again later";
                 }
             } else {
                 UserInformationMessage = "The IP Address is invalid";
@@ -156,7 +156,7 @@ namespace Server_Dashboard {
                 Title = "Choose an Image",
                 Filter = "Supported format|*.jpg;*.jpeg;*.png"
             };
-            if ((bool)ofd.ShowDialog()) {
+            if (Convert.ToBoolean(ofd.ShowDialog())) {
                 ModuleIcon = new BitmapImage(new Uri(ofd.FileName));
             }
         }

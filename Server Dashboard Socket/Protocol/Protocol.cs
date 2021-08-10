@@ -6,13 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server_Dashboard_Socket {
+
     /// <summary>
     /// Generic Protocol class for Json and Xml serialization
     /// </summary>
     /// <typeparam name="TMessageType">JsonMessageProtocol or XmlMessageProtocol</typeparam>
     public abstract class Protocol<TMessageType> {
+
         //Header size is always 4
-        const int HEADER_SIZE = 4;
+        private const int HeaderSize = 4;
 
         /// <summary>
         /// Gets the message and checks with the header if the message is valid or not
@@ -26,7 +28,7 @@ namespace Server_Dashboard_Socket {
             //Validates the length
             AssertValidMessageLength(bodyLength);
             //Returns the body message type
-            return await Readbody(networkStream, bodyLength).ConfigureAwait(false);
+            return await ReadBody(networkStream, bodyLength).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -50,8 +52,8 @@ namespace Server_Dashboard_Socket {
         /// </summary>
         /// <param name="networkStream">A network stream</param>
         /// <returns>Header as Integer</returns>
-        async Task<int> ReadHeader(NetworkStream networkStream) {
-            byte[] headerBytes = await ReadAsync(networkStream, HEADER_SIZE).ConfigureAwait(false);
+        private async Task<int> ReadHeader(NetworkStream networkStream) {
+            byte[] headerBytes = await ReadAsync(networkStream, HeaderSize).ConfigureAwait(false);
             return IPAddress.HostToNetworkOrder(BitConverter.ToInt32(headerBytes));
         }
 
@@ -61,7 +63,7 @@ namespace Server_Dashboard_Socket {
         /// <param name="networkStream">A network stream</param>
         /// <param name="bodyLength">Length of the body</param>
         /// <returns>Decoded body</returns>
-        async Task<TMessageType> Readbody(NetworkStream networkStream, int bodyLength) {
+        private async Task<TMessageType> ReadBody(NetworkStream networkStream, int bodyLength) {
             //Reads the bytes from the stream into an array
             byte[] bodyBytes = await ReadAsync(networkStream, bodyLength).ConfigureAwait(false);
             //Decodes it and returns the string
@@ -74,13 +76,13 @@ namespace Server_Dashboard_Socket {
         /// <param name="networkStream">A network stream</param>
         /// <param name="bytesToRead">how many bytes there are to read</param>
         /// <returns>Every byte from the Stream</returns>
-        async Task<byte[]> ReadAsync(NetworkStream networkStream, int bytesToRead) {
+        private async Task<byte[]> ReadAsync(NetworkStream networkStream, int bytesToRead) {
             //new buffer that is as big as the content(watch out for buffer overflows)
             byte[] buffer = new byte[bytesToRead];
-            //keep acount of the bytes that are already read
+            //keep account of the bytes that are already read
             int bytesRead = 0;
             //White we still have something to read
-            while(bytesRead < bytesToRead){
+            while (bytesRead < bytesToRead) {
                 //Read it from the stream
                 var bytesReceived = await networkStream.ReadAsync(buffer, bytesRead, (bytesToRead - bytesRead)).ConfigureAwait(false);
                 //If it happens to be 0 close the socket
@@ -94,7 +96,7 @@ namespace Server_Dashboard_Socket {
         /// <summary>
         /// Encode the message from human readable to bytes for the stream
         /// </summary>
-        /// <typeparam name="T">The message as anything e.g. object or strng</typeparam>
+        /// <typeparam name="T">The message as anything e.g. object or string</typeparam>
         /// <param name="message">The message to be send</param>
         /// <returns>The Header and Body as bytes[]</returns>
         protected (byte[] header, byte[] body) Encode<T>(T message) {
@@ -121,12 +123,13 @@ namespace Server_Dashboard_Socket {
             if (messageLength < 1)
                 throw new ArgumentOutOfRangeException("Invalid message length");
         }
+
         /// <summary>
         /// Encode the message so it can be send via the network stream
         /// </summary>
         /// <typeparam name="T">Message type e.g. object or string</typeparam>
         /// <param name="message">The message to be send</param>
         /// <returns></returns>
-        protected abstract byte[] EncodeBody<T> (T message);
+        protected abstract byte[] EncodeBody<T>(T message);
     }
 }

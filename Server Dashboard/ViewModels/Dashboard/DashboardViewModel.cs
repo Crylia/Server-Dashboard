@@ -1,13 +1,9 @@
 ﻿using Server_Dashboard.Views.DashboardPages.ModuleCRUD;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
-using Server_Dashboard_Socket;
-using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Server_Dashboard {
 
@@ -53,7 +49,7 @@ namespace Server_Dashboard {
         #region Constructor
 
         public DashboardViewModel(string username) {
-            //Command inits
+            //Command init
             OpenLinkCommand = new RelayCommand(OpenLink);
             OpenNewModuleWindowCommand = new RelayCommand(OpenNewModuleWindow);
 
@@ -77,16 +73,14 @@ namespace Server_Dashboard {
         /// Opens a given link in the default browser
         /// </summary>
         /// <param name="param">The Link to be opened e.g. https://github.com/Crylia/Server-Dashboard </param>
-        private void OpenLink(object param) {
-            Process.Start(new ProcessStartInfo((string)param) { UseShellExecute = true });
-        }
+        private static void OpenLink(object param) => Process.Start(new ProcessStartInfo((string)param) { UseShellExecute = true });
 
         /// <summary>
         /// Creates a new window to create a new Module
         /// </summary>
         /// <param name="param">Nothing</param>
         private void OpenNewModuleWindow(object param) {
-            //Creates a new CreateModulePopup and sets this view model as datacontext
+            //Creates a new CreateModulePopup and sets this view model as data context
             CreateModulePopup cmp = new CreateModulePopup {
                 DataContext = new CreateModuleViewModel(User.UserName)
             };
@@ -98,9 +92,8 @@ namespace Server_Dashboard {
         }
 
         private void GetModules() {
-            DataTable moduleData = DatabaseHandler.GetUserModuleData(User.UID);
-            dmvm = new DashboardModuleViewModel(moduleData);
-            //Sets the local module to the dashboardviewmodule modules
+            dmvm = new DashboardModuleViewModel(DatabaseHandler.GetUserModuleData(User.UID));
+            //Sets the local module to the dashboard view module modules
             Modules = dmvm.Modules;
         }
 
