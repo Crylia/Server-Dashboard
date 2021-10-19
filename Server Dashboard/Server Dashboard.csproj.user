@@ -18,10 +18,16 @@
     <Compile Update="Controls\ServerModules\ServerModule.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\DashboardPages\MainDashboardPage.xaml.cs">
+    <Compile Update="Views\Dashboard\AnalyticsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\Dashboard\CRUD Popup\CreateModulePopup.xaml.cs">
+    <Compile Update="Views\Dashboard\SettingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\MainDashboardPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Dashboard\CRUD Popup\CreateModulePopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\DashboardWindow.xaml.cs">
@@ -44,10 +50,16 @@
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\DashboardPages\MainDashboardPage.xaml">
+    <Page Update="Views\Dashboard\AnalyticsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\Dashboard\CRUD Popup\CreateModulePopup.xaml">
+    <Page Update="Views\Dashboard\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\MainDashboardPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dashboard\CRUD Popup\CreateModulePopup.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DashboardWindow.xaml">

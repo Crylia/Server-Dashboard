@@ -1,0 +1,202 @@
+﻿<Window x:Class="Server_Dashboard.Views.DashboardPages.ModuleCRUD.CreateModulePopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Server_Dashboard.Views.DashboardPages.ModuleCRUD"
+        xmlns:ap="clr-namespace:Server_Dashboard"
+        xmlns:root="clr-namespace:Server_Dashboard" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+        Height="700" Width="500" WindowStyle="None" Background="Transparent" ResizeMode="CanResize" ap:CloseProperty.Value="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0" />
+    </WindowChrome.WindowChrome>
+    <!--Create new Server Form-->
+    <Border Width="500" Height="700">
+        <Border.Background>
+            <SolidColorBrush Color="#2D2D2D" Opacity="1" />
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!--Title Bar-->
+            <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="18" Grid.Column="0" Text="Create a new Server" Margin="5 0 0 0" Foreground="White" VerticalAlignment="Center">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:CallMethodAction MethodName="DragMove" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
+                <Button Style="{StaticResource CloseButton}" Grid.Column="1" Content="✕">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <!--Main Content-->
+            <Grid Background="{StaticResource BackgroundSurface_04dp}" Grid.Row="1" Margin="20">
+                <Grid.Effect>
+                    <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
+                </Grid.Effect>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!--Server Name-->
+                <StackPanel VerticalAlignment="Center" Grid.Row="0" Margin="20 0 20 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Module Name" FontSize="24" Margin="0 0 0 5">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.87" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.Effect>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
+                        </Grid.Effect>
+                        <TextBox Text="{Binding ModuleName}" Height="40" FontSize="20" x:Name="ServerName" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="My Awesome Server" FontSize="20" Visibility="{Binding ElementName=ServerName, PresentationTraceSources.TraceLevel=High, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+                <!--Username-->
+                <StackPanel VerticalAlignment="Center" Grid.Row="1" Margin="20 0 20 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Server Name" FontSize="24" Margin="0 0 0 5">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.87" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.Effect>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
+                        </Grid.Effect>
+                        <TextBox Text="{Binding ServerName}" Height="40" FontSize="20" x:Name="UserName" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Name" FontSize="20" Visibility="{Binding ElementName=UserName, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+                <!--IP Address-->
+                <StackPanel VerticalAlignment="Center" Grid.Row="2" Margin="20 0 20 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="IP Address" FontSize="24" Margin="0 0 0 5">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.87" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Text="*" Foreground="{StaticResource ErrorRed}" FontSize="16" />
+                    </StackPanel>
+                    <Grid>
+                        <Grid.Effect>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
+                        </Grid.Effect>
+                        <TextBox Text="{Binding IpAddress}" Height="40" FontSize="20" x:Name="IpAddress" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="sample.ssh.com" FontSize="20" Visibility="{Binding ElementName=IpAddress, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" IsHitTestVisible="False" Margin="5 0 0 0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+                <!--Port-->
+                <StackPanel VerticalAlignment="Center" Grid.Row="3" Margin="20 0 20 0">
+                    <TextBlock Text="Port" FontSize="24" Margin="0 0 0 5">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="White" Opacity="0.87" />
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <Grid>
+                        <Grid.Effect>
+                            <DropShadowEffect Direction="0" BlurRadius="5" ShadowDepth="0" />
+                        </Grid.Effect>
+                        <TextBox Text="{Binding Port}" Height="40" FontSize="20" x:Name="Port" />
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="22" FontSize="20" Visibility="{Binding ElementName=Port, Path=Text.IsEmpty, Converter={StaticResource UserNameVisibillity}}" Grid.Column="1" IsHitTestVisible="False" Margin="5 0 0 0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="White" Opacity="0.12" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+                <!--Module Icon-->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="102" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Cursor="Hand" Command="{Binding SelectIconCommand}" HorizontalAlignment="Left" Margin="20 0 20 0" Height="62" Width="62">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="4" x:Name="Border" Background="{StaticResource BackgroundSurface_04dp}" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="5" />
+                                                </Border.Effect>
+                                                <Grid>
+                                                    <Rectangle RadiusX="4" RadiusY="4">
+                                                        <Rectangle.Fill>
+                                                            <ImageBrush ImageSource="{Binding ModuleIcon}" />
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Viewbox Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
+                                                        <Canvas Width="24" Height="24">
+                                                            <Path Data="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z">
+                                                                <Path.Fill>
+                                                                    <SolidColorBrush Color="White" Opacity="0.87" />
+                                                                </Path.Fill>
+                                                            </Path>
+                                                        </Canvas>
+                                                    </Viewbox>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Command="{Binding RemoveIconCommand}" HorizontalAlignment="Left" Grid.Column="1" Content="Remove Icon" Height="40" Width="150" />
+                </Grid>
+                <!--Error Text / Test Connection Result-->
+                <TextBlock Text="{Binding UserInformationMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5" FontSize="14">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="#64FFDA" Opacity="0.64" />
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <!--Create Module button-->
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="20 0 10 0" Height="60" Width="Auto" Command="{Binding CreateModuleCommand}" CommandParameter="{Binding ElementName=CREATE_MODULE}" Content="CREATE MODULE" Grid.Column="0" />
+                    <Button Margin="10 0 20 0" Height="60" Width="Auto" Command="{Binding TestConnectionCommand}" Content="TEST CONNECTION" Grid.Column="1" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

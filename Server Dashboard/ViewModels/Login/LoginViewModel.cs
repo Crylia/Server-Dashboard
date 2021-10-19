@@ -3,15 +3,20 @@ using Server_Dashboard.Properties;
 using System;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using Server_Dashboard_Socket;
 
 namespace Server_Dashboard {
+
     /// <summary>
     /// View Model for the Login Window
     /// </summary>
-    class LoginViewModel : BaseViewModel, IWindowHelper {
+    internal class LoginViewModel : BaseViewModel, IWindowHelper {
+
         #region Properties
+
         //Username Property
         private string username;
+
         public string Username {
             get { return username; }
             set {
@@ -20,8 +25,10 @@ namespace Server_Dashboard {
                 OnPropertyChanged(nameof(username));
             }
         }
+
         //Error Text displays an error to help the user to fill the form
         private string errorText;
+
         public string ErrorText {
             get { return errorText; }
             set {
@@ -30,18 +37,22 @@ namespace Server_Dashboard {
                 OnPropertyChanged(nameof(errorText));
             }
         }
+
         //Remember me button
         private bool rememberUser;
+
         public bool RememberUser {
             get { return rememberUser; }
             set {
-                if(value != rememberUser)
+                if (value != rememberUser)
                     rememberUser = value;
                 OnPropertyChanged(nameof(rememberUser));
             }
         }
+
         //Loading circle, gets hidden and shown when logging in
         private string loading;
+
         public string Loading {
             get { return loading; }
             set {
@@ -50,35 +61,44 @@ namespace Server_Dashboard {
                 OnPropertyChanged(nameof(loading));
             }
         }
-        #endregion
+
+        #endregion Properties
 
         #region Public Values
+
         //Close action for the Window to close properly
-        public Action Close { get ; set; }
-        #endregion
+        public Action Close { get; set; }
+
+        #endregion Public Values
 
         #region Constructor
+
         public LoginViewModel() {
+            //SocketClient sc = new SocketClient();
             //Loading circle is hidden on startup
             Loading = "Hidden";
             //Command inits
             LoginCommand = new RelayCommand(LoginAsync);
             //Checks if the Username and Cookie is saved in the Settings.settings
             if (!String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
-                //Takes the saved Username and Remember me button status and prefills the username and checks the Remember me button
+                //Takes the saved Username and Remember me button status and pre fills the username and checks the Remember me button
                 Username = Settings.Default.Username;
                 RememberUser = Settings.Default.RememberMe;
             }
-            //TODO: Autologin
+            //TODO: Auto login
             //AutoLoginAsync();
         }
-        #endregion
+
+        #endregion Constructor
 
         #region ICommands
+
         public ICommand LoginCommand { get; set; }
-        #endregion
+
+        #endregion ICommands
 
         #region Commands
+
         /// <summary>
         /// Async login
         /// </summary>
@@ -88,7 +108,7 @@ namespace Server_Dashboard {
             if (!String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 //Sets loading to true to show the loading icon
                 Loading = "Visible";
-                //Sends the Username and Password to the database and saved the result, 1 successfull, 0 wrong username or password
+                //Sends the Username and Password to the database and saved the result, 1 successful, 0 wrong username or password
                 int result = await Task.Run(() => DatabaseHandler.CheckLogin(Username, (parameter as IHavePassword).SecurePassword.Unsecure()));
                 //hides the loading again
                 Loading = "Hidden";
@@ -103,6 +123,7 @@ namespace Server_Dashboard {
                         //Sets the error text and exits function
                         ErrorText = "Username or password is wrong.";
                         return;
+
                     case 1:
                         /*No idea why this is here, gonna let it be till the remember me and autologin is 100% done
                         if (RememberUser && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
@@ -119,9 +140,9 @@ namespace Server_Dashboard {
                             DatabaseHandler.DeleteCookie(Username);
                         }
                         //If the remember user option is checked and the cookie is not set save everything locally
-                        if (RememberUser && String.IsNullOrEmpty(Settings.Default.Cookies)) {
+                        if (RememberUser && Settings.Default.Username != Username) {
                             //Creates a new GUID with the username at the end, this is the cookie
-                            var cookie = new Guid().ToString() + Username;
+                            var cookie = $"{Guid.NewGuid()}+user:{Username}";
                             //Saves cookie, Username Remember me option to the local storage (Settings.settings)
                             Settings.Default.Cookies = cookie;
                             Settings.Default.Username = Username;
@@ -131,35 +152,40 @@ namespace Server_Dashboard {
                             DatabaseHandler.AddCookie(Username, cookie);
                         }
                         //Creates a new Dashboard window and shows it
-                        DashboardWindow window = new DashboardWindow();
+                        DashboardWindow window = new DashboardWindow() {
+                            DataContext = new DashboardViewModel(Username)
+                        };
                         window.Show();
-                        //When closed, close it correctly
+                        //Close window when dashboard is shown
                         Close?.Invoke();
                         return;
+
                     case 2:
                         //Sets the error text
                         ErrorText = "Server unreachable, connection timeout.";
                         return;
+
                     default:
                         //Sets the error text
-                        ErrorText = "An unknown error has occured";
+                        ErrorText = "An unknown error has occurred";
                         return;
                 }
-            //If the Username and password is blank
-            //All these IF's could be one but i made multiple for the different errors so the user knows whats wrong
-            } else if (String.IsNullOrWhiteSpace(Username) && String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
+                //If the Username and password is blank
+                //All these IF's could be one but i made multiple for the different errors so the user knows whats wrong
+            }
+            if (string.IsNullOrWhiteSpace(Username) && string.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 //Sets the error text
                 ErrorText = "Please provide a username and password";
                 return;
             }
             //Only if the Username is empty
-            if (String.IsNullOrWhiteSpace(Username)) {
+            if (string.IsNullOrWhiteSpace(Username)) {
                 //Sets the error text
                 ErrorText = "Username cannot be empty.";
                 return;
             }
             //Only if the password is empty
-            if (String.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
+            if (string.IsNullOrWhiteSpace((parameter as IHavePassword).SecurePassword.Unsecure())) {
                 //Sets the error text
                 ErrorText = "Password cannot be empty.";
                 return;
@@ -167,10 +193,12 @@ namespace Server_Dashboard {
             //If there is no error, clear the error text
             ErrorText = "";
         }
-        #endregion
+
+        #endregion Commands
 
         #region private functions
-        //TODO: Add autologin function that locks the UI untill the user hits the abort button or the login completes
+
+        //TODO: Add auto login function that locks the UI until the user hits the abort button or the login completes
         /*private async void AutoLoginAsync() {
             if (Settings.Default.RememberMe && !String.IsNullOrEmpty(Settings.Default.Username) && !String.IsNullOrEmpty(Settings.Default.Cookies)) {
                 Loading = "Visible";
@@ -184,6 +212,7 @@ namespace Server_Dashboard {
                 }
             }
         }*/
-        #endregion
+
+        #endregion private functions
     }
 }

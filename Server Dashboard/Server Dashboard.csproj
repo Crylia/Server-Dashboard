@@ -18,23 +18,6 @@
     <None Remove="Assets\Fonts\OpenSans\OpenSans-Regular.ttf" />
     <None Remove="Assets\Fonts\OpenSans\OpenSans-SemiBold.ttf" />
     <None Remove="Assets\Fonts\OpenSans\OpenSans-SemiBoldItalic.ttf" />
-    <None Remove="Assets\Images\Docs.png" />
-    <None Remove="Assets\Images\Docs.svg" />
-    <None Remove="Assets\Images\DocsLight.png" />
-    <None Remove="Assets\Images\GitHub-Mark.zip" />
-    <None Remove="Assets\Images\GitHub.png" />
-    <None Remove="Assets\Images\GitHubLight.png" />
-    <None Remove="Assets\Images\GreenSettings.png" />
-    <None Remove="Assets\Images\PlaceHolderModule.png" />
-    <None Remove="Assets\Images\PlaceHolderModuleLight.png" />
-    <None Remove="Assets\Images\Settings.png" />
-    <None Remove="Assets\Images\Settings.svg" />
-    <None Remove="Assets\Images\SettingsLight.png" />
-    <None Remove="Assets\Images\User.png" />
-    <None Remove="Assets\Images\User.svg" />
-    <None Remove="Assets\Images\UserLight.png" />
-    <None Remove="Assets\Images\userlogin.png" />
-    <None Remove="Assets\Images\userpasswd.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,28 +48,29 @@
     <Resource Include="Assets\Fonts\OpenSans\OpenSans-Regular.ttf" />
     <Resource Include="Assets\Fonts\OpenSans\OpenSans-SemiBold.ttf" />
     <Resource Include="Assets\Fonts\OpenSans\OpenSans-SemiBoldItalic.ttf" />
-    <Resource Include="Assets\Images\Docs.png" />
-    <Resource Include="Assets\Images\Docs.svg" />
-    <Resource Include="Assets\Images\DocsLight.png" />
-    <Resource Include="Assets\Images\GitHub.png" />
-    <Resource Include="Assets\Images\GitHubLight.png" />
-    <Resource Include="Assets\Images\PlaceHolderModule.png" />
-    <Resource Include="Assets\Images\PlaceHolderModuleLight.png" />
-    <Resource Include="Assets\Images\Settings.svg" />
-    <Resource Include="Assets\Images\User.svg" />
-    <Resource Include="Assets\Images\userlogin.png" />
-    <Resource Include="Assets\Images\userpasswd.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Controls\DoubleRoundProgressBar\DoubleRoundProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

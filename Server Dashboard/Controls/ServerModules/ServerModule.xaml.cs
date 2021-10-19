@@ -12,10 +12,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Server_Dashboard.Controls.ServerModules {
+
     /// <summary>
     /// Interaktionslogik für ServerModule.xaml
     /// </summary>
     public partial class ServerModule : UserControl {
+
         public ServerModule() {
             InitializeComponent();
         }

@@ -27,10 +27,6 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard.dll.config
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.g.cs
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardPages\MainDashboardPage.baml
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.g.cs
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.baml
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Converters.Wpf.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Core.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SharpVectors.Css.dll
@@ -43,8 +39,6 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\ServerModules\ServerModule.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\ServerModules\ServerModule.baml
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\Dashboard\CRUD Popup\CreateModulePopup.g.cs
-C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\Dashboard\CRUD Popup\CreateModulePopup.baml
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Expression.Drawing.dll
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Microsoft.Expression.Drawing.xml
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server Dashboard.csprojAssemblyReference.cache
@@ -56,3 +50,16 @@ C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcor
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Server Dashboard Socket.pdb
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\LoadingIndicator\LoadingIndicator.g.cs
 C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Controls\LoadingIndicator\LoadingIndicator.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\CRUD Popup\CreateModulePopup.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\CRUD Popup\CreateModulePopup.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Pages\MainDashboardPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\DashboardWindow.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Pages\MainDashboardPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\AnalyticsPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\SettingsPage.g.cs
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\AnalyticsPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Views\Dashboard\SettingsPage.baml
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server_Dashboard.Properties.Resources.resources
+C:\Users\Crylia\Documents\Git\Server Dashboard\Server Dashboard\obj\Debug\netcoreapp3.1\Server Dashboard.csproj.GenerateResource.cache

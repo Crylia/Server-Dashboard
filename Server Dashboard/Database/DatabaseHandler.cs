@@ -1,17 +1,17 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Reflection;
 
 namespace Server_Dashboard {
+
     /// <summary>
     /// Database class to access the database
     /// </summary>
     public static class DatabaseHandler {
+
         #region Public Methods
+
         /// <summary>
         /// Checks the user credentials
         /// </summary>
@@ -20,136 +20,284 @@ namespace Server_Dashboard {
         /// <returns>[0] is false, [1] is true, [2] connection error</returns>
         public static int CheckLogin(string uname, string passwd) {
             //Creates the database connection
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString)) {
-                try {
-                    //Open the connection
-                    con.Open();
-                    //SQL Query
-                    string query = "EXEC ValidateUserLogin @Username = @uname, @Password = @passwd, @Valid = @valid OUTPUT";
-                    //Creates a new command
-                    using (SqlCommand com = new SqlCommand(query, con)) {
-                        //For security reasons the values are added with this function
-                        //this will avoid SQL Injections
-                        com.Parameters.AddWithValue("@uname", uname);
-                        com.Parameters.AddWithValue("@passwd", passwd);
-                        com.Parameters.Add("@valid", SqlDbType.NVarChar, 250);
-                        com.Parameters["@valid"].Direction = ParameterDirection.Output;
-                        //Execute without a return value
-                        com.ExecuteNonQuery();
-                        //The Return value from the SQL Stored Procedure will have the answer to life
-                        return Convert.ToInt32(com.Parameters["@Valid"].Value);
-                    }
-                    //Catch any error
-                } catch (SqlException ex) {
-                    return ex.Number;
-                } finally {
-                    //Always close the connection
-                    con.Close();
-                }
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                string query = "EXEC ValidateUserLogin @Username = @uname, @Password = @passwd, @Valid = @valid OUTPUT";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);//For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@uname", uname);
+                com.Parameters.AddWithValue("@passwd", passwd);
+                com.Parameters.Add("@valid", SqlDbType.NVarChar, 250);
+                com.Parameters["@valid"].Direction = ParameterDirection.Output;
+                //Execute query and return number of rows affected
+                com.ExecuteNonQuery();
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                return Convert.ToInt32(com.Parameters["@Valid"].Value) == 0 ? 1 : 0;
+                //Catch any error
+            } catch (SqlException ex) {
+                return ex.Number;
+            } finally {
+                //Always close the connection
+                con.Close();
             }
         }
+
+        public static DataTable GetUserData(string username) {
+            //Creates the database connection
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                const string query = "SELECT ID, Username, Email, RegistrationDate FROM UserData WHERE Username = @username";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);//For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@username", username);
+                //Execute query and return number of rows affected
+                DataTable resultTable = new DataTable() { TableName = "Userdata" };
+                using SqlDataAdapter sda = new SqlDataAdapter(com);
+                sda.Fill(resultTable);
+                return resultTable;
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                //Catch any error
+            } catch (SqlException) {
+                return null;
+            } finally {
+                //Always close the connection
+                con.Close();
+            }
+        }
+
+        public static DataTable GetUserModuleData(int uid) {
+            //Creates the database connection
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                const string query = "SELECT Creator, CreationTime, ModuleName, MI.Image, ModuleData.ID FROM ModuleData LEFT JOIN ModuleIcon MI on ModuleData.ID = MI.Module WHERE UserID = @userID";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);//For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@userID", uid);
+                //Execute query and return number of rows affected
+                DataTable resultTable = new DataTable();
+                using SqlDataAdapter sda = new SqlDataAdapter(com);
+                sda.Fill(resultTable);
+                return resultTable;
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                //Catch any error
+            } catch (SqlException) {
+                return null;
+            } finally {
+                //Always close the connection
+                con.Close();
+            }
+        }
+
         /// <summary>
-        /// Currently obscolete, would check the Username and Cookie
+        /// This function will fetch every server data for each module
+        /// This will need some optimization, for now we just asynchronously
+        /// fetch the server data for each module
+        /// </summary>
+        /// <param name="mid">ModuleID to fetch the data from</param>
+        /// <returns></returns>
+        public static DataTable GetServerData(int mid) {
+            //Creates the database connection
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                const string query = "SELECT * FROM ServerData WHERE ModuleID = @mid";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);//For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@mid", mid);
+                //Execute query and return number of rows affected
+                DataTable resultTable = new DataTable();
+                using SqlDataAdapter sda = new SqlDataAdapter(com);
+                sda.Fill(resultTable);
+                return resultTable;
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                //Catch any error
+            } catch (SqlException) {
+                return null;
+            } finally {
+                //Always close the connection
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Creates a new Module for the current user
+        /// </summary>
+        /// <param name="ipAddress">Server IP Address</param>
+        /// <param name="moduleName">Module name, default is Module</param>
+        /// <param name="serverName">Server name, default is Server</param>
+        /// <param name="username">Username of the current user</param>
+        /// <param name="moduleIcon">module icon as byte[]</param>
+        /// <param name="port">port, default ist 22</param>
+        /// <returns></returns>
+        public static int CreateNewModule(string ipAddress, string moduleName, string serverName, string username, byte[] moduleIcon, string port = "22") {
+            //Creates the database connection
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                const string query = "EXEC AddNewModuleToUser @UserName = @username, @DateTime = @time, @ModuleName = @moduleName, @ServerName = @serverName, @ModuleIcon = @moduleIcon, @IPAddress = @ipAddress, @Port = @port";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);
+                //For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@username", username);
+                com.Parameters.AddWithValue("@time", DateTime.Now);
+                com.Parameters.AddWithValue("@moduleName", moduleName);
+                com.Parameters.AddWithValue("@serverName", serverName);
+                com.Parameters.Add("@moduleIcon", SqlDbType.VarBinary, -1).Value = moduleIcon;
+                if (moduleIcon == null)
+                    com.Parameters["@moduleIcon"].Value = DBNull.Value;
+                //com.Parameters.AddWithValue("@moduleIcon", moduleIcon);
+                com.Parameters.AddWithValue("@ipAddress", ipAddress);
+                com.Parameters.AddWithValue("@port", port);
+                //Execute query and return number of rows affected
+                int sqlResponse = com.ExecuteNonQuery();
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                return sqlResponse == 0 ? 1 : 0;
+                //Catch any error
+            } catch (SqlException ex) {
+                return ex.Number;
+            } finally {
+                //Always close the connection
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Currently obsolete, would check the Username and Cookie
         /// </summary>
         /// <param name="cookie">Locally stored user cookie</param>
         /// <param name="username">Locally stored username</param>
         /// <returns>[0] is false, [1] is true, [2] connection error</returns>
         public static int CheckCookie(string cookie, string username) {
             //Creates the database connection
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString)) {
-                try {
-                    //Open the connection
-                    con.Open();
-                    //SQL Query
-                    string query = "EXEC CheckUserCookie @Cookie = @cookie, @UserName = @username, @Valid = @valid OUTPUT";
-                    //Creates a new command
-                    using (SqlCommand com = new SqlCommand(query, con)) {
-                        //For security reasons the values are added with this function
-                        //this will avoid SQL Injections
-                        com.Parameters.AddWithValue("@cookie", cookie);
-                        com.Parameters.AddWithValue("@username", username);
-                        com.Parameters.Add("@valid", SqlDbType.Bit);
-                        com.Parameters["@valid"].Direction = ParameterDirection.Output;
-                        //Execute without a return value
-                        com.ExecuteNonQuery();
-                        //The Return value from the SQL Stored Procedure will have the answer to life
-                        return Convert.ToInt32(com.Parameters["@Valid"].Value);
-                    }
-                    //Catch any error
-                } catch (SqlException ex) {
-                    return ex.Number;
-                } finally {
-                    //Always close the connection
-                    con.Close();
-                }
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                const string query = "((SELECT Cookie FROM UserData WHERE Username = @username) = @cookie)";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);
+                //For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@cookie", cookie);
+                com.Parameters.AddWithValue("@username", username);
+                //Execute query and return number of rows affected
+                int sqlResponse = com.ExecuteNonQuery();
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successfull
+                return sqlResponse == 0 ? 1 : 0;
+                //Catch any error
+            } catch (SqlException ex) {
+                return ex.Number;
+            } finally {
+                //Always close the connection
+                con.Close();
             }
         }
+
         /// <summary>
         /// Deletes a the cookie from the given user
         /// </summary>
         /// <param name="username">User who doesnt deserve any delicious cookies :3</param>
-        public static void DeleteCookie(string username) {
+        public static int DeleteCookie(string username) {
             //Creates the database connection
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString)) {
-                try {
-                    //Open the connection
-                    con.Open();
-                    //SQL Query
-                    string query = "EXEC DeleteUserCookie @Username = @username, @ResponseMessage = @response OUTPUT";
-                    //Creates a new command
-                    using (SqlCommand com = new SqlCommand(query, con)) {
-                        //For security reasons the values are added with this function
-                        //this will avoid SQL Injections
-                        com.Parameters.AddWithValue("@username", username);
-                        com.Parameters.Add("@response", SqlDbType.NVarChar, 250);
-                        com.Parameters["@response"].Direction = ParameterDirection.Output;
-                        //Execute without a return value
-                        com.ExecuteNonQuery();
-                    }
-                    //Catch any error, dont return them, why would you?
-                } catch {
-                } finally {
-                    //Always close the connection
-                    con.Close();
-                }
+            using SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+                //SQL Query
+                const string query = "UPDATE UserData SET Cookie = null WHERE Username = @username";
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);
+                //For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.AddWithValue("@username", username);
+                //Execute query and return number of rows affected
+                int sqlResponse = com.ExecuteNonQuery();
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                return sqlResponse == 0 ? 1 : 0;
+                //Catch any error
+            } catch (SqlException ex) {
+                return ex.Number;
+            } finally {
+                //Always close the connection
+                con.Close();
             }
         }
+
         /// <summary>
         /// Adds a new Cookie to a user
         /// </summary>
         /// <param name="cookie">The delicious locally stored cookie</param>
         /// <param name="username">The User who deserves a cookie :3</param>
         /// <returns>[0] is false, [1] is true, [2] connection error</returns>
-        public static int AddCookie(string cookie, string username) {
+        public static int AddCookie(string username, string cookie) {
             //Creates the database connection
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString)) {
-                try {
-                    //Open the connection
-                    con.Open();
-                    //SQL Query
-                    string query = "EXEC AddCookieToUser @Cookie = @cookie, @UserName = @username, @ResponseMessage = @response OUTPUT";
-                    //Creates a new command
-                    using (SqlCommand com = new SqlCommand(query, con)) {
-                        //For security reasons the values are added with this function
-                        //this will avoid SQL Injections
-                        com.Parameters.AddWithValue("@cookie", cookie);
-                        com.Parameters.AddWithValue("@username", username);
-                        com.Parameters.Add("@response", SqlDbType.NVarChar, 250);
-                        com.Parameters["@response"].Direction = ParameterDirection.Output;
-                        //Execute without a return value
-                        com.ExecuteNonQuery();
-                        //The Return value from the SQL Stored Procedure will have the answer to life
-                        return Convert.ToInt32(com.Parameters["@ResponseMessage"].Value);
-                    }
-                    //Catch any error
-                } catch (SqlException ex) {
-                    return ex.Number;
-                } finally {
-                    //Always close connection
-                    con.Close();
-                }
+            using SqlConnection con =
+                new SqlConnection(ConfigurationManager.ConnectionStrings["ServerDashboardDB"].ConnectionString);
+            try {
+                //Open the connection
+                con.Open();
+
+                //SQL Query
+                const string query = "UPDATE UserData SET Cookie = @cookie WHERE Username = @username";
+
+                //Creates a new command
+                using SqlCommand com = new SqlCommand(query, con);
+
+                //For security reasons the values are added with this function
+                //this will avoid SQL Injections
+                com.Parameters.Add("@cookie", SqlDbType.NVarChar, -1).Value = cookie;
+                com.Parameters.AddWithValue("@username", username);
+
+                //Execute query and return number of rows affected
+                int sqlResponse = com.ExecuteNonQuery();
+
+                //Checks if there are any rows successful
+                //If the query returns 0 the query wasn't successful
+                //if its any number above 0 it was successful
+                return sqlResponse == 0 ? 1 : 0;
+
+                //Catch any error
+            } catch (SqlException ex) {
+                return ex.Number;
+            } finally {
+                //Always close the connection
+                con.Close();
             }
         }
-        #endregion
+
+        #endregion Public Methods
     }
 }

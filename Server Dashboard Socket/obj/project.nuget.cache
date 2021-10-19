@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TThsag+xtSY7ctBsPwAhUX7uLjuhld1ipCW1nP987HRzxMfYvczqncYfdca/U4IfbiniWP3eJFeh7yA09+/gGA==",
+  "dgSpecHash": "l9ApM4rx/nIquK7TUSE2VVfvhwnQ4+tycTwd5vMzM9v+MhFzGIKE8eVwCEj+r8Oe9Orh3cE/LeZlJ+t9G9ZaSg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Crylia\\Documents\\Git\\Server Dashboard\\Server Dashboard Socket\\Server Dashboard Socket.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Crylia\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
